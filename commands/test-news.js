@@ -1,4 +1,7 @@
+const co = require("co");
+
 module.exports.run = async (bot, message, args) => {
+    console.log(1);
     if(!message.member.hasPermission('ADMINISTRATOR')) 
         message.channel.send("To si vyhoď z hlavy.");
     else {
