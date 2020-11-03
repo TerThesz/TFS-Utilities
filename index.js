@@ -58,15 +58,14 @@ client.on("message", message => {
     });
 
     let prefix = config.prefix;
-    const args = message.content.trim().split(/ +/g);
-    const cmd = args[0].slice(prefix.length).toLowerCase();
+    let messageArray = message.content.split(" ");
+    let cmd = messageArray[0];
+    let args = message.content.substring(message.content.indexOf(' ')+1);
 
-    console.log(args);
-    console.log(cmd);
+    console.log(prefix + '\n' + messageArray + '\n' + cmd + '\n' + args)
 
     if(message.content.startsWith(prefix)) {
         let commandfile = client.commands.get(cmd.slice(prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(prefix.length)))
-        console.log(commandfile);
         if(commandfile) commandfile.run(client,message,args)
     } else if (message.content.startsWith('+') || message.content.startsWith('-') || cmd === 'rep') {
         let commandfile = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd))
