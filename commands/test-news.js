@@ -1,5 +1,3 @@
-const co = require("co");
-
 module.exports.run = async (bot, message, args) => {
     console.log(1);
     if(!message.member.hasPermission('ADMINISTRATOR')) 
