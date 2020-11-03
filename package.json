@@ -6321,16 +6321,7 @@
       "resolved": "https://registry.npmjs.org/querystringify/-/querystringify-2.2.0.tgz",
       "version": "2.2.0"
     },
-    "random-puppy": {
-      "integrity": "sha1-GtqjTA83bVArWdb9gifqYaRUmTs=",
-      "requires": {
-        "eventemitter3": "^1.2.0",
-        "got": "^6.3.0",
-        "unique-random-array": "^1.0.0"
-      },
-      "resolved": "https://registry.npmjs.org/random-puppy/-/random-puppy-1.1.0.tgz",
-      "version": "1.1.0"
-    },
+    "random-puppy": "^1.1.0",
     "readable-stream": {
       "dependencies": {
         "safe-buffer": {
