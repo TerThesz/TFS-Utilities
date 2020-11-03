@@ -60,7 +60,7 @@ client.on("message", message => {
     let prefix = config.prefix;
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
-    let args = message.content.substring(message.content.split(' '));
+    let args = message.content.split(' ').shift();
 
     if(message.content.startsWith(prefix)) {
         let commandfile = client.commands.get(cmd.slice(prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(prefix.length)))
