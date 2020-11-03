@@ -2,7 +2,9 @@ module.exports.run = async (bot, message, args) => {
     if(!message.member.hasPermission('ADMINISTRATOR')) 
         message.channel.send("To si vyhoď z hlavy.");
     else {
-        message.reply(args[1]);
+        args.array.forEach(arg => {
+            message.channel.send(arg);
+        });
     }
 }
 
