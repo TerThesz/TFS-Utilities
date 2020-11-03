@@ -10,6 +10,7 @@ module.exports.run = async (bot, message, args) => {
             if (!element) return;
             return arguments.push(element.replace(/"/g, ''));
         });
+        console.log(args);
         console.log(args.length);
         switch(args.length) {
             case 7:
