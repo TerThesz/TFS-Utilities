@@ -1,8 +1,6 @@
 const Discord = require('discord.js');
 
 module.exports.run = async (bot, message, args) => {
-    console.log(message.content);
-    console.log(args);
     if(!message.member.hasPermission('ADMINISTRATOR')) 
         message.channel.send("To si vyhoď z hlavy.");
     else {

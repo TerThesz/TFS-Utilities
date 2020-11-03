@@ -62,8 +62,6 @@ client.on("message", message => {
     let cmd = messageArray[0];
     let args = message.content.substring(message.content.indexOf(' ')+1);
 
-    console.log(prefix + '\n' + messageArray + '\n' + cmd + '\n' + args)
-
     if(message.content.startsWith(prefix)) {
         let commandfile = client.commands.get(cmd.slice(prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(prefix.length)))
         if(commandfile) commandfile.run(client,message,args)
