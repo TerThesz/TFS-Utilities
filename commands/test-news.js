@@ -5,7 +5,6 @@ module.exports.run = async (bot, message, args) => {
         message.reply(args[1]);
     }
 }
-}
 
 module.exports.config = {
     name: "test-news",
