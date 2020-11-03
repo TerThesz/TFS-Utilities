@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args) => {
             return arguments.push(element.replace(/"/g, ''));
         });
         switch(args.length) {
-            case 6:
+            case 7:
                 const e0 = new Discord.MessageEmbed()
                 .setColor('#15902567')
                 .setTitle(args[0])
@@ -27,7 +27,7 @@ module.exports.run = async (bot, message, args) => {
                 .setFooter('Novinky');
                 message.channel.send(e0);
                 break;
-            case 5:
+            case 6:
                 const e1 = new Discord.MessageEmbed()
                 .setColor('#15902567')
                 .setTitle(args[0])
@@ -42,7 +42,7 @@ module.exports.run = async (bot, message, args) => {
                 .setFooter('Novinky');
                 message.channel.send(e1);
                 break;
-            case 4:
+            case 5:
                 const e2 = new Discord.MessageEmbed()
                 .setColor('#15902567')
                 .setTitle(args[0])
@@ -56,7 +56,7 @@ module.exports.run = async (bot, message, args) => {
                 .setFooter('Novinky');
                 message.channel.send(e2);
                 break;
-            case 3:
+            case 4:
                 const e3 = new Discord.MessageEmbed()
                 .setColor('#15902567')
                 .setTitle(args[0])
@@ -69,7 +69,7 @@ module.exports.run = async (bot, message, args) => {
                 .setFooter('Novinky');
                 message.channel.send(e3);
                 break;
-            case 2:
+            case 3:
                 const e4 = new Discord.MessageEmbed()
                 .setColor('#15902567')
                 .setTitle(args[0])
@@ -79,7 +79,7 @@ module.exports.run = async (bot, message, args) => {
                 .setFooter('Novinky');
                 message.channel.send(e4);
                 break;
-            case 1:
+            case 2:
                 const e5 = new Discord.MessageEmbed()
                 .setColor('#F99644')
                 .setTitle(args[0])
@@ -90,7 +90,7 @@ module.exports.run = async (bot, message, args) => {
                 message.channel.send(e5);
                 break;
             default:
-                message.channel.send('Nepoužitelný počet argumentov. (očakávaný poČet argumentov 1-6)');
+                message.channel.send('Nepoužitelný počet argumentov. (očakávaný poČet argumentov 2-7)');
                 break;
 
         }
