@@ -10,6 +10,7 @@ module.exports.run = async (bot, message, args) => {
             if (!element) return;
             return arguments.push(element.replace(/"/g, ''));
         });
+        console.log(args.length);
         switch(args.length) {
             case 7:
                 const e0 = new Discord.MessageEmbed()
@@ -90,7 +91,7 @@ module.exports.run = async (bot, message, args) => {
                 message.channel.send(e5);
                 break;
             default:
-                message.channel.send('Nepoužitelný počet argumentov. (očakávaný poČet argumentov 2-7)');
+                message.channel.send('Nepoužitelný počet argumentov. (očakávaný počet argumentov 2-7)');
                 break;
 
         }
