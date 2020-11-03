@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args) => {
             return arguments.push(element.replace(/"/g, ''));
         });
         const e0 = new Discord.MessageEmbed()
-        .setColor('#15902567')
+        .setColor('#F99644')
         .setTitle('úrd')
         .setAuthor(message.sender.user.username, message.sender.user.avatar)
         .setDescription('kak')
