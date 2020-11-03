@@ -85,6 +85,7 @@ module.exports.run = async (bot, message, args) => {
             default:
                 message.channel.send('Nepoužitelný počet argumentov. (očakávaný poČet argumentov 1-6)');
                 break;
+                
         }
 
         channel.send(exampleEmbed);
