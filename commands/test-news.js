@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args) => {
         });
         switch(args.length) {
             case 6:
-                const exampleEmbed = new Discord.MessageEmbed()
+                const e0 = new Discord.MessageEmbed()
                 .setColor('#15902567')
                 .setTitle(args[0])
                 .setAuthor(message.sender.user.username, message.sender.user.avatar)
@@ -25,9 +25,10 @@ module.exports.run = async (bot, message, args) => {
                 )
                 .setTimestamp()
                 .setFooter('Novinky');
+                message.channel.send(e0);
                 break;
             case 5:
-                const exampleEmbed = new Discord.MessageEmbed()
+                const e1 = new Discord.MessageEmbed()
                 .setColor('#15902567')
                 .setTitle(args[0])
                 .setAuthor(message.sender.user.username, message.sender.user.avatar)
@@ -39,9 +40,10 @@ module.exports.run = async (bot, message, args) => {
                 )
                 .setTimestamp()
                 .setFooter('Novinky');
+                message.channel.send(e1);
                 break;
             case 4:
-                const exampleEmbed = new Discord.MessageEmbed()
+                const e2 = new Discord.MessageEmbed()
                 .setColor('#15902567')
                 .setTitle(args[0])
                 .setAuthor(message.sender.user.username, message.sender.user.avatar)
@@ -52,9 +54,10 @@ module.exports.run = async (bot, message, args) => {
                 )
                 .setTimestamp()
                 .setFooter('Novinky');
+                message.channel.send(e2);
                 break;
             case 3:
-                const exampleEmbed = new Discord.MessageEmbed()
+                const e3 = new Discord.MessageEmbed()
                 .setColor('#15902567')
                 .setTitle(args[0])
                 .setAuthor(message.sender.user.username, message.sender.user.avatar)
@@ -64,31 +67,32 @@ module.exports.run = async (bot, message, args) => {
                 )
                 .setTimestamp()
                 .setFooter('Novinky');
+                message.channel.send(e3);
                 break;
             case 2:
-                const exampleEmbed = new Discord.MessageEmbed()
+                const e4 = new Discord.MessageEmbed()
                 .setColor('#15902567')
                 .setTitle(args[0])
                 .setAuthor(message.sender.user.username, message.sender.user.avatar)
                 .setDescription(args[1])
                 .setTimestamp()
                 .setFooter('Novinky');
+                message.channel.send(e4);
                 break;
             case 1:
-                const exampleEmbed = new Discord.MessageEmbed()
+                const e5 = new Discord.MessageEmbed()
                 .setColor('#15902567')
                 .setTitle(args[0])
                 .setAuthor(message.sender.user.username, message.sender.user.avatar)
                 .setTimestamp()
                 .setFooter('Novinky');
+                message.channel.send(e5);
                 break;
             default:
                 message.channel.send('Nepoužitelný počet argumentov. (očakávaný poČet argumentov 1-6)');
                 break;
-                
-        }
 
-        channel.send(exampleEmbed);
+        }
     }
 }
 
