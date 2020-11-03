@@ -1,5 +1,3 @@
-const { PassThrough } = require("readable-stream");
-
 module.exports.run = async (bot, message, args) => {
     if(!message.member.hasPermission('ADMINISTRATOR')) 
         message.channel.send("To si vyhoď z hlavy.");
