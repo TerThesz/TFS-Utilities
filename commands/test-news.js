@@ -11,8 +11,8 @@ module.exports.run = async (bot, message, args) => {
             return arguments.push(element.replace(/"/g, ''));
         });
         console.log(args);
-        console.log(args.length);
-        switch(args.length) {
+        console.log(args.array.length);
+        switch(args.array.length) {
             case 7:
                 const e0 = new Discord.MessageEmbed()
                 .setColor('#15902567')
