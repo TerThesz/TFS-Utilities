@@ -64,10 +64,10 @@ client.on("message", message => {
 
     if(message.content.startsWith(prefix)) {
         let commandfile = client.commands.get(cmd.slice(prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(prefix.length)))
-        if(commandfile) commandfile.run(client,message,args)
+        if(commandfile) commandfile.run(client,message,messageArray)
     } else if (message.content.startsWith('+') || message.content.startsWith('-') || cmd === 'rep') {
         let commandfile = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd))
-        if(commandfile) commandfile.run(client,message,args)
+        if(commandfile) commandfile.run(client,message,messageArray)
     }
 })
 
