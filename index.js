@@ -61,8 +61,12 @@ client.on("message", message => {
     const args = message.content.trim().split(/ +/g);
     const cmd = args[0].slice(prefix.length).toLowerCase();
 
+    console.log(args);
+    console.log(cmd);
+
     if(message.content.startsWith(prefix)) {
         let commandfile = client.commands.get(cmd.slice(prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(prefix.length)))
+        console.log(commandfile);
         if(commandfile) commandfile.run(client,message,args)
     } else if (message.content.startsWith('+') || message.content.startsWith('-') || cmd === 'rep') {
         let commandfile = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd))
