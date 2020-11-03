@@ -1,3 +1,5 @@
+const Discord = require('discord.js');
+
 module.exports.run = async (bot, message, args) => {
     console.log(message.content);
     console.log(args);
