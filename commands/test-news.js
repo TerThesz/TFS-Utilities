@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args) => {
         const e0 = new Discord.MessageEmbed()
         .setColor('#F99644')
         .setTitle('úrd')
-        .setAuthor(message.sender.user.username, message.sender.user.avatar)
+        .setAuthor(message.member.username, message.member.avatar)
         .setDescription('kak')
         .setTimestamp()
         .setFooter('Novinky');
