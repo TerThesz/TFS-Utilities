@@ -3,7 +3,7 @@ module.exports.run = async (bot, message, args) => {
         message.channel.send("To si vyhoď z hlavy.");
     else {
         for (let arg in args) {
-            parseArgs[args] = args[arg];
+            console.log(arg);
         }
     }
 }
