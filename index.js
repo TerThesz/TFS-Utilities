@@ -3,7 +3,7 @@ const config = require('./bot.json');
 const client = new Discord.Client({disableEveryone: true});
 
 const fs = require("fs");
-const database = require('./database.json');
+client.database = require('./database.json');
 
 client.on("guildMemberAdd", member => {
     let memberRole = member.guild.roles.cache.find(role => role.id === '772939341805912065'); 
@@ -67,7 +67,7 @@ client.on("message", message => {
 
     if(message.content.startsWith(prefix)) {
         if(cmd === 'writeJson') {
-            database [message.author.username] = {
+            client.database [message.author.username] = {
                 message: message.content
             }
             fs.writeFile ('./database.json', JSON.stringify(database, null, 4), err => {
