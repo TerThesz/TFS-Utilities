@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args) => {
 
     message.channel.startTyping();
 
-    randomPuppy(subreddit).then(async url => {
+    randomPuppy(random).then(async url => {
             await message.channel.send({
                 files: [{
                     attachment: url,
