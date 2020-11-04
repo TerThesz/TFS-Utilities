@@ -34,7 +34,7 @@ client.aliases = new Discord.Collection();
 
 fs.readdir("./commands/", (err, files) => {
 
-    if(err) console.log(err)
+    if(err) console.log(err);
 
     let jsfile = files.filter(f => f.split(".").pop() === "js") 
     if(jsfile.length <= 0) {
@@ -66,7 +66,7 @@ client.on("message", message => {
     let cmd = messageArray[0];
     let args = message.content.substring(message.content.indexOf(' ')+1);
 
-    if(message.content.startsWith(prefix)) {
+    if(message.content.startsWith(prefix) && cmd != '!+rep' && cmd != '!-rep' && cmd != 'rep') {
         let commandfile = client.commands.get(cmd.slice(prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(prefix.length)))
         if(commandfile) commandfile.run(client,message,args)
     } else if (message.content.startsWith('+') || message.content.startsWith('-') || cmd === 'rep') {

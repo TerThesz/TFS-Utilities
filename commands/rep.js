@@ -1,3 +1,4 @@
+const Discord = require("discord.js")
 const config = require('../bot.json');
 const mongoose = require('mongoose');
 
@@ -8,31 +9,31 @@ mongoose.connect(config.mongooPass, {
 
 const Data = require('../models/data.js');
 
-module.exports.run = async (bot, message, args) => {
-    const user = message.author;
+module.exports.run = async (bot, message, arguments) => {
+    let user = message.mentions.users.first() || message.author;
 
     Data.findOne({
         userID: user.id
     }, (err, data) => {
-        if(error) throw err;
+        if(err) throw err;
         if(!data) {
             const newData = new Data({
-                name: bot.users.cache.get(user.id).username,
+                name: user.username,
                 userID: user.id,
                 rep: 0,
             });
             newData.save().catch(err => console.log(err));
-            return message.channel.send(`${bot.users.cahce.get(user.id).username} má 0 bodov reputácie.`);
+            return message.channel.send(`${user.username} má 0 bodov reputácie.`);
         } else {
-            return message.channel.send(`${bot.users.cahce.get(user.id).username} má ${data.rep} bodov reputácie.`);
+            return message.channel.send(`${user.username} má ${data.rep} bodov reputácie.`);
         }
     })
 }
 
 module.exports.config = {
-    name: "jsonRead",
-    description: "Vymaže daný počet správ",
-    usage: "!jsonRead",
+    name: "rep",
+    description: "",
+    usage: "rep",
     accessableby: "Members",
-    aliases: ['c', 'purge']
+    aliases: []
 }
