@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const fs = require("fs");
-const client = new Discord.client();
+const client = Discord.client();
 
 module.exports.run = async (bot, message, args) => {
     if(!message.member.hasPermission('ADMINISTRATOR')) 
