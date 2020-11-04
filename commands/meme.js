@@ -5,7 +5,7 @@ const { memesChannel } = require('../bot.json');
 module.exports.run = async (bot, message, args) => {
     const channel = message.guild.channels.cache.find(channel => channel.name === memesChannel)
     if (message.channel != channel) {
-        message.channel.send('V tomto prostredí nie je dostatok vibe-u. (Presuň sa do <#' + channel.id + '>)');
+        message.channel.send('V tomto prostredí nie je dostatok vibu. (Presuň sa do <#' + channel.id + '>)');
     } else {
         const subReddits = ["memes", "me_irl", "dankmemes", "pewdiepiesubmissions", "duklock", "madlad", "mildlyvandalised"]
         const random = subReddits[Math.floor(Math.random() * subReddits.length)];
