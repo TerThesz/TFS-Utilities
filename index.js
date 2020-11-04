@@ -1,9 +1,9 @@
 const Discord = require('discord.js');
 const config = require('./bot.json');
+const { blacklistedWords } = require('./blacklist.json');
 const client = new Discord.Client({disableEveryone: true});
 
 const fs = require("fs");
-client.database = require('./database.json');
 
 client.on("guildMemberAdd", member => {
     let memberRole = member.guild.roles.cache.find(role => role.id === '772939341805912065'); 
@@ -43,6 +43,7 @@ fs.readdir("./commands/", (err, files) => {
 
     jsfile.forEach((f, i) => {
         let pull = require(`./commands/${f}`);
+        console.log(f + ' loaded!');
         client.commands.set(pull.config.name, pull);  
         pull.config.aliases.forEach(alias => {
             client.aliases.set(alias, pull.config.name)
@@ -52,7 +53,7 @@ fs.readdir("./commands/", (err, files) => {
 
 client.on("message", message => {
     if(message.author === client || message.channel.type === "dm") return;
-    config.blacklistedWords.forEach(word => {
+    blacklistedWords.forEach(word => {
         if (message.content.includes (word)) {
             message.reply('Nehreš >:(');
             message.delete();
@@ -66,27 +67,13 @@ client.on("message", message => {
     let args = message.content.substring(message.content.indexOf(' ')+1);
 
     if(message.content.startsWith(prefix)) {
-        if(cmd === '!writeJson') {
-            client.database [message.author.username] = {
-                message: message.content
-            }
-            fs.writeFile ('./database.json', JSON.stringify(client.database, null, 4), err => {
-                if (err) {
-                    message.channel.send('Niečo ze pokazené.');
-                    throw err;
-                }
-                message.channel.send('Správa zapísaná!');
-            });
-        } else if (cmd === 'readJson') {
-
-        } else {
-            let commandfile = client.commands.get(cmd.slice(prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(prefix.length)))
-            if(commandfile) commandfile.run(client,message,args)
-        }
+        let commandfile = client.commands.get(cmd.slice(prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(prefix.length)))
+        if(commandfile) commandfile.run(client,message,args)
     } else if (message.content.startsWith('+') || message.content.startsWith('-') || cmd === 'rep') {
         let commandfile = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd))
         if(commandfile) commandfile.run(client,message,args)
     }
 })
 
-client.login(process.env.token);
+// client.login(process.env.token);
+client.login('NzcyOTQyMzg4MDQ5MzQ2NTYy.X6CAsQ.Y6fyQ9DFt02750YpH2_XW_NI8oA');
