@@ -11,10 +11,10 @@ mongoose.connect("mongodb://TFS-Utilities:4ZkDIIpHZXBTWItg@tfs-utilities-shard-0
 const Data = require('../models/data.js');
 
 module.exports.run = async (bot, message, arguments) => {
-    if (talkedRecently.has(message.author.id)) {
+    /*if (talkedRecently.has(message.author.id)) {
         message.channel.send("Tento command má cooldown na 5 minút");
         return;
-    } else {
+    } else { */
         let user = message.mentions.users.first();
         if (user) {
             if (user != message.author) {   
@@ -46,7 +46,7 @@ module.exports.run = async (bot, message, arguments) => {
                 message.channel.send('Ak chceš poďakovať sám sebe kúp si čokoládu.');
             }
         } else {message.channel.send('Tohoto človeka nepoznám :(')}
-    }
+    //}
 }
 
 function checkRole(user, rep) {
