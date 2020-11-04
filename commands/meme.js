@@ -7,16 +7,16 @@ module.exports.run = async (client, message, args) => {
     const subReddits = ["memes", "meme", "me_irl", "dankmemes", "dankmeme", "pewdiepiesubmissions", "duklock", "madlad", "mildlyvandalised"]
     const random = subReddits[Math.floor(Math.random() * subReddits.length)];
 
-    randomPuppy(random).then(url => {
-        snekfetch.get(url).then(async res => {
+    message.channel.startTyping();
+
+    randomPuppy(subreddit).then(async url => {
             await message.channel.send({
-                files: ({
-                    attacment: res.body,
-                    name: "prd"
-                })
-            })
-        });
-    });
+                files: [{
+                    attachment: url,
+                    name: 'meme.png'
+                }]
+            }).then(() => message.channel.stopTyping());
+    }).catch(err => console.error(err));
 }
 
 module.exports.config = {
