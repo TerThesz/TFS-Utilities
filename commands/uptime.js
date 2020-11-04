@@ -10,7 +10,7 @@ module.exports.run = (bot, message, args) => {
     message.channel.send(embed);
 }
 
-module.exports.help = {
+module.exports.config = {
     name: "uptime",
     aliases: ["awake"],
 }
