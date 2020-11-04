@@ -26,7 +26,7 @@ client.on("guildMemberRemove", member => {
 
 client.on("ready", () =>{
     console.log(`Logged in as ${client.user.tag}!`);
-    client.user.setActivity('The Funny Server', { type: 'WATCHING' });
+    client.user.setActivity(config.statusText, { type: config.statusType });
 });
 
 client.commands = new Discord.Collection();

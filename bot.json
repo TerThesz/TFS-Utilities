@@ -1,4 +1,6 @@
 {
     "prefix": "!",
-    "leaveJoinChannel": "letisko"
+    "leaveJoinChannel": "letisko",
+    "statusText": "The Funny Server",
+    "statusType": "WATCHING"
 }
