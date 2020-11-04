@@ -71,8 +71,11 @@ client.on("message", message => {
                 message: message.content
             }
             fs.writeFile ('./database.json', JSON.stringify(database, null, 4), err => {
-                if (err) throw err;
-                message.channel.send('Niečo ze pokazené.');
+                if (err) {
+                    message.channel.send('Niečo ze pokazené.');
+                    throw err;
+                }
+                message.channel.send('Správa zapísaná!');
             });
         } else if (cmd === 'readJson') {
 
