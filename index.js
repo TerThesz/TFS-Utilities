@@ -66,7 +66,7 @@ client.on("message", message => {
     let args = message.content.substring(message.content.indexOf(' ')+1);
 
     if(message.content.startsWith(prefix)) {
-        if(cmd === 'writeJson') {
+        if(cmd === '!writeJson') {
             client.database [message.author.username] = {
                 message: message.content
             }
