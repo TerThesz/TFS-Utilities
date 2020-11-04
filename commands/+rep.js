@@ -28,15 +28,16 @@ module.exports.run = async (bot, message, arguments) => {
                             userID: user.id,
                             rep: 5,
                         });
-                        await newData.save().catch(err => console.log(err));
+                        newData.save().catch(err => console.log(err));
+                        checkRole(user, data.rep, message);
                         console.log('Created database table for ' + user.username);
                         message.channel.send(`${user.username} má 5 bodov reputácie.`);
                     } else {
                         data.rep += 5;
                         data.save().catch(err => console.log(err));
+                        checkRole(user, data.rep, message);
                         message.channel.send(`${user.username} má ${data.rep} bodov reputácie.`);
                     }
-                    checkRole(user, data.rep, message);
                 })
                 talkedRecently.add(message.author.id);
                 setTimeout(() => {
