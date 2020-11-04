@@ -57,7 +57,6 @@ function checkRole(user, rep, message) {
     else if(rep >= 80 && rep <= 100) role = repRoles.role3;
     else if(rep > 100) role =  repRoles.role2;
     user.roles.add(role);
-    console.log(role + '\n' + repRoles.role6);
 }
 
 module.exports.config = {
