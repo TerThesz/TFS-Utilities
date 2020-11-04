@@ -11,7 +11,7 @@ module.exports.run = async (client, message, args) => {
     .setURL(`https://www.reddit.com/r/arabfunny`)
     .setColor('RANDOM')
     .setImage(img)
-    msg.channel.send(Embed)
+    message.channel.send(Embed)
 }
 
 module.exports.config = {
