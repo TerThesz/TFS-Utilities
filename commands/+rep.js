@@ -56,8 +56,7 @@ function checkRole(user, rep, message) {
     else if(rep >= 50 && rep <= 75) role = repRoles[4];
     else if(rep >= 80 && rep <= 100) role = repRoles[3];
     else if(rep > 100) role = repRoles[2];
-    let _role = message.guild.roles.cache.get(r => r.id === role);
-    user.roles.add(_role);
+    user.addRole(_role);
 }
 
 module.exports.config = {
