@@ -5241,24 +5241,7 @@
       "resolved": "https://registry.npmjs.org/globby/-/globby-11.0.1.tgz",
       "version": "11.0.1"
     },
-    "got": {
-      "integrity": "sha1-JAzQV4WpoY5WHcG0S0HHY+8ejbA=",
-      "requires": {
-        "create-error-class": "^3.0.0",
-        "duplexer3": "^0.1.4",
-        "get-stream": "^3.0.0",
-        "is-redirect": "^1.0.0",
-        "is-retry-allowed": "^1.0.0",
-        "is-stream": "^1.0.0",
-        "lowercase-keys": "^1.0.0",
-        "safe-buffer": "^5.0.1",
-        "timed-out": "^4.0.0",
-        "unzip-response": "^2.0.1",
-        "url-parse-lax": "^1.0.0"
-      },
-      "resolved": "https://registry.npmjs.org/got/-/got-6.7.1.tgz",
-      "version": "6.7.1"
-    },
+    "got": "^11.8.0",
     "graceful-fs": {
       "integrity": "sha512-WjKPNJF79dtJAVniUlGGWHYGz2jWxT6VhN/4m1NdkbZ2nOsEF+cI1Edgql5zCRhs/VsQYRvrXctxktVXZUkixw==",
       "resolved": "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.4.tgz",
