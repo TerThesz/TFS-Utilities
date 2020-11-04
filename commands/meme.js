@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const snekfetch = require('snekfetch');
 
 module.exports.run = async (bot, message, args) => {
     const subReddits = ["memes", "me_irl", "dankmemes", "pewdiepiesubmissions", "duklock", "madlad", "mildlyvandalised"]
