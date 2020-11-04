@@ -19,7 +19,7 @@ module.exports.run = async (bot, message, args) => {
         embed.setURL(`${memeUrl}`)
         embed.setColor('RANDOM')
         embed.setImage(memeImage);
-        embed.setFooter(`👍 ${memeUpvotes} 💬 ${memeNumComments}`);
+        embed.setFooter(`👍 ${memeUpvotes} 💬 ${memeNumComments}\n\nFrom r/${random}`);
         message.channel.send(embed)
     }).catch(console.error);
 }
