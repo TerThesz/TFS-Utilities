@@ -2,6 +2,9 @@ const Discord = require('discord.js');
 const config = require('./bot.json');
 const client = new Discord.Client({disableEveryone: true});
 
+const fs = require("fs");
+const database = require('./database.json');
+
 client.on("guildMemberAdd", member => {
     let memberRole = member.guild.roles.cache.find(role => role.id === '772939341805912065'); 
     let rep = member.guild.roles.cache.find(role => role.id === '772923608515084298'); 
@@ -26,7 +29,6 @@ client.on("ready", () =>{
     client.user.setActivity('The Funny Server', { type: 'WATCHING' });
 });
 
-const fs = require("fs");
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 
@@ -54,6 +56,7 @@ client.on("message", message => {
         if (message.content.includes (word)) {
             message.reply('Nehreš >:(');
             message.delete();
+            return;
         }
     });
 
@@ -63,8 +66,20 @@ client.on("message", message => {
     let args = message.content.substring(message.content.indexOf(' ')+1);
 
     if(message.content.startsWith(prefix)) {
-        let commandfile = client.commands.get(cmd.slice(prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(prefix.length)))
-        if(commandfile) commandfile.run(client,message,args)
+        if(cmd === 'writeJson') {
+            database [message.author.username] = {
+                message: message.content
+            }
+            fs.writeFile ('./database.json', JSON.stringify(database, null, 4), err => {
+                if (err) throw err;
+                message.channel.send('Niečo ze pokazené.');
+            });
+        } else if (cmd === 'readJson') {
+
+        } else {
+            let commandfile = client.commands.get(cmd.slice(prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(prefix.length)))
+            if(commandfile) commandfile.run(client,message,args)
+        }
     } else if (message.content.startsWith('+') || message.content.startsWith('-') || cmd === 'rep') {
         let commandfile = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd))
         if(commandfile) commandfile.run(client,message,args)
