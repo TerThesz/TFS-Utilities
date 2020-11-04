@@ -50,19 +50,14 @@ module.exports.run = async (bot, message, arguments) => {
 }
 
 function checkRole(user, rep, message) {
-    var role;
-    if(rep >= 10 && rep <= 15) role = repRoles[6];
-    else if(rep >= 20 && rep <= 45) role = repRoles[5];
-    else if(rep >= 50 && rep <= 75) role = repRoles[4];
-    else if(rep >= 80 && rep <= 100) role = repRoles[3];
+    var __role;
+    if(rep >= 10 && rep <= 15) role = 6;
+    else if(rep >= 20 && rep <= 45) role = 5;
+    else if(rep >= 50 && rep <= 75) role = 4;
+    else if(rep >= 80 && rep <= 100) role = 3;
     else if(rep > 100) role = repRoles[2];
-    var _role = message.guild.roles.cache.filter(role => role.id === role);
-    console.log(repRoles);
-    console.log(_role);
-    _role = message.guild.roles.cache.find(role => role.id === role);
-    console.log(_role);
-    if (role) user.roles.add(_role);
-    else console.log('prd');
+    var _role = message.guild.roles.cache.find(role => role.id === repRoles[__role]);
+    user.roles.add(_role);
 }
 
 module.exports.config = {
