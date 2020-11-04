@@ -68,8 +68,13 @@ client.on("message", message => {
 
     if(message.content.startsWith(prefix) && cmd != '!+rep' && cmd != '!-rep' && cmd != 'rep') {
         console.log(message.author.username + ' >> ' + message.content);
-        let commandfile = client.commands.get(cmd.slice(prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(prefix.length)))
-        if(commandfile) commandfile.run(client,message,args)
+        if (cmd != '!status') {
+            let commandfile = client.commands.get(cmd.slice(prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(prefix.length)))
+            if(commandfile) commandfile.run(client,message,args)
+        } else {
+            let commandfile = client.commands.get(cmd.slice(prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(prefix.length)))
+            if(commandfile) commandfile.run(client,message,args,client)
+        }
     } else if (message.content.startsWith('+') || message.content.startsWith('-') || cmd === 'rep') {
         console.log(message.author.username + ' >> ' + message.content);
         let commandfile = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd))
@@ -77,4 +82,4 @@ client.on("message", message => {
     }
 })
 
-client.login(process.env.token);
+client.login("NzcyOTQyMzg4MDQ5MzQ2NTYy.X6CAsQ.Y6fyQ9DFt02750YpH2_XW_NI8oA");
