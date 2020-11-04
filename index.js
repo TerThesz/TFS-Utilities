@@ -67,9 +67,11 @@ client.on("message", message => {
     let args = message.content.substring(message.content.indexOf(' ')+1);
 
     if(message.content.startsWith(prefix) && cmd != '!+rep' && cmd != '!-rep' && cmd != 'rep') {
+        console.log(message.author.username + ' >> ' + message.content);
         let commandfile = client.commands.get(cmd.slice(prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(prefix.length)))
         if(commandfile) commandfile.run(client,message,args)
     } else if (message.content.startsWith('+') || message.content.startsWith('-') || cmd === 'rep') {
+        console.log(message.author.username + ' >> ' + message.content);
         let commandfile = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd))
         if(commandfile) commandfile.run(client,message,args)
     }
