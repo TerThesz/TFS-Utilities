@@ -22,6 +22,7 @@ module.exports.run = async (bot, message, arguments) => {
                 rep: 0,
             });
             newData.save().catch(err => console.log(err));
+            console.log('Created database table for ' + user.username);
             return message.channel.send(`${user.username} má 0 bodov reputácie.`);
         } else {
             return message.channel.send(`${user.username} má ${data.rep} bodov reputácie.`);
