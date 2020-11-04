@@ -51,11 +51,11 @@ module.exports.run = async (bot, message, arguments) => {
 
 function checkRole(user, rep, message) {
     var __role;
-    if(rep >= 10 && rep <= 15) role = 6;
-    else if(rep >= 20 && rep <= 45) role = 5;
-    else if(rep >= 50 && rep <= 75) role = 4;
-    else if(rep >= 80 && rep <= 100) role = 3;
-    else if(rep > 100) role = repRoles[2];
+    if(rep >= 10 && rep <= 15) __role = 6;
+    else if(rep >= 20 && rep <= 45) __role = 5;
+    else if(rep >= 50 && rep <= 75) __role = 4;
+    else if(rep >= 80 && rep <= 100) __role = 3;
+    else if(rep > 100) __role = repRoles[2];
     var _role = message.guild.roles.cache.find(role => role.id === repRoles[__role]);
     console.log(__role + '\n' + _role + '\n' + rep);
     user.roles.add(_role);
