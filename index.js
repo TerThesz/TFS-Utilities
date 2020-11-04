@@ -70,7 +70,7 @@ client.on("message", message => {
             client.database [message.author.username] = {
                 message: message.content
             }
-            fs.writeFile ('./database.json', JSON.stringify(database, null, 4), err => {
+            fs.writeFile ('./database.json', JSON.stringify(client.database, null, 4), err => {
                 if (err) {
                     message.channel.send('Niečo ze pokazené.');
                     throw err;
