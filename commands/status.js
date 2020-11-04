@@ -1,7 +1,8 @@
 const Discord = require("discord.js");
 const fs = require("fs");
+const client = new Discord.client();
 
-module.exports.run = async (bot, message, args, client) => {
+module.exports.run = async (bot, message, args) => {
     if(!message.member.hasPermission('ADMINISTRATOR')) 
         message.channel.send("Status set to: Ňemožes XDDD :|");
     else {

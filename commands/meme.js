@@ -1,3 +1,4 @@
+const { all } = require('bluebird');
 const Discord = require('discord.js');
 const snekfetch = require('snekfetch');
 
@@ -11,6 +12,7 @@ module.exports.run = async (bot, message, args) => {
             .get(`https://www.reddit.com/r/${random}.json?sort=top&t=week`)
             .query({ limit: 800 });
         const allowed = message.channel.nsfw ? body.data.children : body.data.children.filter(post => !post.data.over_18);
+        console.log(allowed);
         if (!allowed.length) return message.channel.send('It seems we are out of fresh memes!, Try again later.');
         const randomnumber = Math.floor(Math.random() * allowed.length)
         const embed = new Discord.RichEmbed()
