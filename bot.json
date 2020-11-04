@@ -1,6 +1,7 @@
 {
     "prefix": "!",
     "leaveJoinChannel": "letisko",
+    "memesChannel": "memes",
     "statusText": "The Funny Server",
     "statusType": "WATCHING"
 }
