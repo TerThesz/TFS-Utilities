@@ -3,5 +3,20 @@
     "leaveJoinChannel": "letisko",
     "memesChannel": "memes",
     "statusText": "The Funny Server",
-    "statusType": "WATCHING"
+    "statusType": "WATCHING",
+    "joinRoles": {
+        "role1": "772933132130582558",
+        "role2": "772932560069722154",
+        "role3": "772927281105469452",
+        "role4": "772923608515084298",
+        "role5": "772939341805912065"
+    },
+    "repRoles": {
+        "role1": "772931251316588595",
+        "role2": "772931219519832095",
+        "role3": "772931050900946964",
+        "role4": "772930705621123073",
+        "role5": "772930524158754826",
+        "role6": "772927281105469452"
+    }
 }

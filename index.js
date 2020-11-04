@@ -6,13 +6,7 @@ const client = new Discord.Client({disableEveryone: true});
 const fs = require("fs");
 
 client.on("guildMemberAdd", member => {
-    let memberRole = member.guild.roles.cache.find(role => role.id === '772939341805912065'); 
-    let rep = member.guild.roles.cache.find(role => role.id === '772923608515084298'); 
-    let repStart = member.guild.roles.cache.find(role => role.id === '772927281105469452');
-    let aboutu = member.guild.roles.cache.find(role => role.id === '772932560069722154'); 
-    let pingy = member.guild.roles.cache.find(role => role.id === '772933132130582558');
-    let starterRoles = [ memberRole, rep, repStart, aboutu, pingy ];
-    starterRoles.forEach(role => {
+    config.joinRoles.forEach(role => {
         member.roles.add(role);
     });
     const welcomeChannel = member.guild.channels.cache.find(channel => channel.name === config.leaveJoinChannel)
