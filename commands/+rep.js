@@ -36,7 +36,7 @@ module.exports.run = async (bot, message, arguments) => {
                         data.save().catch(err => console.log(err));
                         message.channel.send(`${user.username} má ${data.rep} bodov reputácie.`);
                     }
-                    checkRole(message.author, data.rep);
+                    checkRole(message.member, data.rep);
                 })
                 talkedRecently.add(message.author.id);
                 setTimeout(() => {
@@ -50,11 +50,14 @@ module.exports.run = async (bot, message, arguments) => {
 }
 
 function checkRole(user, rep) {
-    if(rep >= 10 && rep <= 15) user.roles.add(repRoles[6]);
-    else if(rep >= 20 && rep <= 45) user.roles.add(repRoles[5]);
-    else if(rep >= 50 && rep <= 75) user.roles.add(repRoles[4]);
-    else if(rep >= 80 && rep <= 100) user.roles.add(repRoles[3]);
-    else if(rep > 100) user.roles.add(repRoles[2]);
+    var role;
+    if(rep >= 10 && rep <= 15) role = repRoles[6];
+    else if(rep >= 20 && rep <= 45) role = repRoles[5];
+    else if(rep >= 50 && rep <= 75) role = repRoles[4];
+    else if(rep >= 80 && rep <= 100) role = repRoles[3];
+    else if(rep > 100) role = repRoles[2];
+    let role = message.guild.roles.find(r => r.id === role);
+    user.roles.add(role);
 }
 
 module.exports.config = {
