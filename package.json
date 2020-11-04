@@ -6262,6 +6262,7 @@
       "resolved": "https://registry.npmjs.org/prepend-http/-/prepend-http-1.0.4.tgz",
       "version": "1.0.4"
     },
+    "pretty-ms": "^7.0.1",
     "printf": {
       "integrity": "sha512-UaE/jO0hNsrvPGQEb4LyNzcrJv9Z00tsreBduOSxMtrebvoUhxiEJ4YCHX8YHf6akwfKsC2Gyv5zv47UXhMiLg==",
       "resolved": "https://registry.npmjs.org/printf/-/printf-0.5.1.tgz",
