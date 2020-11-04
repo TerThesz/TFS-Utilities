@@ -1,4 +1,4 @@
-/*const Discord = require("discord.js")
+const Discord = require("discord.js")
 const mongoose = require('mongoose');
 
 mongoose.connect(process.env.mongooPass, {
@@ -36,4 +36,4 @@ module.exports.config = {
     usage: "rep",
     accessableby: "Members",
     aliases: []
-}*/
+}

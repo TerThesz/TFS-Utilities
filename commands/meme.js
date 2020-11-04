@@ -9,6 +9,7 @@ module.exports.run = async (bot, message, args) => {
     } else {
         const subReddits = ["memes", "me_irl", "dankmemes", "pewdiepiesubmissions", "duklock", "madlad", "mildlyvandalised"]
         const random = subReddits[Math.floor(Math.random() * subReddits.length)];
+        console.log(random);
     
         const embed = new Discord.MessageEmbed();
         got('https://www.reddit.com/r/' + random + '/random/.json?sort=top&t=week').then(response => {
