@@ -36,7 +36,7 @@ module.exports.run = async (bot, message, arguments) => {
                         data.save().catch(err => console.log(err));
                         message.channel.send(`${user.username} má ${data.rep} bodov reputácie.`);
                     }
-                    checkRole(message.member, data.rep, message);
+                    checkRole(user, data.rep, message);
                 })
                 talkedRecently.add(message.author.id);
                 setTimeout(() => {
