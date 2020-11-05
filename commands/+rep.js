@@ -29,14 +29,15 @@ module.exports.run = async (bot, message, arguments) => {
                             rep: 5,
                         });
                         newData.save().catch(err => console.log(err));
+                        checkRole(message.member, data.rep, message);
                         console.log('Created database table for ' + user.username);
-                        message.channel.send(`${user.username} má 5 bodov reputácie.`);
+                        return message.channel.send(`${user.username} má 5 bodov reputácie.`);
                     } else {
                         data.rep += 5;
                         data.save().catch(err => console.log(err));
-                        message.channel.send(`${user.username} má ${data.rep} bodov reputácie.`);
+                        checkRole(message.member, data.rep, message);
+                        return message.channel.send(`${user.username} má ${data.rep} bodov reputácie.`);
                     }
-                    checkRole(message.member, data.rep, message);
                 })
                 talkedRecently.add(message.author.id);
                 setTimeout(() => {
