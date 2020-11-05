@@ -53,7 +53,7 @@ fs.readdir("./commands/", (err, files) => {
 });
 
 client.on("message", message => {
-    const user = message.guild.members.cache.find(member => member.id === message.author.id).user;
+    const user = message.guild.members.cache.find(member => member.id === message.author.id);
     if(message.author === client || message.channel.type === "dm") return;
     blacklistedWords.forEach(word => {
         if (message.content.includes (word)) {
