@@ -75,16 +75,20 @@ client.on("message", message => {
         console.log(message.author.username + ' >> ' + message.content);
         let commandfile = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd))
         if(commandfile) commandfile.run(client,message,args)
-    }
-    config.podakovanie.forEach(string => {
-        if(cmd.startsWith(string)) {
-            if(message.mentions.users.first()) {
-                console.log(message.author.username + ' >> ' + message.content);
-                let commandfile = client.commands.get('+rep') || client.commands.get(client.aliases.get('+rep'))
-                if(commandfile) commandfile.run(client,message,args)
+    } else {
+        console.log(1);
+        config.podakovanie.forEach(string => {
+            console.log(2);
+            if(cmd.startsWith(string)) {
+                console.log(2);
+                if(message.mentions.users.first()) {
+                    console.log(message.author.username + ' >> ' + message.content);
+                    let commandfile = client.commands.get('+rep') || client.commands.get(client.aliases.get('+rep'))
+                    if(commandfile) commandfile.run(client,message,args)
+                }
             }
-        }
-    });
+        });
+    }
 })
 
 client.login(process.env.token);
