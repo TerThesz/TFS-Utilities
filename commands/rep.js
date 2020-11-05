@@ -25,12 +25,12 @@ module.exports.run = async (bot, message, arguments) => {
             console.log('Created database table for ' + user.username);
             const exampleEmbed = new Discord.MessageEmbed()
             .setColor('#73df57')
-            .setDescription(`Používateľ \`${user.name}\` má **0 bodov** reputácie.`)
+            .setDescription(`Používateľ \`${user.username}\` má **0 bodov** reputácie.`)
             return message.channel.send(exampleEmbed);;
         } else {
             const exampleEmbed = new Discord.MessageEmbed()
             .setColor('#73df57')
-            .setDescription(`Používateľ \`${user.name}\` má **${data.rep} bodov** reputácie.`)
+            .setDescription(`Používateľ \`${user.username}\` má **${data.rep} bodov** reputácie.`)
             return message.channel.send(exampleEmbed);;
         }
     })
