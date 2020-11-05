@@ -82,12 +82,12 @@ client.on("message", message => {
                     console.log(message.author.username + ' >> ' + message.content);
                     let commandfile = client.commands.get('+rep') || client.commands.get(client.aliases.get('+rep'))
                     if(commandfile) commandfile.run(client,message,args)
+                } else {
+                    const exampleEmbed = new Discord.MessageEmbed()
+                    .setColor('#73df57')
+                    .setDescription(`Pre super bomba špica poďakovanie označ používateľa keď ďakuješ čím mu zvýšiš reputáciu.`)
+                    message.channel.send(exampleEmbed);
                 }
-            } else {
-                const exampleEmbed = new Discord.MessageEmbed()
-                .setColor('#73df57')
-                .setDescription(`Pre super bomba špica poďakovanie označ používateľa keď ďakuješ čím mu zvýšiš reputáciu.`)
-                message.channel.send(exampleEmbed);
             }
         });
     }
