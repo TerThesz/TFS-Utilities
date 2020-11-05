@@ -20,13 +20,13 @@ client.on("guildMemberRemove", member => {
 
 client.on("ready", () =>{
     const activities = [
-        `${client.guilds.cache.size} servers!`,
+        `!help - TFS-Utilities`,
         `${client.channels.cache.size} channels!`,
-        `${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)} users!`
+        `${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)} users on TFS!`
     ];
 
     let i = 0;
-    setInterval(() => client.user.setActivity(`${client.prefix}help | ${activities[i++ % activities.length]}`, { type: 'WATCHING' }), 1000);
+    setInterval(() => client.user.setActivity(`${activities[i++ % activities.length]}`, { type: 'WATCHING' }), 15000);
     console.log(`Logged in as ${client.user.tag}!`);
 });
 
