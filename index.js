@@ -76,6 +76,15 @@ client.on("message", message => {
         let commandfile = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd))
         if(commandfile) commandfile.run(client,message,args)
     }
+    config.podakovanie.forEach(string => {
+        if(cmd.startsWith(string)) {
+            if(message.mentions.users.first()) {
+                console.log(message.author.username + ' >> ' + message.content);
+                let commandfile = client.commands.get('+rep') || client.commands.get(client.aliases.get('+rep'))
+                if(commandfile) commandfile.run(client,message,args)
+            }
+        }
+    });
 })
 
 client.login(process.env.token);
