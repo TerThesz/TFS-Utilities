@@ -71,4 +71,4 @@ client.on("message", message => {
     }
 })
 
-client.login(process.env.mongooPass);
+client.login(process.env.token);
