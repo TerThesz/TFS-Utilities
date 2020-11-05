@@ -23,9 +23,15 @@ module.exports.run = async (bot, message, arguments) => {
             });
             newData.save().catch(err => console.log(err));
             console.log('Created database table for ' + user.username);
-            return message.channel.send(`${user.username} má 0 bodov reputácie.`);
+            const exampleEmbed = new Discord.MessageEmbed()
+            .setColor('#73df57')
+            .setDescription(`Používateľ \`${user.name}\` má **0 bodov** reputácie.`)
+            return message.channel.send(exampleEmbed);;
         } else {
-            return message.channel.send(`${user.username} má ${data.rep} bodov reputácie.`);
+            const exampleEmbed = new Discord.MessageEmbed()
+            .setColor('#73df57')
+            .setDescription(`Používateľ \`${user.name}\` má **${data.rep} bodov** reputácie.`)
+            return message.channel.send(exampleEmbed);;
         }
     })
 }

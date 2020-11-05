@@ -60,11 +60,6 @@ client.on("message", message => {
             message.delete();
             return;
         }
-        if (message.author.uname.includes(word) ) {
-            var nicknames = config.nicknames;
-            message.author.setNickname(nicknames[Math.floor(Math.random() * nicknames.length)]);
-            message.reply('Tvoje meno obsahovalo zakázané slove takže som ťa premenoval na: ' + message.author.nickname);
-        }
     });
 
     let prefix = config.prefix;

@@ -31,11 +31,17 @@ module.exports.run = async (bot, message, arguments) => {
                         data = newData;
                         newData.save().catch(err => console.log(err));
                         console.log('Created database table for ' + user.username);
-                        message.channel.send(`${user.username} má 5 bodov reputácie.`);
+                        const exampleEmbed = new Discord.MessageEmbed()
+                        .setColor('#73df57')
+                        .setDescription(`Používateľovi \`${user.name}\` sa zväčšila reputácia o **5 bodov**\nMomentálne má **5 bodov** reputácie.`)
+                        return message.channel.send(exampleEmbed);
                     } else {
                         data.rep += 5;
                         data.save().catch(err => console.log(err));
-                        message.channel.send(`${user.username} má ${data.rep} bodov reputácie.`);
+                        const exampleEmbed = new Discord.MessageEmbed()
+                        .setColor('#73df57')
+                        .setDescription(`Používateľovi \`${user.name}\` sa zväčšila reputácia o **5 bodov**\nMomentálne má **${data.rep} bodov** reputácie.`)
+                        return message.channel.send(exampleEmbed);
                     }
                     checkRole(message.guild.members.cache.find(member => member.id === user.id), data.rep, message);
                 })
