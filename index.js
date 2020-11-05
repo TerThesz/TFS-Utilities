@@ -20,15 +20,15 @@ client.on("guildMemberRemove", member => {
 
 client.on("ready", () =>{
     setInterval(() => {
-        targetGuild = client.guilds.get('772916118930063360')
+        targetGuild = client.guilds.cache.get('772916118930063360')
         if(targetGuild) {
             client.user.setPresence({ game: { name: targetGuild.memberCount + ' people at TFS!', type: 'WATCHING' }, status: 'online'  })
                   .then(console.log)
                   .catch(console.error);
         }
-    }, 1000 * 60 * 5);
+    }, 1000);
     console.log(`Logged in as ${client.user.tag}!`);
-    client.user.setActivity(config.statusText, { type: config.statusType });
+
 });
 
 client.commands = new Discord.Collection();
