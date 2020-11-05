@@ -20,9 +20,9 @@ client.on("guildMemberRemove", member => {
 
 client.on("ready", () =>{
     const activities = [
-        `${this.client.guilds.cache.size} servers!`,
-        `${this.client.channels.cache.size} channels!`,
-        `${this.client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)} users!`
+        `${client.guilds.cache.size} servers!`,
+        `${client.channels.cache.size} channels!`,
+        `${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)} users!`
     ];
 
     let i = 0;
