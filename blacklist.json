@@ -1,3 +1,20 @@
 {
-    "blacklistedWords": [ "kokot", "chuj", "piča", "pica", "pičus", "picus", "kokotko", "kurva" ]
+    "blacklistedWords": [ 
+        "kokot",
+        "chuj", 
+        "piča", 
+        "pica", 
+        "pičus", 
+        "picus", 
+        "kokotko", 
+        "kurva",
+        "fuck",
+        "bitch",
+        "bich",
+        "dick",
+        "anal",
+        "neger",
+        "negger",
+        "nigga",
+        "niga"]
 }
