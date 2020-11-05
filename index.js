@@ -4,6 +4,7 @@ const { blacklistedWords } = require('./blacklist.json');
 const client = new Discord.Client({disableEveryone: true});
 
 const fs = require("fs");
+const antiAd = require('./antiAd');
 
 client.on("guildMemberAdd", member => {
     config.joinRoles.forEach(role => {
@@ -19,6 +20,8 @@ client.on("guildMemberRemove", member => {
 });
 
 client.on("ready", () =>{
+    antiAd(client);
+
     const activities = [
         `!help - TFS-Utilities`,
         `${client.channels.cache.size} channels!`,
@@ -67,7 +70,7 @@ client.on("message", message => {
     let cmd = messageArray[0];
     let args = message.content.substring(message.content.indexOf(' ')+1);
 
-    if(message.content.startsWith(prefix) && cmd != '!+rep' && cmd != '!-rep' && cmd != 'rep') {
+    if(message.content.startsWith(prefix) && cmd != '!+rep' && cmd != '!-rep' && cmd != 'rep' && cmd != 'rep-lb') {
         console.log(message.author.username + ' >> ' + message.content);
         let commandfile = client.commands.get(cmd.slice(prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(prefix.length)))
         if(commandfile) commandfile.run(client,message,args)
