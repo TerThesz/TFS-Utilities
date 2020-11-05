@@ -1,19 +1,20 @@
 const Discord = require("discord.js")
 const mongoose = require('mongoose');
+const { repRoles } = require('../bot.json');
 const talkedRecently = new Set();
 
-mongoose.connect("mongodb://TFS-Utilities:4ZkDIIpHZXBTWItg@tfs-utilities-shard-00-00.ljali.mongodb.net:27017,tfs-utilities-shard-00-01.ljali.mongodb.net:27017,tfs-utilities-shard-00-02.ljali.mongodb.net:27017/TFS-Utils?ssl=true&replicaSet=atlas-kw31y7-shard-0&authSource=admin&retryWrites=true&w=majority", {
+mongoose.connect(process.env.mongooPass, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
 
 const Data = require('../models/data.js');
 
-module.exports.run = async (bot, message, arguments) => {
+module.exports.run = (bot, message, arguments) => {
     if (talkedRecently.has(message.author.id)) {
         message.channel.send("Tento command má cooldown na 5 minút");
         return;
-    } else {
+    } else { 
         let user = message.mentions.users.first();
         if (user) {
             if (user != message.author) {   
@@ -29,13 +30,13 @@ module.exports.run = async (bot, message, arguments) => {
                         });
                         newData.save().catch(err => console.log(err));
                         console.log('Created database table for ' + user.username);
-                        return message.channel.send(`${user.username} má -5 bodov reputácie.`);
+                        message.channel.send(`${user.username} má -5 bodov reputácie.`);
                     } else {
                         data.rep -= 5;
                         data.save().catch(err => console.log(err));
-                        return message.channel.send(`${user.username} má ${data.rep} bodov reputácie.`);
+                        message.channel.send(`${user.username} má ${data.rep} bodov reputácie.`);
                     }
-                    talkedRecently.add(message.author.id);
+                    checkRole(message.guild.members.cache.find(member => member.id === user.id), data.rep, message);
                 })
                 talkedRecently.add(message.author.id);
                 setTimeout(() => {
@@ -46,6 +47,17 @@ module.exports.run = async (bot, message, arguments) => {
             }
         } else {message.channel.send('Tohoto človeka nepoznám :(')}
     }
+}
+function checkRole(user, rep, message) {
+    var role;
+    if(rep < 105 && rep > 80) role =  repRoles.role6;
+    else if(rep < 80 && rep > 50) role = repRoles.role5;
+    else if(rep < 50 && rep > 20) role = repRoles.role4;
+    else if(rep < 20 && rep > 10) role = repRoles.role3;
+    else if(rep < 10 && rep > 0) role = repRoles.role2;
+    else if(rep < 0) role = repRoles.role1;
+    const setRole = message.guild.roles.cache.find(_role => _role.id === role);
+    user.roles.remove(setRole);
 }
 
 module.exports.config = {
