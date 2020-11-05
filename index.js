@@ -22,13 +22,11 @@ client.on("ready", () =>{
     setInterval(() => {
         targetGuild = client.guilds.cache.get('772916118930063360')
         if(targetGuild) {
-            client.user.setPresence({ game: { name: targetGuild.memberCount + ' people at TFS!', type: 'WATCHING' }, status: 'online'  })
-                  .then(console.log)
+            client.user.setPresence(client.user.setActivity(targetGuild.memberCount + " members at FFS!", { type: config.statusType }))
                   .catch(console.error);
         }
     }, 1000);
     console.log(`Logged in as ${client.user.tag}!`);
-
 });
 
 client.commands = new Discord.Collection();
