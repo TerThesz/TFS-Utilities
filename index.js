@@ -26,7 +26,7 @@ client.on("ready", () =>{
     ];
 
     let i = 0;
-    setInterval(() => .client.user.setActivity(`${client.prefix}help | ${activities[i++ % activities.length]}`, { type: 'WATCHING' }), 1000);
+    setInterval(() => client.user.setActivity(`${client.prefix}help | ${activities[i++ % activities.length]}`, { type: 'WATCHING' }), 1000);
     console.log(`Logged in as ${client.user.tag}!`);
 });
 
