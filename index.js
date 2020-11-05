@@ -19,13 +19,14 @@ client.on("guildMemberRemove", member => {
 });
 
 client.on("ready", () =>{
-    setInterval(() => {
-        targetGuild = client.guilds.cache.get('772916118930063360')
-        if(targetGuild) {
-            client.user.setPresence(client.user.setActivity(targetGuild.memberCount + " members at FFS!", { type: config.statusType }))
-                  .catch(console.error);
-        }
-    }, 1000);
+    const activities = [
+        `${this.client.guilds.cache.size} servers!`,
+        `${this.client.channels.cache.size} channels!`,
+        `${this.client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)} users!`
+    ];
+
+    let i = 0;
+    setInterval(() => this.client.user.setActivity(`${this.client.prefix}help | ${activities[i++ % activities.length]}`, { type: 'WATCHING' }), 15000);
     console.log(`Logged in as ${client.user.tag}!`);
 });
 

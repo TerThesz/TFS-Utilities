@@ -2,8 +2,6 @@
     "prefix": "!",
     "leaveJoinChannel": "letisko",
     "memesChannel": "memes",
-    "statusText": "The Funny Server",
-    "statusType": "WATCHING",
     "joinRoles": {
         "role1": "772933132130582558",
         "role2": "772932560069722154",
