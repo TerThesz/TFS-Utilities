@@ -60,7 +60,7 @@ client.on("message", message => {
             message.delete();
             return;
         }
-        if (message.member.username.includes(word)) {
+        if (message.member.username.includes(word) || message.member.nickname.includes(word)) {
             var nicknames = config.nicknames;
             message.member.setNickname(nicknames[Math.floor(Math.random() * nicknames.length)]);
             message.reply('Tvoje meno obsahovalo zakázané slove takže som ťa premenoval na: ' + message.member.nickname);
