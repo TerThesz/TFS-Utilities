@@ -53,7 +53,6 @@ fs.readdir("./commands/", (err, files) => {
 });
 
 client.on("message", message => {
-    const user = message.guild.members.cache.find(member => member.id === message.author.id);
     if(message.author === client || message.channel.type === "dm") return;
     blacklistedWords.forEach(word => {
         if (message.content.includes (word)) {
@@ -61,7 +60,7 @@ client.on("message", message => {
             message.delete();
             return;
         }
-        if (user.username.includes(word) || user.nickname.includes(word)) {
+        if (message.author.uname.includes(word) ) {
             var nicknames = config.nicknames;
             message.author.setNickname(nicknames[Math.floor(Math.random() * nicknames.length)]);
             message.reply('Tvoje meno obsahovalo zakázané slove takže som ťa premenoval na: ' + message.author.nickname);
