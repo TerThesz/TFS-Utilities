@@ -1,5 +1,6 @@
 module.exports.run = async (bot, message, arguments) => {
-    message.channel.send("No u", {files: ['https://imgur.com/gLQsjUH.png']}).then(message.delete());
+    const attachment = new MessageAttachment('https://imgur.com/gLQsjUH.png');
+    message.channel.send(attachment).then(message.delete());
 }
 
 module.exports.config = {
