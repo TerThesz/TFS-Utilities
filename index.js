@@ -5,6 +5,23 @@ const client = new Discord.Client({disableEveryone: true});
 
 const fs = require("fs");
 const antiAd = require('./antiAd');
+const AntiSpam = require('discord-anti-spam');
+const antiSpam = new AntiSpam({
+    warnThreshold: 3,
+    kickThreshold: 7,
+    banThreshold: 7,
+    maxInterval: 2000,
+    warnMessage: '{@user} nespamuj!',
+    kickMessage: '**{user_tag}** bol vyhodený za: spam',
+    banMessage: '**{user_tag}** bol zabanovaný za: spam',
+    maxDuplicatesWarning: 7,
+    maxDuplicatesKick: 10,
+    maxDuplicatesBan: 12,
+    exemptPermissions: [ 'ADMINISTRATOR'],
+    ignoreBots: true,
+    verbose: true,
+    ignoredUsers: [],
+});
 
 client.on("guildMemberAdd", member => {
     config.joinRoles.forEach(role => {
@@ -56,6 +73,7 @@ fs.readdir("./commands/", (err, files) => {
 });
 
 client.on("message", message => {
+    antiSpam.message(message);
     if(message.author === client || message.channel.type === "dm") return;
     blacklistedWords.forEach(word => {
         if (message.content.includes (word)) {

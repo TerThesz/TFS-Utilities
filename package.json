@@ -4967,6 +4967,7 @@
       "resolved": "https://registry.npmjs.org/dir-glob/-/dir-glob-3.0.1.tgz",
       "version": "3.0.1"
     },
+    "discord-anti-spam": "^2.4.1",
     "discord.js": "^12.4.1",
     "duplexer3": {
       "integrity": "sha1-7gHdHKwO08vH/b6jfcCo8c4ALOI=",
