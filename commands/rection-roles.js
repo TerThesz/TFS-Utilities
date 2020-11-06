@@ -74,6 +74,7 @@ module.exports.run = async (client, message, args) => {
                     break;
             }
         }).catch(collected => {
+            console.log(collected);
             return message.channel.send(`I couldn't add you to this role!`);
         });
 
