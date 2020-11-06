@@ -73,10 +73,6 @@ fs.readdir("./commands/", (err, files) => {
 });
 
 client.on("message", message => {
-    if (message.member.username.includes('prd') || message.member.nickname.includes('prd')) {
-        console.log(true);
-    }
-
     antiSpam.message(message);
     if(message.author === client || message.channel.type === "dm") return;
     blacklistedWords.forEach(word => {
