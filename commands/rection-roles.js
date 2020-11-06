@@ -5,9 +5,9 @@ module.exports.run = async (client, message, args) => {
 
     await message.delete().catch(O_o=>{});
 
-    const a = message.guild.roles.get('772943087458713630'); // Moderator
-    const b = message.guild.roles.get('773153767595704331'); // Administrator
-    const c = message.guild.roles.get('773155018500341790'); // Developer
+    const a = message.guild.roles.cache.get('772943087458713630'); // Moderator
+    const b = message.guild.roles.cache.get('773153767595704331'); // Administrator
+    const c = message.guild.roles.cache.get('773155018500341790'); // Developer
 
     const filter = (reaction, user) => ['🇦', '🇧', '🇨'].includes(reaction.emoji.name) && user.id === message.author.id;
 
