@@ -1,5 +1,4 @@
-  
-const { RichEmbed } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 
 module.exports.run = async (client, message, args) => {
 
@@ -11,7 +10,7 @@ module.exports.run = async (client, message, args) => {
 
     const filter = (reaction, user) => ['🇦', '🇧', '🇨'].includes(reaction.emoji.name) && user.id === message.author.id;
 
-    const embed = new RichEmbed()
+    const embed = new MessageEmbed()
         .setTitle('Avaiilable Roles')
         .setDescription(`
         
