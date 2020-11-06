@@ -37,7 +37,7 @@ module.exports.run = async (client, message, args) => {
 
             switch (reaction.emoji.name) {
                 case '🇦':
-                    if (message.member.roles.has(a.id)) {
+                    if (message.member.roles.cache.find(role.id === a.id)) {
                         msg.delete(2000);
                         return message.channel.send('You are already in this role!').then(m => m.delete(3000));
                     }
@@ -49,7 +49,7 @@ module.exports.run = async (client, message, args) => {
                     msg.delete();
                     break;
                 case '🇧':
-                    if (message.member.roles.has(b.id)) {
+                    if (message.member.roles.cache.find(role.id === b.id)) {
                         msg.delete(2000);
                         return message.channel.send('You are already in this role!').then(m => m.delete(3000));
                     }
@@ -61,7 +61,7 @@ module.exports.run = async (client, message, args) => {
                     msg.delete();
                     break;
                 case '🇨':
-                    if (message.member.roles.has(c.id)) {
+                    if (message.member.roles.cache.find(role.id === c.id)) {
                         msg.delete(2000);
                         return message.channel.send('You are already in this role!').then(m => m.delete(3000));
                     }
