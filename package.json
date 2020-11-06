@@ -6350,6 +6350,7 @@
       "resolved": "https://registry.npmjs.org/redis-parser/-/redis-parser-3.0.0.tgz",
       "version": "3.0.0"
     },
+    "redist": "^0.2.0",
     "requires-port": {
       "integrity": "sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=",
       "resolved": "https://registry.npmjs.org/requires-port/-/requires-port-1.0.0.tgz",
