@@ -26,7 +26,7 @@ const antiSpam = new AntiSpam({
 });
 
 client.on("guildMemberAdd", member => {
-    config.joinRoles.forEach(role => {
+    for (var role in config.joinRoles) {
         member.roles.add(role);
     });
     const welcomeChannel = member.guild.channels.cache.find(channel => channel.name === config.leaveJoinChannel)
