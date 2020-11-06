@@ -1,5 +1,6 @@
 module.exports.run = async (bot, message, arguments) => {
-    message.delete().then(message.channel.send("No u", {files: ['../imgs/reverse.png']}));
+    message.channel.send("No u", {files: ['../imgs/reverse.png']});
+    message.delete();
 }
 
 module.exports.config = {
