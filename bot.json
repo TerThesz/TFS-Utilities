@@ -1,7 +1,9 @@
 {
     "prefix": "!",
+    "allPrefixes": ["!", "-"],
     "leaveJoinChannel": "letisko",
     "memesChannel": "memes",
+    "reactionRolesChannelID": "772919670416211988",
     "joinRoles": {
         "role1": "772933132130582558",
         "role2": "772932560069722154",
@@ -17,6 +19,13 @@
         "role4": "772931050900946964",
         "role5": "772931219519832095",
         "role6": "772931251316588595"
+    },
+    "msgRoles": {
+        "role1": "773716202408771614",
+        "role2": "773716209170382868",
+        "role3": "773716285019783240",
+        "role4": "773716311431053392",
+        "role5": "773716333958660107"
     },
     "nicknames": [
         "zajko pajko",

@@ -1,14 +1,14 @@
 const Discord = require("discord.js")
 const mongoose = require('mongoose');
-const { repRoles } = require('../bot.json');
+const { repRoles } = require('../../bot.json');
 const talkedRecently = new Set();
 
-mongoose.connect(process.env.mongooPass, {
+mongoose.connect("mongodb://TFS-Utilities:4ZkDIIpHZXBTWItg@tfs-utilities-shard-00-00.ljali.mongodb.net:27017,tfs-utilities-shard-00-01.ljali.mongodb.net:27017,tfs-utilities-shard-00-02.ljali.mongodb.net:27017/UserData?ssl=true&replicaSet=atlas-kw31y7-shard-0&authSource=admin&retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
 
-const Data = require('../models/data.js');
+const Data = require('../../models/data.js');
 
 module.exports.run = (bot, message, arguments) => {
     if (talkedRecently.has(message.author.id)) {
@@ -27,20 +27,21 @@ module.exports.run = (bot, message, arguments) => {
                             name: user.username,
                             userID: user.id,
                             rep: -5,
+                            messages: 0,
                         });
                         newData.save().catch(err => console.log(err));
                         console.log('Created database table for ' + user.username);
                         const exampleEmbed = new Discord.MessageEmbed()
                         .setColor('#d52d31')
                         .setDescription(`Používateľovi \`${user.username}\` sa znížila reputácia o **5 bodov**\nMomentálne má **-5 bodov** reputácie.`)
-                        return message.channel.send(exampleEmbed);
+                        message.channel.send(exampleEmbed);
                     } else {
                         data.rep -= 5;
                         data.save().catch(err => console.log(err));
                         const exampleEmbed = new Discord.MessageEmbed()
                         .setColor('#d52d31')
                         .setDescription(`Používateľovi \`${user.username}\` sa znížila reputácia o **5 bodov**\nMomentálne má **${data.rep} bodov** reputácie.`)
-                        return message.channel.send(exampleEmbed);
+                        message.channel.send(exampleEmbed);
                     }
                     checkRole(message.guild.members.cache.find(member => member.id === user.id), data.rep, message);
                 })

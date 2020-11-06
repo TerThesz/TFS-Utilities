@@ -1,9 +1,11 @@
 const Discord = require('discord.js');
 const config = require('./bot.json');
 const { blacklistedWords } = require('./blacklist.json');
-const client = new Discord.Client({disableEveryone: true});
+const client = new Discord.Client({disableEveryone: true},{ partials: ['MESSAGE', 'CHANEEL', 'REACTION']});
 
+const { join } = require("path");
 const fs = require("fs");
+
 const antiAd = require('./antiAd');
 const AntiSpam = require('discord-anti-spam');
 const antiSpam = new AntiSpam({
@@ -54,13 +56,9 @@ client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 
 fs.readdir("./commands/", (err, files) => {
-
     if(err) console.log(err);
 
     let jsfile = files.filter(f => f.split(".").pop() === "js") 
-    if(jsfile.length <= 0) {
-         return console.log("[LOGS] Couldn't Find Commands!");
-    }
 
     jsfile.forEach((f, i) => {
         let pull = require(`./commands/${f}`);
@@ -68,6 +66,32 @@ fs.readdir("./commands/", (err, files) => {
         client.commands.set(pull.config.name, pull);  
         pull.config.aliases.forEach(alias => {
             client.aliases.set(alias, pull.config.name)
+        });
+    });
+
+    const getDirectories = source =>
+    fs.readdirSync(source, { withFileTypes: true })
+      .filter(dirent => dirent.isDirectory())
+      .map(dirent => dirent.name)
+    
+    const _dirs = getDirectories("./commands/");
+    _dirs.forEach(dir => {
+        console.log(dir);
+        fs.readdir('./commands/' + dir, (_err, _files) => {
+            dir = './commands/' + dir + '/';
+
+            if(_err) console.log(_err);
+        
+            let _jsfile = _files.filter(f => f.split(".").pop() === "js") 
+        
+            _jsfile.forEach((f, i) => {
+                let pull = require(dir + `${f}`);
+                console.log(f + ' loaded!');
+                client.commands.set(pull.config.name, pull);  
+                pull.config.aliases.forEach(alias => {
+                    client.aliases.set(alias, pull.config.name)
+                });
+            });
         });
     });
 });
@@ -88,6 +112,15 @@ client.on("message", message => {
     let cmd = messageArray[0];
     let args = message.content.substring(message.content.indexOf(' ')+1);
 
+    var canAdd = true;
+    config.allPrefixes.forEach(prefix => {
+        if (message.content.startsWith(prefix)) canAdd = false;
+    });
+    if (canAdd) {
+        const addMessage = require('./addMessage');
+        addMessage.run(client, message, args);
+    }
+
     if(message.content.startsWith(prefix) && cmd != '!+rep' && cmd != '!-rep' && cmd != 'rep' && cmd != 'rep-lb') {
         console.log(message.author.username + ' >> ' + message.content);
         let commandfile = client.commands.get(cmd.slice(prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(prefix.length)))
@@ -98,7 +131,7 @@ client.on("message", message => {
         if(commandfile) commandfile.run(client,message,args)
     } else {
         config.podakovanie.forEach(string => {
-            if(cmd.startsWith(string)) {
+            if(cmd.toLowerCase().startsWith(string)) {
                 if(message.mentions.users.first()) {
                     console.log(message.author.username + ' >> ' + message.content);
                     let commandfile = client.commands.get('+rep') || client.commands.get(client.aliases.get('+rep'))
@@ -112,6 +145,33 @@ client.on("message", message => {
             }
         });
     }
-})
+});
 
-client.login(process.env.token);
+client.on('messageReactionAdd', async (reaction, user) => {
+    if (reaction.message.partial) await reaction.message.fetch();
+    if (reaction.partial) await reaction.fetch();
+
+    if (user.bot) return;
+    if (!reaction.message.guild) return;
+
+    if (reaction.message.channel.id === config.reactionRolesChannelID) {
+        if (reaction.emoji.name === '🤗') {
+            console.log('true');
+        }
+    }
+});
+client.on('messageReactionRemove', async (reaction, user) => {
+    if (reaction.message.partial) await reaction.message.fetch();
+    if (reaction.partial) await reaction.fetch();
+
+    if (user.bot) return;
+    if (!reaction.message.guild) return;
+
+    if (reaction.message.channel.id === config.reactionRolesChannelID) {
+        if (reaction.emoji.name === '🤗') {
+            console.log('true-');
+        }
+    }
+});
+
+client.login("NzcyOTQyMzg4MDQ5MzQ2NTYy.X6CAsQ.Y6fyQ9DFt02750YpH2_XW_NI8oA");

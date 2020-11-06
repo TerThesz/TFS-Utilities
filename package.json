@@ -6218,6 +6218,7 @@
       "resolved": "https://registry.npmjs.org/password-prompt/-/password-prompt-1.1.2.tgz",
       "version": "1.1.2"
     },
+    "path": "^0.12.7",
     "path-is-absolute": {
       "integrity": "sha1-F0uSaHNVNP+8es5r9TpanhtcX18=",
       "resolved": "https://registry.npmjs.org/path-is-absolute/-/path-is-absolute-1.0.1.tgz",

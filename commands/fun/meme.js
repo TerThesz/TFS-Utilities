@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const got = require('got');
-const { memesChannel } = require('../bot.json');
+const { memesChannel } = require('../../bot.json');
 
 module.exports.run = async (bot, message, args) => {
     const channel = message.guild.channels.cache.find(channel => channel.name === memesChannel)

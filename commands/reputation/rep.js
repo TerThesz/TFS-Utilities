@@ -1,12 +1,12 @@
 const Discord = require("discord.js")
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.mongooPass, {
+mongoose.connect("mongodb://TFS-Utilities:4ZkDIIpHZXBTWItg@tfs-utilities-shard-00-00.ljali.mongodb.net:27017,tfs-utilities-shard-00-01.ljali.mongodb.net:27017,tfs-utilities-shard-00-02.ljali.mongodb.net:27017/UserData?ssl=true&replicaSet=atlas-kw31y7-shard-0&authSource=admin&retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
 
-const Data = require('../models/data.js');
+const Data = require('../../models/data.js');
 
 module.exports.run = async (bot, message, arguments) => {
     let user = message.mentions.users.first() || message.author;
@@ -20,6 +20,7 @@ module.exports.run = async (bot, message, arguments) => {
                 name: user.username,
                 userID: user.id,
                 rep: 0,
+                messages: 0,
             });
             newData.save().catch(err => console.log(err));
             console.log('Created database table for ' + user.username);
