@@ -103,7 +103,7 @@ module.exports.run = async (bot, message, arguments) => {
                             .setTitle('Pozvánka prijatá!')
                             .setDescription('Používateľ prijal tvoju pozvánku!')
                             .setColor('GREEN')
-                            .addField('Hodnotenie hry', 'Ak sa ti s používateľom **<@' + user.id + '>** hrá dobre môžeš mu pridať reputáciu pomocou commandu `+rep <meno>` alebo mu ju naopak môžeš odobrať commandom\n `-rep <meno>` (commandy fungujú iba na serveri)')
+                            .addField('Hodnotenie hry', 'Ak sa ti s používateľom **<@' + user.id + '>** hrá dobre môžeš mu pridať reputáciu pomocou commandu `+rep <meno>` alebo mu ju naopak môžeš odobrať commandom\n `-rep <meno>` (commandy fungujú iba na serveri)');
                             player.send(embed2);
 
                             add(user, player);
