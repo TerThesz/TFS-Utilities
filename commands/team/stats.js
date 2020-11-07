@@ -10,6 +10,7 @@ const Data = require('../../models/data.js');
 
 module.exports.run = async (bot, message, arguments) => {
     var user = message.mentions.members.first() || message.sender; 
+    console.log(user);
     if (user) {
         Data.findOne({
             userID: user.id
