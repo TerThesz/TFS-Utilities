@@ -18,7 +18,7 @@ module.exports.run = async (bot, message, arguments) => {
             if(err) throw err;
             if(!data) {
                 const newData = new Data({
-                    name: user.user.username,
+                    name: user.username,
                     userID: user.id,
                     rep: 0,
                     messages: 0,
@@ -29,9 +29,9 @@ module.exports.run = async (bot, message, arguments) => {
                 });
                 newData.save().catch(err => console.log(err));
                 var embed = new Discord.MessageEmbed()
-                .setTitle('Status hráča ' + user.user.username)
+                .setTitle('Status hráča ' + user.username)
                 .addFields(
-                    {name: 'Základné informácie ', value: 'Používateľské meno: **' + user.user.username + '**\n' 
+                    {name: 'Základné informácie ', value: 'Používateľské meno: **' + user.username + '**\n' 
                         + 'userID: **' + user.id + '**\nPeniaze: 0€'},
                     {name: 'Levely ', value: 'Reputácia: **5 bodov**\nSprávy: **0ˢᵖʳᵃᵛ**'},
                     {name: 'Herné informácie ', value: 'Steam link: **null**\nOdohraté hry na serveri: **0**'}
@@ -40,9 +40,9 @@ module.exports.run = async (bot, message, arguments) => {
                 message.channel.send(embed);
             } else {
                 var embed = new Discord.MessageEmbed()
-                .setTitle('Status hráča ' + user.user.username)
+                .setTitle('Status hráča ' + user.username)
                 .addFields(
-                    {name: 'Základné informácie ', value: 'Používateľské meno: **' + user.user.username + '**\n' 
+                    {name: 'Základné informácie ', value: 'Používateľské meno: **' + user.username + '**\n' 
                         + 'userID: **' + user.id + '**\nPeniaze: **' + data.balance + '€**'},
                     {name: 'Levely ', value: 'Reputácia: **' + data.rep + ' bodov**\nSprávy: **' + data.messages + '**ˢᵖʳᵃᵛ'},
                     {name: 'Herné informácie ', value: 'Steam link: **<' + data.steamLinked + '>**\nOdohraté hry na serveri: **' + data.gamesPlayied + '**'}
