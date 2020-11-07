@@ -42,7 +42,7 @@ module.exports.run = async (bot, message, arguments) => {
                 .setTitle('Status hráča ' + user.user.username)
                 .addFields(
                     {name: 'Základné informácie ', value: 'Používateľské meno: **' + user.user.username + '**\n' 
-                        + 'userID: **' + user.id + '**\nPeniaze: **' + rep.balance + '€**'},
+                        + 'userID: **' + user.id + '**\nPeniaze: **' + data.balance + '€**'},
                     {name: 'Levely ', value: 'Reputácia: **' + data.rep + ' bodov**\nSprávny: **' + data.messages + '**ˢᵖʳᵃᵛ'},
                     {name: 'Herné informácie ', value: 'Steam link: **<' + data.steamLinked + '>**\nOdohraté hry na serveri: **' + data.gamesPlayied + '**'}
                 )
