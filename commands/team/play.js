@@ -21,13 +21,14 @@ module.exports.run = async (bot, message, arguments) => {
                 .setDescription('Pozval si používateľa: **<@' + user.id + '>** do hry: **' + arguments[1] + '**.')
                 .setColor('BLUE')
                 .setThumbnail(user.displayAvatarURL)
-                .addField('Hodnotenie hry', 'Ak sa ti s používateľom **<@' + user.id + '>** hrá dobre môžeš mu pridať reputáciu pomocou commandu `+rep <meno>` alebo mu ju naopak môžeš odobrať commandom\n `-rep <meno>` (commandy fungujú iba na serveri)')
+                .addField('Informácie', 'Ak sa o používateľovy chceš dozvedieť viac použi command `!stats <meno>` na serveri TFS.')
             message.author.send(embed);
             var embed2 = new Discord.MessageEmbed()
                 .setTitle('Pozvánka do hry.')
                 .setDescription('Používateľ: **<@' + message.member.id + '>** ťa pozval do hry: **' + arguments[1] + '**.')
                 .setColor('BLUE')
                 .setThumbnail(user.displayAvatarURL)
+                .addField('Informácie', 'Ak sa o používateľovy chceš dozvedieť viac použi command `!stats <meno>` na serveri TFS.')
                 .addField('Prijatie & Odmietnutie', 'Ak pozvánku prijímaš napíš `accept` alebo `potvrdiť`.\nAk pozvánku odmietaš napíš `decline` alebo `odmietnuť`\n(Pozvánka platí jednú minútu)')
             user.send(embed2);
 
@@ -96,14 +97,13 @@ module.exports.run = async (bot, message, arguments) => {
                             .setTitle('Pozvánka prijatá!')
                             .setDescription('Prijal si pozvánku a za používanie našeho systému si dostal nejaken ten cash.')
                             .setColor('GREEN')
-                            .addField('Informácie', 'Ak sa o používateľovy chceš dozvedieť viac použi command !stats <meno> na serveri TFS.')
                             .addField('Hodnotenie hry', 'Ak sa ti s používateľom **<@' + user.id + '>** hrá dobre môžeš mu pridať reputáciu pomocou commandu `+rep <meno>` alebo mu ju naopak môžeš odobrať commandom\n `-rep <meno>` (commandy fungujú iba na serveri)')
                             user.send(embed);
                             var embed2 = new Discord.MessageEmbed()
                             .setTitle('Pozvánka prijatá!')
                             .setDescription('Používateľ prijal tvoju pozvánku!')
                             .setColor('GREEN')
-                            .addField('Informácie', 'Ak sa o používateľovy chceš dozvedieť viac použi command !stats <meno> na serveri TFS.')
+                            .addField('Hodnotenie hry', 'Ak sa ti s používateľom **<@' + user.id + '>** hrá dobre môžeš mu pridať reputáciu pomocou commandu `+rep <meno>` alebo mu ju naopak môžeš odobrať commandom\n `-rep <meno>` (commandy fungujú iba na serveri)')
                             player.send(embed2);
 
                             add(user, player);
