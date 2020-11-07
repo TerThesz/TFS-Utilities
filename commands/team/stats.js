@@ -9,7 +9,7 @@ mongoose.connect(process.env.mongoose, {
 const Data = require('../../models/data.js');
 
 module.exports.run = async (bot, message, arguments) => {
-    var user = message.mentions.members.first();
+    var user = message.mentions.members.first() || message.sender;
     if (user) {
         Data.findOne({
             userID: user.id
@@ -32,7 +32,7 @@ module.exports.run = async (bot, message, arguments) => {
                 .addFields(
                     {name: 'Základné informácie ', value: 'Používateľské meno: **' + user.user.username + '**\n' 
                         + 'userID: **' + user.id + '**\nPeniaze: 0€'},
-                    {name: 'Levely ', value: 'Reputácia: **5 bodov**\nSprávny: **0ˢᵖʳᵃᵛ**'},
+                    {name: 'Levely ', value: 'Reputácia: **5 bodov**\nSprávy: **0ˢᵖʳᵃᵛ**'},
                     {name: 'Herné informácie ', value: 'Steam link: **null**\nOdohraté hry na serveri: **0**'}
                 )
                 .setColor('BLUE')
@@ -43,7 +43,7 @@ module.exports.run = async (bot, message, arguments) => {
                 .addFields(
                     {name: 'Základné informácie ', value: 'Používateľské meno: **' + user.user.username + '**\n' 
                         + 'userID: **' + user.id + '**\nPeniaze: **' + data.balance + '€**'},
-                    {name: 'Levely ', value: 'Reputácia: **' + data.rep + ' bodov**\nSprávny: **' + data.messages + '**ˢᵖʳᵃᵛ'},
+                    {name: 'Levely ', value: 'Reputácia: **' + data.rep + ' bodov**\nSprávy: **' + data.messages + '**ˢᵖʳᵃᵛ'},
                     {name: 'Herné informácie ', value: 'Steam link: **<' + data.steamLinked + '>**\nOdohraté hry na serveri: **' + data.gamesPlayied + '**'}
                 )
                 .setColor('BLUE')
