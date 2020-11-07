@@ -21,6 +21,10 @@ module.exports.run = async (bot, message, arguments) => {
                 userID: user.id,
                 rep: 0,
                 messages: 0,
+                balance: 0,
+                steamLinked: 'null',
+                gamesPlayied: 0,
+                pending: 'null',
             });
             newData.save().catch(err => console.log(err));
             console.log('Created database table for ' + user.username);

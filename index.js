@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
-const config = require('./bot.json');
-const { blacklistedWords } = require('./blacklist.json');
+const config = require('./dataSets/bot.json');
+const { blacklistedWords } = require('./dataSets/blacklist.json');
 const client = new Discord.Client({disableEveryone: true},{ partials: ['MESSAGE', 'CHANEEL', 'REACTION']});
 
 const { join } = require("path");
@@ -26,7 +26,8 @@ const antiSpam = new AntiSpam({
 });
 
 client.on("guildMemberAdd", member => {
-    for (var role in config.joinRoles) {
+    config.joinRoles.forEach(role => {;
+        console.log(role);
         member.roles.add(role);
     });
     const welcomeChannel = member.guild.channels.cache.find(channel => channel.name === config.leaveJoinChannel)
@@ -99,7 +100,7 @@ fs.readdir("./commands/", (err, files) => {
 client.on("message", message => {
     antiSpam.message(message);
     if(message.author === client || message.channel.type === "dm") return;
-    blacklistedWords.forEach(word => {
+        blacklistedWords.forEach(word => {
         if (message.content.includes (word)) {
             message.reply('Nehreš >:(');
             message.delete();
@@ -110,7 +111,8 @@ client.on("message", message => {
     let prefix = config.prefix;
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
-    let args = message.content.substring(message.content.indexOf(' ')+1);
+    var args = message.content.split(' ');
+    args.shift();
 
     var canAdd = true;
     config.allPrefixes.forEach(prefix => {
@@ -131,7 +133,7 @@ client.on("message", message => {
         if(commandfile) commandfile.run(client,message,args)
     } else {
         config.podakovanie.forEach(string => {
-            if(cmd.toLowerCase().startsWith(string)) {
+            if(cmd.toLowerCase().startsWith(string) || cmd.toLowerCase().includes(string)) {
                 if(message.mentions.users.first()) {
                     console.log(message.author.username + ' >> ' + message.content);
                     let commandfile = client.commands.get('+rep') || client.commands.get(client.aliases.get('+rep'))
@@ -139,7 +141,7 @@ client.on("message", message => {
                 } else {
                     const exampleEmbed = new Discord.MessageEmbed()
                     .setColor('#73df57')
-                    .setDescription(`Pre super bomba špica poďakovanie označ používateľa keď ďakuješ čím mu zvýšiš reputáciu.`)
+                    .setDescription(`Pre super bomba špica poďakovanie používateľa pri ďakovaní označ čím mu zvýšiš reputáciu.`)
                     message.channel.send(exampleEmbed);
                 }
             }

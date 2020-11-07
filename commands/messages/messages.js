@@ -1,6 +1,6 @@
 const Discord = require("discord.js")
 const mongoose = require('mongoose');
-const { msgRoles } = require('../../bot.json');
+const { msgRoles } = require('../../dataSets/bot.json');
 
 mongoose.connect("mongodb://TFS-Utilities:4ZkDIIpHZXBTWItg@tfs-utilities-shard-00-00.ljali.mongodb.net:27017,tfs-utilities-shard-00-01.ljali.mongodb.net:27017,tfs-utilities-shard-00-02.ljali.mongodb.net:27017/UserData?ssl=true&replicaSet=atlas-kw31y7-shard-0&authSource=admin&retryWrites=true&w=majority", {
     useNewUrlParser: true,

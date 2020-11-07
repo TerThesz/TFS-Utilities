@@ -5,6 +5,10 @@ const dataSchema = mongoose.Schema({
     userID: String,
     rep: Number,
     messages: Number,
+    balance: Number,
+    steamLinked: String,
+    gamesPlayied: Number,
+    pending: String,
 });
 
 module.exports = mongoose.model('Data', dataSchema);
