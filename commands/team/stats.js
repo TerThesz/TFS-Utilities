@@ -18,7 +18,7 @@ module.exports.run = async (bot, message, arguments) => {
             if(err) throw err;
             if(!data) {
                 const newData = new Data({
-                    name: user.username,
+                    name: user.user.username,
                     userID: user.id,
                     rep: 0,
                     messages: 0,
