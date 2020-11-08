@@ -38,7 +38,7 @@ module.exports.run = async (bot, message, arguments) => {
                 console.log('Created database table for ' + user.username);
                 message.channel.send('Added ' + arguments[1] + ' rep');
             } else {
-                data.rep += parseInt(arguments[1], 10);
+                data.rep += parseInt(arguments[1], 1);
                 data.save().catch(err => console.log(err));
                 message.channel.send('Added ' + arguments[1] + ' rep');
             }
