@@ -40,7 +40,8 @@ module.exports.run = async (bot, message, args) => {
                                     pending: 'null',
                                 });
                             } else {
-                                data2.balance += (amout);
+                                var bal = parseInt(amout);
+                                data2.balance += (bal);
                                 data2.save().catch(err => console.log(err));
                             }
                             data.balance -= amout;
