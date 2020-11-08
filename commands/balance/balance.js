@@ -29,12 +29,12 @@ module.exports.run = async (bot, message, args) => {
                 });
                 newData.save().catch(err => console.log(err));
                 const exampleEmbed = new Discord.MessageEmbed()
-                .setColor('YELLOW')
+                .setColor('BLUE')
                 .setDescription(`Používateľ \`${user.username}\` má na účte **0€**.`)
                 message.channel.send(exampleEmbed);
             } else {
                 const exampleEmbed = new Discord.MessageEmbed()
-                .setColor('YELLOW')
+                .setColor('BLUE')
                 .setDescription(`Používateľ \`${user.username}\` má na účte **${data.balance}€**.`)
                 message.channel.send(exampleEmbed);
             }
