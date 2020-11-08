@@ -36,12 +36,12 @@ module.exports.run = async (bot, message, arguments) => {
                 data = newData;
                 newData.save().catch(err => console.log(err));
                 console.log('Created database table for ' + user.username);
-                message.channel.send('Removed ' + arguments[1] + ' rep');
+                message.channel.send('Removed ' + arguments[1] + ' bal');
             } else {
                 var bal = parseInt(arguments[1]);
                 data.rep -= bal;
                 data.save().catch(err => console.log(err));
-                message.channel.send('Removed ' + arguments[1] + ' rep');
+                message.channel.send('Removed ' + arguments[1] + ' bal');
             }
         })
     } else {message.channel.send('Tohoto človeka nepoznám :(')}

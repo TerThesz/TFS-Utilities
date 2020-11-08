@@ -36,7 +36,7 @@ module.exports.run = async (bot, message, arguments) => {
                 data = newData;
                 newData.save().catch(err => console.log(err));
                 console.log('Created database table for ' + user.username);
-                message.channel.send('Rep set to ' + arguments[1]);
+                message.channel.send('Bal set to ' + arguments[1]);
             } else {
                 data.balance = arguments[1];
                 data.save().catch(err => console.log(err));
