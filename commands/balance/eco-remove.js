@@ -26,9 +26,9 @@ module.exports.run = async (bot, message, arguments) => {
                 const newData = new Data({
                     name: user.username,
                     userID: user.id,
-                    rep: -parseInt(arguments[1], 10),
+                    rep: 0,
                     messages: 0,
-                    balance: 0,
+                    balance: -arguments[1],
                     steamLinked: 'null',
                     gamesPlayied: 0,
                     pending: 'null',
@@ -48,9 +48,9 @@ module.exports.run = async (bot, message, arguments) => {
 }
 
 module.exports.config = {
-    name: "rep-remove",
+    name: "bal-remove",
     description: "",
-    usage: "rep-remove",
+    usage: "bal-remove",
     accessableby: "Admins",
     aliases: []
 }
