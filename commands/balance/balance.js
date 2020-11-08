@@ -9,7 +9,7 @@ mongoose.connect(process.env.mongoose, {
 const Data = require('../../models/data.js');
 
 module.exports.run = async (bot, message, args) => {
-    var user = message.mentions.members.first() || message.author;
+    var user = message.mentions.members.first().user || message.author.user;
     if (user) {
         Data.findOne ({
             userID: user.id
