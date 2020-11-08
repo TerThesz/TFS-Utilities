@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args) => {
     var user = message.mentions.members.first() || message.author;
     if (user) {
         Data.findOne ({
-            userID = user.id
+            userID: user.id
         },(err, data) => {
             if (err => console.log(err));
     
