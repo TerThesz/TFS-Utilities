@@ -48,9 +48,9 @@ module.exports.run = async (bot, message, arguments) => {
 }
 
 module.exports.config = {
-    name: "bal-remove",
+    name: "eco-remove",
     description: "",
-    usage: "bal-remove",
+    usage: "eco-remove",
     accessableby: "Admins",
     aliases: []
 }
