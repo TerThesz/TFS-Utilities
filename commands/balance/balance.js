@@ -9,7 +9,7 @@ mongoose.connect(process.env.mongoose, {
 const Data = require('../../models/data.js');
 
 module.exports.run = async (bot, message, args) => {
-    var user = message.mentions.members.first() || message.author;
+    var user = message.mentions.users.first() || message.author;
     if (user) {
         Data.findOne ({
             userID: user.id
@@ -18,7 +18,7 @@ module.exports.run = async (bot, message, args) => {
     
             if(!data) {
                 const newData = new Data({
-                    name: user.user.username,
+                    name: user.username,
                     userID: user.id,
                     rep: 0,
                     messages: 0,
@@ -30,12 +30,12 @@ module.exports.run = async (bot, message, args) => {
                 newData.save().catch(err => console.log(err));
                 const exampleEmbed = new Discord.MessageEmbed()
                 .setColor('BLUE')
-                .setDescription(`Používateľ \`${user.user.username}\` má na účte **0€**.`)
+                .setDescription(`Používateľ \`${user.username}\` má na účte **0€**.`)
                 message.channel.send(exampleEmbed);
             } else {
                 const exampleEmbed = new Discord.MessageEmbed()
                 .setColor('BLUE')
-                .setDescription(`Používateľ \`${user.user.username}\` má na účte **${data.balance}€**.`)
+                .setDescription(`Používateľ \`${user.username}\` má na účte **${data.balance}€**.`)
                 message.channel.send(exampleEmbed);
             }
         });
