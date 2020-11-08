@@ -11,7 +11,7 @@ const Data = require('../../models/data.js');
 module.exports.run = async (bot, message, args) => {
     var sender = message.author;
     var reciever = message.mentions.users.first();
-    var amout = args[0];
+    var amout = args[1];
     if (sender && reciever) {
         if (amout > 0) {
             Data.findOne ({
@@ -40,7 +40,7 @@ module.exports.run = async (bot, message, args) => {
                                     pending: 'null',
                                 });
                             } else {
-                                data2.balance += amout;
+                                data2.balance += (amout, 10);
                                 data2.save().catch(err => console.log(err));
                             }
                             data.balance -= amout;
