@@ -98,15 +98,6 @@ fs.readdir("./commands/", (err, files) => {
 });
 
 client.on("message", message => {
-    var upperCaseCount = 0;
-    for (var char in message.content) {
-        if (char === char.toUpperCase) upperCaseCount++;
-    }
-    var upperCasePercentage = message.content.length / 100 * upperCaseCount;
-    if (upperCasePercentage >= 50) {
-        message.channel.send('Pls nekrič :(');
-        message.delete();
-    }
     antiSpam.message(message);
     if(message.author === client || message.channel.type === "dm") return;
         blacklistedWords.forEach(word => {
@@ -158,7 +149,7 @@ client.on("message", message => {
     }
 });
 
-client.on('messageReactionAdd', async (reaction, user) => {
+/*client.on('messageReactionAdd', async (reaction, user) => {
     if (reaction.message.partial) await reaction.message.fetch();
     if (reaction.partial) await reaction.fetch();
 
@@ -183,6 +174,6 @@ client.on('messageReactionRemove', async (reaction, user) => {
             console.log('true-');
         }
     }
-});
+});*/
 
 client.login(process.env.token);
