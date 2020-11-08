@@ -26,9 +26,9 @@ module.exports.run = async (bot, message, arguments) => {
                 const newData = new Data({
                     name: user.username,
                     userID: user.id,
-                    rep: arguments[1],
+                    rep: 0,
                     messages: 0,
-                    balance: 0,
+                    balance: arguments[1],
                     steamLinked: 'null',
                     gamesPlayied: 0,
                     pending: 'null',
@@ -39,7 +39,7 @@ module.exports.run = async (bot, message, arguments) => {
                 message.channel.send('Added ' + arguments[1] + ' rep');
             } else {
                 var bal = parseInt(arguments[1]);
-                data.rep += bal;
+                data.balance += bal;
                 data.save().catch(err => console.log(err));
                 message.channel.send('Added ' + arguments[1] + ' rep');
             }
@@ -48,9 +48,9 @@ module.exports.run = async (bot, message, arguments) => {
 }
 
 module.exports.config = {
-    name: "rep-add",
+    name: "eco-add",
     description: "",
-    usage: "rep-add",
+    usage: "eco-add",
     accessableby: "Admins",
     aliases: []
 }
