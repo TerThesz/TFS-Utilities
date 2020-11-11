@@ -31,6 +31,7 @@ module.exports.run = async (bot, message, arguments) => {
                 .addField('Informácie', 'Ak sa o používateľovy chceš dozvedieť viac použi command `!stats <meno>` na serveri TFS.')
                 .addField('Prijatie & Odmietnutie', 'Ak pozvánku prijímaš napíš `accept` alebo `potvrdiť`.\nAk pozvánku odmietaš napíš `decline` alebo `odmietnuť`\n(Pozvánka platí jednú minútu)')
             user.send(embed2);
+            message.channel.send('Používateľ `' + message.sender.username + '` pozval hráča `' + user.username + '` do hry **' + arguments[1] + '**');
 
             Data.findOne({
                 userID: user.id
@@ -78,6 +79,18 @@ module.exports.run = async (bot, message, arguments) => {
                         data.save().catch(err => console.log(err));
                     }
                 });
+                var embed = new Discord.MessageEmbed()
+                .setTitle('Pozvánka do hry vypršala.')
+                .setDescription('Pozvánka do hry **' + arguments[1] + '** vypršala.')
+                .setColor('RED')
+                .setThumbnail(user.displayAvatarURL)
+                message.author.send(embed);
+                var embed2 = new Discord.MessageEmbed()
+                .setTitle('Pozvánka do hry vypršala.')
+                .setDescription('Pozvánka do hry **' + arguments[1] + '** vypršala.')
+                .setColor('RED')
+                .setThumbnail(user.displayAvatarURL)
+                user.send(embed2);
             }, 60000);
         }
     }
