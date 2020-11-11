@@ -31,7 +31,11 @@ module.exports.run = async (bot, message, arguments) => {
                 .addField('Informácie', 'Ak sa o používateľovy chceš dozvedieť viac použi command `!stats <meno>` na serveri TFS.')
                 .addField('Prijatie & Odmietnutie', 'Ak pozvánku prijímaš napíš `accept` alebo `potvrdiť`.\nAk pozvánku odmietaš napíš `decline` alebo `odmietnuť`\n(Pozvánka platí jednú minútu)')
             user.send(embed2);
-            message.channel.send('Používateľ `' + message.sender.username + '` pozval hráča `' + user.username + '` do hry **' + arguments[1] + '**');
+            var infoEmbed = new Discord.MessageEmbed()
+                .setDescription()
+                .setDescription('Používateľ `' + message.sender.username + '` pozval hráča `' + user.username + '` do hry **' + arguments[1] + '**')
+                .setColor('BLUE');
+            message.channel.send(infoEmbed);
 
             Data.findOne({
                 userID: user.id
