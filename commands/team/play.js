@@ -13,9 +13,6 @@ const Data = require('../../models/data.js');
 
 module.exports.run = async (bot, message, arguments) => {
     var user = message.mentions.members.first();
-    var member = message.sender;
-    console.log(message);
-    console.log(member);
     if (!user) return;
     if (!pending.has(user.id)) {
         if (user && arguments[1]) {
@@ -36,7 +33,7 @@ module.exports.run = async (bot, message, arguments) => {
             user.send(embed2);
             var infoEmbed = new Discord.MessageEmbed()
                 .setDescription()
-                .setDescription('Používateľ `' + member.username + '` pozval hráča `' + user.username + '` do hry **' + arguments[1] + '**')
+                .setDescription('Používateľ `' + user.guild.users.cache.find(member => member.id === message.author.id).username + '` pozval hráča `' + user.username + '` do hry **' + arguments[1] + '**')
                 .setColor('BLUE');
             message.channel.send(infoEmbed);
 
