@@ -33,7 +33,7 @@ module.exports.run = async (bot, message, arguments) => {
             user.send(embed2);
             var infoEmbed = new Discord.MessageEmbed()
                 .setDescription()
-                .setDescription('Používateľ `' + user.guild.users.cache.find(member => member.id === message.sender.id).username + '` pozval hráča `' + user.username + '` do hry **' + arguments[1] + '**')
+                .setDescription('Používateľ `' + user.guild.members.cache.find(member => member.id === message.sender.id).username + '` pozval hráča `' + user.username + '` do hry **' + arguments[1] + '**')
                 .setColor('BLUE');
             message.channel.send(infoEmbed);
 
