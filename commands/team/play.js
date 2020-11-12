@@ -61,40 +61,42 @@ module.exports.run = async (bot, message, arguments) => {
 
             pending.add(user.id);
             setTimeout(() => {
-                pending.delete(user.id);
-                Data.findOne({
-                    userID: user.id
-                }, (err, data) => {
-                    if(err) throw err;
-                    if(!data) {
-                        const newData = new Data({
-                            name: user.user.username,
-                            userID: user.id,
-                            rep: 0,
-                            messages: 0,
-                            balance: 0,
-                            steamLinked: 'null',
-                            gamesPlayied: 0,
-                            pending: 'null',
-                        });
-                        newData.save().catch(err => console.log(err));
-                    } else {
-                        data.pending = 'null';
-                        data.save().catch(err => console.log(err));
-                    }
-                });
-                var embed = new Discord.MessageEmbed()
-                .setTitle('Pozvánka do hry vypršala.')
-                .setDescription('Pozvánka do hry **' + arguments[1] + '** vypršala.')
-                .setColor('RED')
-                .setThumbnail(user.displayAvatarURL)
-                message.author.send(embed);
-                var embed2 = new Discord.MessageEmbed()
-                .setTitle('Pozvánka do hry vypršala.')
-                .setDescription('Pozvánka do hry **' + arguments[1] + '** vypršala.')
-                .setColor('RED')
-                .setThumbnail(user.displayAvatarURL)
-                user.send(embed2);
+                if (pending.has(user.id)) {
+                    pending.delete(user.id);
+                    Data.findOne({
+                        userID: user.id
+                    }, (err, data) => {
+                        if(err) throw err;
+                        if(!data) {
+                            const newData = new Data({
+                                name: user.user.username,
+                                userID: user.id,
+                                rep: 0,
+                                messages: 0,
+                                balance: 0,
+                                steamLinked: 'null',
+                                gamesPlayied: 0,
+                                pending: 'null',
+                            });
+                            newData.save().catch(err => console.log(err));
+                        } else {
+                            data.pending = 'null';
+                            data.save().catch(err => console.log(err));
+                        }
+                    });
+                    var embed = new Discord.MessageEmbed()
+                    .setTitle('Pozvánka do hry vypršala.')
+                    .setDescription('Pozvánka do hry **' + arguments[1] + '** vypršala.')
+                    .setColor('RED')
+                    .setThumbnail(user.displayAvatarURL)
+                    message.author.send(embed);
+                    var embed2 = new Discord.MessageEmbed()
+                    .setTitle('Pozvánka do hry vypršala.')
+                    .setDescription('Pozvánka do hry **' + arguments[1] + '** vypršala.')
+                    .setColor('RED')
+                    .setThumbnail(user.displayAvatarURL)
+                    user.send(embed2);
+                }
             }, 60000);
         }
     }
