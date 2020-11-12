@@ -101,7 +101,7 @@ module.exports.run = async (bot, message, arguments) => {
         }
     }
     bot.on('message', message => {
-        console.log(pending);
+        if (message.channel.type != 'dm') console.log(pending);
         if (pending.has(user.id) && message.channel.type === "dm") {
             if (message.content.toLowerCase() === 'accept' || message.content.toLowerCase() === 'potvrdiť') {
                 Data.findOne({
