@@ -99,7 +99,7 @@ module.exports.run = async (bot, message, arguments) => {
         }
     }
     bot.on('message', message => {
-        if (pending.has(message.author.id) && message.channel.type === "dm") {
+        if (pending.has(user.id) && message.channel.type === "dm") {
             if (message.content.toLowerCase() === 'accept' || message.content.toLowerCase() === 'potvrdiť') {
                 Data.findOne({
                     userID: user.id
