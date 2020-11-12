@@ -1,7 +1,7 @@
 const Discord = require("discord.js")
 const mongoose = require('mongoose');
-const pending = new Set();
-const playedRecently = new Set();
+const pending = new Map();
+const playedRecently = new Map();
 const client = new Discord.Client();
 
 mongoose.connect(process.env.mongoose, {
@@ -59,7 +59,7 @@ module.exports.run = async (bot, message, arguments) => {
                 }
             });
 
-            pending.add(user.id);
+            pending.set(user.id, user.id);
             setTimeout(() => {
                 if (pending.has(user.id)) {
                     pending.delete(user.id);
