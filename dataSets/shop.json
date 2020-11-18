@@ -1,0 +1,16 @@
+[
+    {
+        "title": "item1",
+        "description": "item1",
+        "cost": "10",
+        "permRequired": "jj",
+        "itemRequired": "nn"
+    },
+    {
+        "title": "item2",
+        "description": "item2",
+        "cost": "20",
+        "permRequired": "jj1",
+        "itemRequired": "n1n"
+    }
+]

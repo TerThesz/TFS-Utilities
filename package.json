@@ -4969,6 +4969,7 @@
     },
     "discord-anti-spam": "^2.4.1",
     "discord.js": "^12.4.1",
+    "dotenv": "^8.2.0",
     "duplexer3": {
       "integrity": "sha1-7gHdHKwO08vH/b6jfcCo8c4ALOI=",
       "resolved": "https://registry.npmjs.org/duplexer3/-/duplexer3-0.1.4.tgz",

@@ -1,8 +1,9 @@
 const Discord = require("discord.js")
 const mongoose = require('mongoose');
 const { msgRoles } = require('../../dataSets/bot.json');
+const dotEnv = require('dotenv').config();
 
-mongoose.connect(process.env.mongoose, {
+mongoose.connect('mongodb://TFS-Utilities:4ZkDIIpHZXBTWItg@tfs-utilities-shard-00-00.ljali.mongodb.net:27017,tfs-utilities-shard-00-01.ljali.mongodb.net:27017,tfs-utilities-shard-00-02.ljali.mongodb.net:27017/UserData?ssl=true&replicaSet=atlas-kw31y7-shard-0&authSource=admin&retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
@@ -22,6 +23,11 @@ module.exports.run = async (bot, message, arguments) => {
                 userID: user.id,
                 rep: 0,
                 messages: 0,
+                balance: amout,
+                steamLinked: 'null',
+                gamesPlayied: 0,
+                pending: 'null',
+                inventory: [],
             });
             newData.save().catch(err => console.log(err));
             console.log('Created database table for ' + user.username);

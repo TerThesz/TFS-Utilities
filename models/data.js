@@ -9,6 +9,7 @@ const dataSchema = mongoose.Schema({
     steamLinked: String,
     gamesPlayied: Number,
     pending: String,
+    inventory: Array,
 });
 
 module.exports = mongoose.model('Data', dataSchema);
