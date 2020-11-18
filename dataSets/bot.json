@@ -1,9 +1,9 @@
 {
     "prefix": "!",
-    "allPrefixes": ["!", "-"],
+    "allPrefixes": ["!", "-", "?", ";"],
     "leaveJoinChannel": "letisko",
     "memesChannel": "memes",
-    "reactionRolesChannelID": "772919670416211988",
+    "newsChannel": "772916699653210152",
     "joinRoles": [
         "772933132130582558",
         "772932560069722154",

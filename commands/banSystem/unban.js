@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const unmute = require('./mute');
 
 module.exports.run = async (bot, message, args) => {
     let member = message.mentions.members.first();
@@ -7,6 +8,7 @@ module.exports.run = async (bot, message, args) => {
     } else {
         let mutedRole = member.guild.roles.cache.find(role => role.name === '↬ Mute');
         member.roles.remove(mutedRole);
+        unmute.unmute(member.user, message);
         message.channel.send("Používateľ bol odmlčaný.");
     }
 }
