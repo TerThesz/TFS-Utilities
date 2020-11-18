@@ -1,0 +1,23 @@
+**database:**
+  + inventory [array]
+
+**commands:**
+  + mute (tempmute + better mute) [ban system]
+  + unmute (better unmute) [ban system]
+  + surprised [fun]
+  + news [news]
+  + test-news [news]
+  + rep-top [rep]
+  + inv [balance]
+  + shop [balance]
+  + help [tools]
+  + update [tools]
+
+**datasets:**
+  + shop.json
+
+**categories:**
+  + changelogs
+
+**other:**
+  + Bot Version
