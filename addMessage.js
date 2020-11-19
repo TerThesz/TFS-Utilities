@@ -37,7 +37,7 @@ module.exports.run = async (bot, message, arguments) => {
             const money = Math.floor(Math.random() * Math.floor(100));
 
             if (!canGainRep.has(user.id)) {
-                if (rng >= 90) data.rep++;
+                if (rng >= 95) data.rep++;
                 
                 var role;
                 var rep = data.rep++;
@@ -50,12 +50,13 @@ module.exports.run = async (bot, message, arguments) => {
                 const setRole = message.guild.roles.cache.find(_role => _role.id === role);
                 message.member.roles.add(setRole);
 
+                if (rng >= 90) data.balance += money;
+
                 canGainRep.add(user.id);
                 setTimeout(() => {
                     canGainRep.delete(user.id);
                 }, 1 * 60 * 1000);
             }
-            if (rng >= 90) data.balance += money;
 
             data.messages += 1;
             data.save().catch(err => console.log(err));
