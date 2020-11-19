@@ -1,5 +1,5 @@
 const Discord = require("discord.js")
-const config = require('../../dataSets/version.json');
+const config = require('../../dataSets/other.json');
 const botConfig = require('../../dataSets/bot.json');
 
 module.exports.run = async (bot, message, arguments) => {
@@ -11,10 +11,10 @@ module.exports.run = async (bot, message, arguments) => {
     , filename = './changelogs/ch' + string + '.txt';
     fs.readFile(filename, 'utf8', function(err, data) {
     if (err) throw err;
-    message.guild.channels.cache.find(channel => channel.id === botConfig.changelogsChannel).send('\`ch' + string + '@' + require('../../dataSets/version.json').version + '\`\n\n' + data);
+    message.guild.channels.cache.find(channel => channel.id === botConfig.changelogsChannel).send('\`ch' + string + '@' + require('../../dataSets/other.json').version + '\`\n\n' + data);
     });
         
-    const fileName = './datasets/version.json'
+    const fileName = './datasets/other.json'
 
     config.version = arguments[1];
         

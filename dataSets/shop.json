@@ -4,13 +4,15 @@
         "description": "item1",
         "cost": "10",
         "permRequired": "jj",
-        "itemRequired": "nn"
+        "itemRequired": "nn",
+        "action": ""
     },
     {
         "title": "item2",
         "description": "item2",
         "cost": "20",
         "permRequired": "jj1",
-        "itemRequired": "n1n"
+        "itemRequired": "n1n",
+        "action": ""
     }
 ]

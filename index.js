@@ -131,6 +131,10 @@ client.on("message", message => {
         console.log(message.author.username + ' >> ' + message.content);
         let commandfile = client.commands.get(cmd) || client.commands.get(client.aliases.get(cmd))
         if(commandfile) commandfile.run(client,message,args)
+    } else if (message.content.startsWith(';p')) {
+        console.log(message.author.username + ' >> ' + message.content);
+        let commandfile = client.commands.get('pravidla') || client.commands.get(client.aliases.get('pravidla'))
+        if(commandfile) commandfile.run(client,message,args, cmd.replace(';p', ''));
     } else {
         config.podakovanie.forEach(string => {
             if(cmd.toLowerCase().startsWith(string) || cmd.toLowerCase().includes(string)) {

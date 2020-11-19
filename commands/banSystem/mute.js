@@ -36,8 +36,6 @@ module.exports.run = async (bot, message, args) => {
         message.guild.members.cache.find(member => member.id === user.id).roles.add(mutedRole);
         message.channel.send("Používateľ " + user.username + " bol umlčaný na " + time + ' sekúnd.');
 
-        console.log(time + '\n\n' + args);
-
         muted.add(user.id);
         setTimeout(() => {
             if (muted.has(user.id)) {

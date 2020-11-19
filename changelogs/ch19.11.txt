@@ -1,0 +1,5 @@
+**commands:**
+  + pravidla [tools]
+
+**datasets:**
+  + pravidlá.json
