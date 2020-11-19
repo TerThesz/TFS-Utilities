@@ -17,6 +17,7 @@
       "resolved": "https://registry.npmjs.org/@discordjs/form-data/-/form-data-3.0.1.tgz",
       "version": "3.0.1"
     },
+    "@discordjs/opus": "^0.3.3",
     "@heroku-cli/color": {
       "integrity": "sha512-2JYy//YE2YINTe21hpdVMBNc7aYFkgDeY9JUz/BCjFZmYLn0UjGaCc4BpTcMGXNJwuqoUenw2WGOFGHsJqlIDw==",
       "requires": {
@@ -5117,6 +5118,7 @@
       "resolved": "https://registry.npmjs.org/fastq/-/fastq-1.9.0.tgz",
       "version": "1.9.0"
     },
+    "ffmpeg": "0.0.4",
     "figures": {
       "integrity": "sha512-yaduQFRKLXYOGgEn6AZau90j3ggSOyiqXU0F9JZfeXYhNa+Jk4X+s45A2zg5jns87GAFa34BBm2kXw4XpNcbdg==",
       "requires": {
@@ -5138,6 +5140,7 @@
       "resolved": "https://registry.npmjs.org/fill-range/-/fill-range-7.0.1.tgz",
       "version": "7.0.1"
     },
+    "fluent-ffmpeg": "^2.1.2",
     "follow-redirects": {
       "integrity": "sha512-aq6gF1BEKje4a9i9+5jimNFIpq4Q1WiwBToeRK5NvZBd/TRsmW8BsJfOEGkr76TbOyPVD3OVDN910EcUNtRYEA==",
       "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.13.0.tgz",
@@ -6960,6 +6963,7 @@
       "integrity": "sha512-IanQGI9RRPAN87VGTF7zs2uxkSyQSrSPsju0COgbsKQOOXr5LtcVPeyXWgwVa0ywG3d8dg6kSYKGBuYK021qeA==",
       "resolved": "https://registry.npmjs.org/yarn/-/yarn-1.22.10.tgz",
       "version": "1.22.10"
-    }
+    },
+    "ytdl-core": "^4.0.5"
   }
 }

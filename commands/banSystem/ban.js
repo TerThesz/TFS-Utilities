@@ -1,5 +1,5 @@
 module.exports.run = async (bot, message, args) => {
-    if(!message.member.hasPermission('BAN_MEMBERS') || member.user.hasPermission('ADMINISTRATOR')) 
+    if(!message.member.hasPermission('KICK_MEMBERS') || !message.member.hasPermission('ADMINISTRATOR')) 
         message.channel.send("To by si chcel čo?");
     else {
         let bannedMember = await message.guild.members.ban(message.mentions.members.first());

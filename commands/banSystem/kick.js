@@ -1,5 +1,5 @@
 module.exports.run = async (bot, message, args) => {
-    if(!message.member.hasPermission('KICK_MEMBERS') || member.user.hasPermission('ADMINISTRATOR')) 
+    if(!message.member.hasPermission('KICK_MEMBERS') || !message.member.hasPermission('ADMINISTRATOR')) 
         message.channel.send("To ti nedovolím >:(");
     else {
         let member = message.guild.members.cache.get(message.mentions.members.first());
