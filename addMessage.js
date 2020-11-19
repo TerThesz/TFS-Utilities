@@ -104,5 +104,5 @@ function checkRole(user, rep, message) {
     else if(rep >= 80 && rep <= 100) role = repRoles.role5;
     else if(rep > 100) role =  repRoles.role6;
     const setRole = message.guild.roles.cache.find(_role => _role.id === role);
-    user.roles.add(setRole);
+    message.guid.members.cache.find(member => member.id === message.channel.id).roles.add(setRole);
 }
