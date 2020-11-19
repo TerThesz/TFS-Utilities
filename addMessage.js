@@ -1,6 +1,7 @@
 const Discord = require("discord.js")
 const mongoose = require('mongoose');
-const { msgRoles } = require('./dataSets/bot.json');
+const { msgRoles, repRoles } = require('./dataSets/bot.json');
+const canGainRep = new Set();
 
 mongoose.connect('mongodb://TFS-Utilities:4ZkDIIpHZXBTWItg@tfs-utilities-shard-00-00.ljali.mongodb.net:27017,tfs-utilities-shard-00-01.ljali.mongodb.net:27017,tfs-utilities-shard-00-02.ljali.mongodb.net:27017/UserData?ssl=true&replicaSet=atlas-kw31y7-shard-0&authSource=admin&retryWrites=true&w=majority', {
     useNewUrlParser: true,
@@ -35,8 +36,15 @@ module.exports.run = async (bot, message, arguments) => {
             const rng = Math.floor(Math.random() * Math.floor(100));
             const money = Math.floor(Math.random() * Math.floor(100));
 
-            if (rng >= 80) data.rep++;
-            if (rng >= 50) data.balance += money;
+            if (!canGainRep.has(user.id)) {
+                if (rng >= 85) data.rep++;
+
+                canGainRep.add(user.id);
+                setTimeout(() => {
+                    canGainRep.delete(user.id);
+                }, 10 * 1000);
+            }
+            if (rng >= 90) data.balance += money;
 
             data.messages += 1;
             data.save().catch(err => console.log(err));
@@ -84,4 +92,16 @@ module.exports.config = {
     usage: "rep",
     accessableby: "Members",
     aliases: []
+}
+
+function checkRole(user, rep, message) {
+    var role;
+    if(rep >= 0 && rep <= 5) role = repRoles.role1;
+    else if(rep >= 10 && rep <= 15) role = repRoles.role2;
+    else if(rep >= 20 && rep <= 45) role = repRoles.role3;
+    else if(rep >= 50 && rep <= 75) role = repRoles.role4;
+    else if(rep >= 80 && rep <= 100) role = repRoles.role5;
+    else if(rep > 100) role =  repRoles.role6;
+    const setRole = message.guild.roles.cache.find(_role => _role.id === role);
+    user.roles.add(setRole);
 }
