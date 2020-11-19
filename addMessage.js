@@ -38,7 +38,7 @@ module.exports.run = async (bot, message, arguments) => {
 
             if (!canGainRep.has(user.id)) {
                 if (rng >= 90) data.rep++;
-                checkRole(user, data.rep++, message);
+                checkRole(message.author, data.rep++, message);
 
                 canGainRep.add(user.id);
                 setTimeout(() => {
@@ -104,5 +104,5 @@ function checkRole(user, rep, message) {
     else if(rep >= 80 && rep <= 100) role = repRoles.role5;
     else if(rep > 100) role =  repRoles.role6;
     const setRole = message.guild.roles.cache.find(_role => _role.id === role);
-    message.guid.members.cache.find(member => member.id === message.channel.id).roles.add(setRole);
+    user.guild.members.cache.find(member => member.id === message.channel.id).roles.add(setRole);
 }
