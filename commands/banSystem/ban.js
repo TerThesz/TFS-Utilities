@@ -2,7 +2,7 @@ module.exports.run = async (bot, message, args) => {
     if(!message.member.hasPermission('KICK_MEMBERS') || !message.member.hasPermission('ADMINISTRATOR')) 
         message.channel.send("To by si chcel čo?");
     else {
-        let bannedMember = await message.guild.members.ban(message.mentions.members.first());
+        let bannedMember = message.guild.members.cache.find(mmbr => mmbr.id === message.mentions.members.first().id);
         if(bannedMember){
 
         try {
