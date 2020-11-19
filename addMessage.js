@@ -21,12 +21,23 @@ module.exports.run = async (bot, message, arguments) => {
             const newData = new Data({
                 name: user.username,
                 userID: user.id,
-                rep: 0,
+                rep: 5,
                 messages: 0,
+                balance: 0,
+                steamLinked: 'null',
+                gamesPlayied: 0,
+                pending: 'null',
+                inventory: [],
             });
             newData.save().catch(err => console.log(err));
             console.log('Created database table for ' + user.username);
         } else {
+            const rng = Math.floor(Math.random() * Math.floor(100));
+            const money = Math.floor(Math.random() * Math.floor(100));
+
+            if (rng >= 80) data.rep++;
+            if (rng >= 50) data.balance += money;
+
             data.messages += 1;
             data.save().catch(err => console.log(err));
 
