@@ -10,13 +10,13 @@ module.exports.run = async (bot, message, arguments) => {
         helpJson.forEach (category => {
             embed.addField(
                 category.category,
-                '\`' + category.description + '\`',
+                category.description,
                 true
             )
         });
         message.channel.send(embed);
     } else {
-        const category = helpJson.find(ctgr => ctgr.category === arguments[0]);
+        const category = helpJson.find(ctgr => ctgr.category.toLowerCase() === arguments[0].toLowerCase());
         if (!category) return message.channel.send('Nenašiel som takúto kategóriu');
         const embed = new Discord.MessageEmbed()
         .setColor('BLUE')
@@ -27,7 +27,7 @@ module.exports.run = async (bot, message, arguments) => {
         category.data.forEach(command => {
             embed.addField(
                 command.cmd,
-                '\`' + command.description + '\`',
+                command.description,
             )
         });
 

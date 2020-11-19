@@ -1,26 +1,69 @@
 [
     {
-        "category": "category1",
-        "description": "description1",
+        "category": "Balance",
+        "description": "Peniaze & Shop",
         "data": [
-            { "cmd": "prd haha", "description": "HAHA" },
-            { "cmd": "prd2", "description": "LMFAO" }
+            { "cmd": "Peniaze", "description": "`!balance [meno]`\n*skratky: bal, cash, money, peniaze*" },
+            { "cmd": "Platenie", "description": "`!pay <meno> <peniaze>`\n*skratky: send*" },
+            { "cmd": "Obchod", "description": "`!shop`" }
         ]
     },
     {
-        "category": "category2",
-        "description": "description1",
+        "category": "Fun",
+        "description": "Veľmi ftipné commandy",
         "data": [
-            { "cmd": "prd haha2", "description": "HAHA2" },
-            { "cmd": "prd22", "description": "LMFAO2" }
+            { "cmd": "Meme v DM", "description": "`!dmmeme`" },
+            { "cmd": "Meme", "description": "`!meme`" },
+            { "cmd": "UNO Revers Karta", "description": "`!reverse`" },
+            { "cmd": ":O", "description": "`!surprised`" }
         ]
     },
     {
-        "category": "category3",
-        "description": "description1",
+        "category": "Reputácia",
+        "description": "Suprovské commandy na reputáciu",
         "data": [
-            { "cmd": "prd haha3", "description": "HAHA3" },
-            { "cmd": "prd23", "description": "LMFAO3" }
+            { "cmd": "Reputácia", "description": "`rep [meno]`" },
+            { "cmd": "Tabuľka Reputácie", "description": "`!rep-leaderboard`\n*skratky: rep-top, rep-lb*" },
+            { "cmd": "Pridať Reputáciu", "description": "`+rep <meno>`" },
+            { "cmd": "Odobrať Reputáciu", "description": "`-rep <meno>`" }
+        ]
+    },
+    {
+        "category": "Team",
+        "description": "Team commandy",
+        "data": [
+            { "cmd": "Steam Profil", "description": "`!link-steam <link>`" },
+            { "cmd": "ZobraziŤ Steam Profil", "description": "`!steam [meno]`" },
+            { "cmd": "Hrať", "description": "Momentálne Neprístupné" },
+            { "cmd": "Štatistiky", "description": "`!stats [meno]`" }
+        ]
+    },
+    {
+        "category": "Tools",
+        "description": "Pomôcky",
+        "data": [
+            { "cmd": "Pomoc", "description": "`!help`" },
+            { "cmd": "Pravidlá", "description": "`;p<číslo pravidla>`" },
+            { "cmd": "Verzia", "description": "`!version`\n*skratky: v*" }
+        ]
+    },
+    {
+        "category": "Ostatné",
+        "description": "Nezaradené commandy",
+        "data": [
+            { "cmd": "Správy", "description": "`!messages [meno]`\n*skratky: msgs*" },
+            { "cmd": "Inventár", "description": "`!inventory`\n *skratky: inv*" }
+        ]
+    },
+    {
+        "category": "Admin-Only",
+        "description": "Commandy iba pre adminov/moderátorov",
+        "data": [
+            { "cmd": "ECO", "description": "`!eco-set <meno> <číslo>`\n`!eco-add <meno> <číslo>`\n`!eco-remove <meno> <číslo>`" },
+            { "cmd": "BanSystem", "description": "`!ban <meno>`\n`!kick <meno>`\n`!mute <meno> [čas (s,m,h)]`\n`!unmute <meno>`" },
+            { "cmd": "Novinky", "description": "`!news <title> <subtitle> [s1 title] [s1 subtitle] [s2 title] [s2 subtitle] [s3 title] [s3 subtitle]`\n`!test-news --//--`" },
+            { "cmd": "Rep", "description": "`!rep-add <meno> <číslo>`\n`!rep-remove <meno <číslo>`\n`!rem-set <meno> <číslo>`" },
+            { "cmd": "Tools", "description": "`!update`\n`!clear <číslo>`" }
         ]
     }
 ]
