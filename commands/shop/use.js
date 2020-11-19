@@ -29,9 +29,22 @@ module.exports.run = async (bot, message, args) => {
             .setColor('GREEN')
             .setDescription(`Používateľ **${message.author.username}** si aktivoval **VIP**!`));
         } else if (category.action.startsWith('+s')) {
-            var _canContinue = false;
-            data.active.forEach(item => { if (item === category.itemRequired) _canContinue = true; });
-            if (!_canContinue) return message.channel.send('Pre túto akciu si potrebuješ zakúpiť a aktivovať: **' + category.itemRequired + '**.')
+            if (category.itemRequired != 'non') {
+                var _canContinue = false;
+                data.active.forEach(item => { if (item === category.itemRequired) _canContinue = true; });
+                if (!_canContinue) return message.channel.send('Pre túto akciu si potrebuješ zakúpiť a aktivovať: **' + category.itemRequired + '**.')
+            }
+            var __canContinue = true;
+            data.active.forEach(item => { if (item === args[0]) { __canContinue = false } });
+            if (!__canContinue) return message.channel.send('Tento predmet už máš aktívny.\nMôžeš ho predať commandom `!sell`');
+        
+            data.active.push(args[0]);
+            data.inventory.splice(data.inventory.indexOf(args[0]), 1);
+            data.save().catch(err => console.log(err));
+
+            return message.channel.send(new Discord.MessageEmbed()
+            .setColor('GREEN')
+            .setDescription(`Používateľ **${message.author.username}** si aktivoval: **${args[0]}**.`));
         }
     });
 }

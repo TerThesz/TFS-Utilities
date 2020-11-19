@@ -55,5 +55,5 @@ module.exports.config = {
     description: "",
     usage: "eco-add",
     accessableby: "Admins",
-    aliases: []
+    aliases: ['eco-give']
 }

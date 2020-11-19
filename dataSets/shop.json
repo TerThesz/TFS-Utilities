@@ -36,7 +36,7 @@
         "description": "Za videá budeš dostávať viac peňazí.\n*Spôsob pladby: 100€/mesiac*\n*Potrebný predmet: počítač*",
         "cost": "100",
         "permRequired": "non",
-        "itemRequired": "Počítač",
+        "itemRequired": "počítač",
         "action": "+s editor"
     },
     {
@@ -44,7 +44,7 @@
         "description": "Sprístupní robenia grafiky.\n*Potrebný predmet: počítač*",
         "cost": "70",
         "permRequired": "non",
-        "itemRequired": "Počítač",
+        "itemRequired": "počítač",
         "action": "+s ps"
     }
 ]
