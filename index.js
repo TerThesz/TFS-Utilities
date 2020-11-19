@@ -103,7 +103,6 @@ client.on("message", message => {
         blacklistedWords.forEach(word => {
         if (message.content.includes (word)) {
             message.reply('Nehreš >:(');
-            message.delete();
             return;
         }
     });
