@@ -37,12 +37,13 @@ module.exports.run = async (bot, message, arguments) => {
             const money = Math.floor(Math.random() * Math.floor(100));
 
             if (!canGainRep.has(user.id)) {
-                if (rng >= 85) data.rep++;
+                if (rng >= 90) data.rep++;
+                checkRole(user, data.rep++, message);
 
                 canGainRep.add(user.id);
                 setTimeout(() => {
                     canGainRep.delete(user.id);
-                }, 10 * 1000);
+                }, 1 * 60 * 1000);
             }
             if (rng >= 90) data.balance += money;
 
