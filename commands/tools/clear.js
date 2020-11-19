@@ -20,7 +20,7 @@ module.exports.run = async (bot, message, arguments) => {
     if (parseInt(args[1]) > 100) {
         deleteAmount = 100;
     } else if (parseInt(args[1]) > 1) {
-        deleteAmount = parseInt(args[1]);
+        deleteAmount = parseInt(args[1] + 1);
     } else {
         return message.reply("Musíš použiť väčšie číslo ako 1.");
     }
