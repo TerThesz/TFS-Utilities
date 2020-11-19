@@ -40,6 +40,7 @@ module.exports.run = async (bot, message, arguments) => {
                 if (rng >= 90) data.rep++;
                 
                 var role;
+                var rep = data.rep++;
                 if(rep >= 0 && rep <= 5) role = repRoles.role1;
                 else if(rep >= 10 && rep <= 15) role = repRoles.role2;
                 else if(rep >= 20 && rep <= 45) role = repRoles.role3;
