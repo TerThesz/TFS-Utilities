@@ -20,22 +20,20 @@ module.exports.run = async (bot, message, args) => {
         var canContinue = false;
         data.inventory.forEach(item => { if (item.toLocaleLowerCase() === category.title.toLocaleLowerCase()) canContinue = true; });
         if (!canContinue) return message.channel.send('Tento predmet nemáš v inventári.');
-    });
 
-    if (category.action === '+p vip') {
-        const setRole = message.guild.roles.cache.find(_role => _role.id === '772939303105593345');
-        message.member.roles.add(setRole);
-
-        return message.channel.send(new Discord.MessageEmbed()
-        .setColor('GREEN')
-        .setDescription(`Používateľ **${message.author.username}** si aktivoval **VIP**!`));
-    } else if (category.action.startsWith('+s')) {
-        switch (category.action.split(' ').shift()) {
-            case 'cam':
-                
-                break;
+        if (category.action === '+p vip') {
+            const setRole = message.guild.roles.cache.find(_role => _role.id === '772939303105593345');
+            message.member.roles.add(setRole);
+    
+            return message.channel.send(new Discord.MessageEmbed()
+            .setColor('GREEN')
+            .setDescription(`Používateľ **${message.author.username}** si aktivoval **VIP**!`));
+        } else if (category.action.startsWith('+s')) {
+            var _canContinue = false;
+            data.active.forEach(item => { if (item === category.itemRequired) _canContinue = true; });
+            if (!_canContinue) return message.channel.send('Pre túto akciu si potrebuješ zakúpiť a aktivovať: **' + category.itemRequired + '**.')
         }
-    }
+    });
 }
 
 module.exports.config = {
