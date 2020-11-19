@@ -34,6 +34,7 @@ module.exports.run = async (bot, message, arguments) => {
                             gamesPlayied: 0,
                             pending: 'null',
                             inventory: [],
+                            active: [],
                         });
                         data = newData;
                         newData.save().catch(err => console.log(err));

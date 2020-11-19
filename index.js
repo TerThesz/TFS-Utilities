@@ -98,6 +98,8 @@ fs.readdir("./commands/", (err, files) => {
 });
 
 client.on("message", message => {
+    if (message.author.bot) return;
+
     antiSpam.message(message);
     if(message.author === client || message.channel.type === "dm") return;
         blacklistedWords.forEach(word => {
@@ -109,7 +111,7 @@ client.on("message", message => {
 
     let prefix = config.prefix;
     let messageArray = message.content.split(" ");
-    let cmd = messageArray[0];
+    let cmd = messageArray[0].toLocaleLowerCase();
     var args = message.content.split(' ');
     args.shift();
 

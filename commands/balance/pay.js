@@ -31,6 +31,7 @@ module.exports.run = async (bot, message, args) => {
 
                             if (!data2) {
                                 const newData = new Data({
+                                    active: [],
                                     name: user.username,
                                     userID: user.id,
                                     rep: 0,
@@ -58,7 +59,11 @@ module.exports.run = async (bot, message, args) => {
                     }
                 }
             });
+        } else {
+            return message.channel.send('Fúha neviem či je legálne poslať sa');
         }
+    } else {
+        return message.channel.send('Daj viac ako nulu pls');
     }
 }
 

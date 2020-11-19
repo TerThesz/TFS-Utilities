@@ -10,19 +10,19 @@ mongoose.connect('mongodb://TFS-Utilities:4ZkDIIpHZXBTWItg@tfs-utilities-shard-0
 const Data = require('../../models/data.js');
 
 module.exports.run = (bot, message, arguments) => {
-    Data.collection.find().sort({balance:-1}).toArray(function(err, result) {
+    Data.collection.find().sort({messages:-1}).toArray(function(err, result) {
         if (err) throw err;
 
         const embed = new Discord.MessageEmbed()
-        .setTitle('Balance - Tabuľka (top 10)')
+        .setTitle('Správy - Tabuľka (top 10)')
         .setColor('GREEN')
         let description;
         var i = 0;
         result.forEach(user => {
             i++;
             if (i <= 10) {
-                if (description) description = description + i + '. **' + user.name + '** (' + user.balance + '€)\n' ;
-                else description = i + '. **' + user.name + '** (' + user.balance + '€)\n' 
+                if (description) description = description + i + '. **' + user.name + '** (' + user.messages + 'ˢᵖʳᵃᵛ)\n' ;
+                else description = i + '. **' + user.name + '** (' + user.messages + 'ˢᵖʳᵃᵛ)\n' 
             }
         });
         embed.setDescription(description);
@@ -31,7 +31,7 @@ module.exports.run = (bot, message, arguments) => {
 }
 
 module.exports.config = {
-    name: "bal-leaderboard",
+    name: "messages-leaderboard",
     accessableby: "Members",
-    aliases: ['bal-top', 'bal-lb', 'balance-top', 'balance-leaderboard', 'balance-lb' ]
+    aliases: ['messages-top', 'messages-lb', 'msgs-top', 'msgs-leaderboard', 'msgs-lb' ]
 }

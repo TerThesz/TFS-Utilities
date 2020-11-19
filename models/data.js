@@ -10,6 +10,7 @@ const dataSchema = mongoose.Schema({
     gamesPlayied: Number,
     pending: String,
     inventory: Array,
+    active: Array,
 });
 
 module.exports = mongoose.model('Data', dataSchema);

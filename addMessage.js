@@ -20,6 +20,7 @@ module.exports.run = async (bot, message, arguments) => {
         if(err) throw err;
         if(!data) {
             const newData = new Data({
+                active: [],
                 name: user.username,
                 userID: user.id,
                 rep: 5,
@@ -33,14 +34,15 @@ module.exports.run = async (bot, message, arguments) => {
             newData.save().catch(err => console.log(err));
             console.log('Created database table for ' + user.username);
         } else {
-            const rng = Math.floor(Math.random() * Math.floor(100));
-            const money = Math.floor(Math.random() * Math.floor(100));
+            const rng = Math.floor(Math.random() * Math.floor(1000));
+            const money = Math.floor(Math.random() * Math.floor(30));
+
 
             if (!canGainRep.has(user.id)) {
-                if (rng >= 95) data.rep++;
+                if (rng >= 990) data.rep += 5;
                 
                 var role;
-                var rep = data.rep++;
+                var rep = data.rep += 5;
                 if(rep >= 0 && rep <= 5) role = repRoles.role1;
                 else if(rep >= 10 && rep <= 15) role = repRoles.role2;
                 else if(rep >= 20 && rep <= 45) role = repRoles.role3;
@@ -50,13 +52,12 @@ module.exports.run = async (bot, message, arguments) => {
                 const setRole = message.guild.roles.cache.find(_role => _role.id === role);
                 message.member.roles.add(setRole);
 
-                if (rng >= 90) data.balance += money;
-
                 canGainRep.add(user.id);
                 setTimeout(() => {
                     canGainRep.delete(user.id);
-                }, 1 * 60 * 1000);
+                }, 10 * 60 * 1000);
             }
+            if (rng >= 700) data.balance += money;
 
             data.messages += 1;
             data.save().catch(err => console.log(err));
@@ -93,6 +94,21 @@ module.exports.run = async (bot, message, arguments) => {
                 .setTitle('Blahoželáme!')
                 .setDescription(`Používateľ ${user.username} práve napísal svoju ${data.messages}. správu!`);
                 message.channel.send(exampleEmbed);
+
+                data.rep += 5;
+
+                var role;
+                var rep = data.rep += 5;
+                if(rep >= 0 && rep <= 5) role = _repRoles.role1;
+                else if(rep >= 10 && rep <= 15) role = _repRoles.role2;
+                else if(rep >= 20 && rep <= 45) role = _repRoles.role3;
+                else if(rep >= 50 && rep <= 75) role = _repRoles.role4;
+                else if(rep >= 80 && rep <= 100) role = _repRoles.role5;
+                else if(rep > 100) role =  _repRoles.role6;
+                const _setRole = message.guild.roles.cache.find(_role => _role.id === role);
+                message.member.roles.add(_setRole);
+
+                data.save().catch(err => console.log(err));
             }
         }
     })

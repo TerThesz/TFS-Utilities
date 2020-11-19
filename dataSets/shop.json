@@ -1,18 +1,50 @@
 [
     {
-        "title": "item1",
-        "description": "item1",
-        "cost": "10",
-        "permRequired": "jj",
-        "itemRequired": "nn",
-        "action": ""
+        "title": "vip",
+        "description": "Zakúpenie Vip na doživotie",
+        "cost": "5000",
+        "permRequired": "non",
+        "itemRequired": "non",
+        "action": "+p vip"
     },
     {
-        "title": "item2",
-        "description": "item2",
-        "cost": "20",
-        "permRequired": "jj1",
-        "itemRequired": "n1n",
-        "action": ""
+        "title": "kamera",
+        "description": "Zlepší kvalitu videí/streamov a odomkne nové typy videí.\n*Potrebný predmet: počítač*",
+        "cost": "500",
+        "permRequired": "non",
+        "itemRequired": "počítač",
+        "action": "+s cam"
+    },
+    {
+        "title": "počítač",
+        "description": "Sprístupní točenie videí alebo streamovanie",
+        "cost": "1000",
+        "permRequired": "non",
+        "itemRequired": "non",
+        "action": "+s pc"
+    },
+    {
+        "title": "stream-deck",
+        "description": "Zlepší kvalitu streamov\n*Potrebný predmet: počítač*",
+        "cost": "200",
+        "permRequired": "non",
+        "itemRequired": "počítač",
+        "action": "+s sdeck"
+    },
+    {
+        "title": "editor",
+        "description": "Za videá budeš dostávať viac peňazí.\n*Spôsob pladby: 100€/mesiac*\n*Potrebný predmet: počítač*",
+        "cost": "100",
+        "permRequired": "non",
+        "itemRequired": "Počítač",
+        "action": "+s editor"
+    },
+    {
+        "title": "photoshop",
+        "description": "Sprístupní robenia grafiky.\n*Potrebný predmet: počítač*",
+        "cost": "70",
+        "permRequired": "non",
+        "itemRequired": "Počítač",
+        "action": "+s ps"
     }
 ]

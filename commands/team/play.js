@@ -44,6 +44,7 @@ module.exports.run = async (bot, message, arguments) => {
                 if(err) throw err;
                 if(!data) {
                     const newData = new Data({
+                        active: [],
                         name: user.user.username,
                         userID: user.id,
                         rep: 0,
@@ -70,6 +71,7 @@ module.exports.run = async (bot, message, arguments) => {
                         if(err) throw err;
                         if(!data) {
                             const newData = new Data({
+                                active: [],
                                 name: user.user.username,
                                 userID: user.id,
                                 rep: 0,
@@ -181,6 +183,7 @@ module.exports.run = async (bot, message, arguments) => {
                 if(err) throw err;
                 if(!data) {
                     const newData = new Data({
+                        active: [],
                         name:user.user.username,
                         userID: user.id,
                         rep: 0,
@@ -209,6 +212,7 @@ module.exports.run = async (bot, message, arguments) => {
                 if(err) throw err;
                 if(!data) {
                     const newData = new Data({
+                        active: [],
                         name: player.user.username,
                         userID: player.id,
                         rep: 0,

@@ -19,6 +19,7 @@ module.exports.run = async (bot, message, args) => {
     
             if(!data) {
                 const newData = new Data({
+                    active: [],
                     name: user.username,
                     userID: user.id,
                     rep: 0,

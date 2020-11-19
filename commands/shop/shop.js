@@ -40,6 +40,7 @@ module.exports.run = async (bot, message, args) => {
 
             if (!data) {
                 const newData = new Data({
+                    active: [],
                     name: message.author.username,
                     userID: message.author.id,
                     rep: 0,
@@ -60,7 +61,7 @@ module.exports.run = async (bot, message, args) => {
                     data.save().catch(err => console.log(err));
                     const exampleEmbed = new Discord.MessageEmbed()
                     .setColor('GREEN')
-                    .setDescription(`Používateľ **${message.author.username}** si zakúpil **${object.title}**!!`)
+                    .setDescription(`Používateľ **${message.author.username}** si zakúpil predmet: **${object.title}**!!`)
                     message.channel.send(exampleEmbed);
                 } else return message.channel.send('Nemáš na to lóve (Pls nechoď robiť drogy ok pls ok)');
             }
