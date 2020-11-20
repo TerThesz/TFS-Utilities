@@ -47,12 +47,24 @@
             { "cmd": "Verzia", "description": "`!version`\n*skratky: v*" }
         ]
     },
+	{
+        "category": "Shop",
+        "description": "Shop commandy",
+        "data": [
+            { "cmd": "Aktívne Predmety", "description": "`!active [meno]`" },
+            { "cmd": "Inventár", "description": "`!inventory`\n *skratky: inv*" },
+			{ "cmd": "Predať", "description": "`!sell <názov>`" },
+			{ "cmd": "Obchod", "description": "`!shop [názov]`\n *skratky: buy*" },
+			{ "cmd": "Použiť", "description": "`!use <názov>`" },
+        ]
+    },
     {
         "category": "Ostatné",
         "description": "Nezaradené commandy",
         "data": [
             { "cmd": "Správy", "description": "`!messages [meno]`\n*skratky: msgs*" },
-            { "cmd": "Inventár", "description": "`!inventory`\n *skratky: inv*" }
+			{ "cmd": "Verzia", "description": "`!version`\n *skratky: v*" },
+			{ "cmd": "Pravidlá", "description": "`;p<číslo>`" }
         ]
     },
     {
