@@ -55,7 +55,7 @@
             { "cmd": "Inventár", "description": "`!inventory`\n *skratky: inv*" },
 			{ "cmd": "Predať", "description": "`!sell <názov>`" },
 			{ "cmd": "Obchod", "description": "`!shop [názov]`\n *skratky: buy*" },
-			{ "cmd": "Použiť", "description": "`!use <názov>`" },
+			{ "cmd": "Použiť", "description": "`!use <názov>`" }
         ]
     },
     {
