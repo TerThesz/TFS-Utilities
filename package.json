@@ -4659,6 +4659,7 @@
       "resolved": "https://registry.npmjs.org/braces/-/braces-3.0.2.tgz",
       "version": "3.0.2"
     },
+    "brain.js": "^2.0.0-beta.2",
     "buffer-alloc": {
       "integrity": "sha512-CFsHQgjtW1UChdXgbyJGtnm+O/uLQeZdtbDo8mfUgYXCHSM1wgrVxXm6bSyrUuErEb+4sYVGCzASBRot7zyrow==",
       "requires": {

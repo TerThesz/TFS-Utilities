@@ -4,23 +4,29 @@ module.exports.run = async (bot, message, arguments) => {
     if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send('Novinka: Nemas permisie chjechje');
 
     const embed = new Discord.MessageEmbed()
-        .setTitle(arguments[0].replace('-', ' '))
-        .setDescription(arguments[1].replace('-', ' '))
+        .setTitle(replaceAll(arguments[0], '-', ' '))
+        .setDescription(replaceAll(arguments[1], '-', ' '))
         .setColor('ORANGE')
 
     switch (arguments.length) {
         case 4:
-            embed.addField(arguments[2].replace('-', ' '), arguments[3].replace('-', ' '), arguments[4])
+            embed.addField(replaceAll(arguments[2], '-', ' '), replaceAll(arguments[3], '-', ' '), arguments[4])
             break;
         case 6:
-            embed.addField(arguments[5].replace('-', ' '), arguments[6].replace('-', ' '), arguments[7])
+            embed.addField(replaceAll(arguments[5], '-', ' '), replaceAll(arguments[6], '-', ' '), arguments[7])
             break;
         case 8:
-            embed.addField(arguments[8].replace('-', ' '), arguments[9].replace('-', ' '), arguments[10])
+            embed.addField(replaceAll(arguments[8], '-', ' '), replaceAll(arguments[9], '-', ' '), arguments[10])
             break;
     }
 
     message.channel.send(embed);
+    message.channel.send('<@&772938668310528010>');
+
+    function replaceAll(string, search, replace) {
+        var prd = string.split(search).join(replace);
+        return prd.split('\\n').join('\n');
+      }
 }
 
 module.exports.config = {

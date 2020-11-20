@@ -39,25 +39,12 @@ module.exports.run = async (bot, message, arguments) => {
 
 
             if (!canGainRep.has(user.id)) {
-                if (rng >= 990) data.rep += 5;
-                
-                var role;
-                var rep = data.rep += 5;
-                if(rep >= 0 && rep <= 5) role = repRoles.role1;
-                else if(rep >= 10 && rep <= 15) role = repRoles.role2;
-                else if(rep >= 20 && rep <= 45) role = repRoles.role3;
-                else if(rep >= 50 && rep <= 75) role = repRoles.role4;
-                else if(rep >= 80 && rep <= 100) role = repRoles.role5;
-                else if(rep > 100) role =  repRoles.role6;
-                const setRole = message.guild.roles.cache.find(_role => _role.id === role);
-                message.member.roles.add(setRole);
-
                 canGainRep.add(user.id);
                 setTimeout(() => {
                     canGainRep.delete(user.id);
                 }, 10 * 60 * 1000);
             }
-            if (rng >= 700) data.balance += money;
+            if (rng >= 900) data.balance += money;
 
             data.messages += 1;
             data.save().catch(err => console.log(err));

@@ -10,7 +10,7 @@
     {
         "title": "kamera",
         "description": "Zlepší kvalitu videí/streamov a odomkne nové typy videí.\n*Potrebný predmet: počítač*",
-        "cost": "500",
+        "cost": "2000",
         "permRequired": "non",
         "itemRequired": "počítač",
         "action": "+s cam"
@@ -26,7 +26,7 @@
     {
         "title": "stream-deck",
         "description": "Zlepší kvalitu streamov\n*Potrebný predmet: počítač*",
-        "cost": "200",
+        "cost": "2000",
         "permRequired": "non",
         "itemRequired": "počítač",
         "action": "+s sdeck"
@@ -38,13 +38,5 @@
         "permRequired": "non",
         "itemRequired": "počítač",
         "action": "+s editor"
-    },
-    {
-        "title": "photoshop",
-        "description": "Sprístupní robenia grafiky.\n*Potrebný predmet: počítač*",
-        "cost": "70",
-        "permRequired": "non",
-        "itemRequired": "počítač",
-        "action": "+s ps"
     }
 ]
