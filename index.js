@@ -98,6 +98,7 @@ fs.readdir("./commands/", (err, files) => {
 });
 
 client.on("message", message => {
+    client.emit('type', message);
     if (message.author.bot) return;
 
     antiSpam.message(message);
