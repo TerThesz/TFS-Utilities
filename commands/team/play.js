@@ -1,7 +1,7 @@
 const Discord = require("discord.js")
 const mongoose = require('mongoose');
-const pending = new Map();
-const playedRecently = new Map();
+const pending = new Set();
+const playedRecently = new Set();
 const client = new Discord.Client();
 const dotEnv = require('dotenv').config();
 
