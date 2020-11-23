@@ -98,7 +98,6 @@ fs.readdir("./commands/", (err, files) => {
 });
 
 client.on("message", message => {
-    client.emit('type', message);
     if (message.author.bot) return;
 
     antiSpam.message(message);
@@ -182,4 +181,4 @@ client.on('messageReactionRemove', async (reaction, user) => {
     }
 });*/
 
-client.login('NzcyOTQyMzg4MDQ5MzQ2NTYy.X6CAsQ.Y6fyQ9DFt02750YpH2_XW_NI8oA');
+client.login(process.env.token);
