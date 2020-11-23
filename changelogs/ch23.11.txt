@@ -1,0 +1,12 @@
+**commands:**
+  + pravidla [tools]
+  + msg-top [messages]
+  + use [shop]
+  + play (fix) [team]
+
+**datasets:**
+  + pravidlá.json
+
+**eventy:**
+  + stream
+  + video
