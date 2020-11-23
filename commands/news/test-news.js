@@ -21,7 +21,6 @@ module.exports.run = async (bot, message, arguments) => {
     }
 
     message.channel.send(embed);
-    message.channel.send('<@&772938668310528010>');
 
     function replaceAll(string, search, replace) {
         var prd = string.split(search).join(replace);
