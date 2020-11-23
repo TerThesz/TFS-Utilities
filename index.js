@@ -109,7 +109,7 @@ client.on("message", message => {
     if (message.author.bot) return;
 
     //PLAY.JS
-    var { pending } = require('./commands/team/play');
+    var { pending, pendingdelete } = require('./commands/team/play');
     var play = require.play;
     var user = message.author;
 
@@ -140,7 +140,7 @@ client.on("message", message => {
 
                         play.add(user, player);
 
-                        pending.delete(user.id);
+                        pendingdelete(user.id);
                         Data.findOne({
                             userID: user.id
                         }, (err, data) => {
@@ -171,7 +171,7 @@ client.on("message", message => {
                         .setColor('RED')
                         player.send(embed2);
 
-                        pending.delete(user.id);
+                        pendingdelete(user.id);
                         Data.findOne({
                             userID: user.id
                         }, (err, data) => {

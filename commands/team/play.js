@@ -61,7 +61,7 @@ module.exports.run = async (bot, message, arguments) => {
                 }
             });
 
-            pending.set(user.id, user.id);
+            pending.add(user.id);
             setTimeout(() => {
                 if (pending.has(user.id)) {
                     pending.delete(user.id);
@@ -173,6 +173,9 @@ module.exports.config = {
 }
 
 module.exports.pending = pending;
+module.exports.pendingdelete = (value) => {
+    pending.delete(value);
+}
 
 /*
                 talkedRecently.add(message.author.id);
