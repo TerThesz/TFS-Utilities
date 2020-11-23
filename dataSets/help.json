@@ -34,7 +34,7 @@
         "data": [
             { "cmd": "Steam Profil", "description": "`!link-steam <link>`" },
             { "cmd": "ZobraziŤ Steam Profil", "description": "`!steam [meno]`" },
-            { "cmd": "Hrať", "description": "Momentálne Neprístupné" },
+            { "cmd": "Hrať", "description": "`!play <meno>`" },
             { "cmd": "Štatistiky", "description": "`!stats [meno]`" }
         ]
     },
