@@ -103,67 +103,6 @@ module.exports.run = async (bot, message, arguments) => {
             }, 60000);
         }
     }
-    function add (user, player) {
-        if (!playedRecently.has(user.id)) {
-            Data.findOne({
-                userID: user.id
-            }, (err, data) => {
-                if(err) throw err;
-                if(!data) {
-                    const newData = new Data({
-                        active: [],
-                        name:user.user.username,
-                        userID: user.id,
-                        rep: 0,
-                        messages: 0,
-                        balance: 100,
-                        steamLinked: 'null',
-                        gamesPlayied: 1,
-                        pending: 'null',
-                    });
-                    newData.save().catch(err => console.log(err));
-                } else {
-                    data.balance += 100;
-                    data.gamesPlayied += 1;
-                    data.save().catch(err => console.log(err));
-                }
-            });
-            playedRecently.add(user.id);
-            setTimeout(() => {
-                playedRecently.delete(user.id);
-            }, 3600000);
-        }
-        if (!playedRecently.has(player.id)) {
-            Data.findOne({
-                userID: player.id
-            }, (err, data) => {
-                if(err) throw err;
-                if(!data) {
-                    const newData = new Data({
-                        active: [],
-                        name: player.user.username,
-                        userID: player.id,
-                        rep: 0,
-                        messages: 0,
-                        balance: 100,
-                        steamLinked: 'null',
-                        gamesPlayied: 1,
-                        pending: 'null',
-                        inventory: [],
-                    });
-                    newData.save().catch(err => console.log(err));
-                } else {
-                    data.balance += 100;
-                    data.gamesPlayied += 1;
-                    data.save().catch(err => console.log(err));
-                }
-            });
-            playedRecently.set(player.id, player.id);
-            setTimeout(() => {
-                playedRecently.delete(player.id);
-            }, 3600000);
-        }
-    }
 }
 
 module.exports.config = {
@@ -175,6 +114,67 @@ module.exports.config = {
 module.exports.pending = pending;
 module.exports.pendingdelete = (value) => {
     pending.delete(value);
+}
+module.exports.add = (user, player) => {
+    if (!playedRecently.has(user.id)) {
+        Data.findOne({
+            userID: user.id
+        }, (err, data) => {
+            if(err) throw err;
+            if(!data) {
+                const newData = new Data({
+                    active: [],
+                    name:user.user.username,
+                    userID: user.id,
+                    rep: 0,
+                    messages: 0,
+                    balance: 100,
+                    steamLinked: 'null',
+                    gamesPlayied: 1,
+                    pending: 'null',
+                });
+                newData.save().catch(err => console.log(err));
+            } else {
+                data.balance += 100;
+                data.gamesPlayied += 1;
+                data.save().catch(err => console.log(err));
+            }
+        });
+        playedRecently.add(user.id);
+        setTimeout(() => {
+            playedRecently.delete(user.id);
+        }, 3600000);
+    }
+    if (!playedRecently.has(player.id)) {
+        Data.findOne({
+            userID: player.id
+        }, (err, data) => {
+            if(err) throw err;
+            if(!data) {
+                const newData = new Data({
+                    active: [],
+                    name: player.user.username,
+                    userID: player.id,
+                    rep: 0,
+                    messages: 0,
+                    balance: 100,
+                    steamLinked: 'null',
+                    gamesPlayied: 1,
+                    pending: 'null',
+                    inventory: [],
+                });
+                newData.save().catch(err => console.log(err));
+            } else {
+                data.balance += 100;
+                data.gamesPlayied += 1;
+                data.save().catch(err => console.log(err));
+            }
+        });
+        playedRecently.set(player.id, player.id);
+        setTimeout(() => {
+            playedRecently.delete(player.id);
+        }, 3600000);
+    }
 }
 
 /*
