@@ -109,7 +109,7 @@ client.on("message", message => {
     if (message.author.bot) return;
 
     //PLAY.JS
-    var { pending } = require('./commands/team/play.js');
+    var { pending } = require('./commands/team/play');
     var play = require.play;
 
     if (message.channel.type != 'dm') console.log(pending);
