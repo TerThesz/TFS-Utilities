@@ -75,7 +75,7 @@
             { "cmd": "BanSystem", "description": "`!ban <meno>`\n`!kick <meno>`\n`!mute <meno> [čas (s,m,h)]`\n`!unmute <meno>`" },
             { "cmd": "Novinky", "description": "`!news <title> <subtitle> [s1 title] [s1 subtitle] [s2 title] [s2 subtitle] [s3 title] [s3 subtitle]`\n`!test-news --//--`" },
             { "cmd": "Rep", "description": "`!rep-add <meno> <číslo>`\n`!rep-remove <meno <číslo>`\n`!rem-set <meno> <číslo>`" },
-            { "cmd": "Tools", "description": "`!update`\n`!clear <číslo>`" }
+            { "cmd": "Tools", "description": "`!update <date> <version>`\n`!clear <číslo>`" }
         ]
     }
 ]
