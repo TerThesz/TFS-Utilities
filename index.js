@@ -110,7 +110,7 @@ client.on("message", message => {
 
     //PLAY.JS
     var { pending, pendingdelete } = require('./commands/team/play');
-    var play = require.play;
+    var play = require('./commands/team/play');
     var user = message.author;
 
     if (message.channel.type != 'dm') console.log(pending);
