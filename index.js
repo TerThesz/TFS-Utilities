@@ -124,7 +124,7 @@ client.on("message", message => {
                 if(!data) {
                     user.send('Niečo sa pokazilo.');
                 } else {
-                    var player = client.guild.members.cache.find(member => member.id === data.pending);
+                    var player = client.guilds.cache.find(guild => guild.id === '772916118930063360').members.cache.find(member => member.id === data.pending);
                     if (player) {
                         var embed = new Discord.MessageEmbed()
                         .setTitle('Pozvánka prijatá!')
