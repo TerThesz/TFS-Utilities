@@ -24,7 +24,7 @@ module.exports.run = async (bot, message, arguments) => {
           console.log(JSON.stringify(config));
           console.log('writing to ' + fileName);
         });
-    }
+    } catch (e) { console.log(e) }
 }
 
 module.exports.config = {
