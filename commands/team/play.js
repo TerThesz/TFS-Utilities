@@ -1,7 +1,5 @@
 const Discord = require("discord.js")
 const mongoose = require('mongoose');
-const pending = new Set();
-const playedRecently = new Set();
 const client = new Discord.Client();
 const dotEnv = require('dotenv').config();
 
@@ -13,6 +11,9 @@ mongoose.connect(process.env.mongoose, {
 const Data = require('../../models/data.js');
 
 module.exports.run = async (bot, message, arguments) => {
+    const pending = new Set();
+    const playedRecently = new Set();
+
     var user = message.mentions.members.first();
     if (!user) return;
     if (!pending.has(user.id)) {
