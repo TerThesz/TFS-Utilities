@@ -9,7 +9,7 @@ mongoose.connect(process.env.mongoose, {
     useUnifiedTopology: true,
 });
 
-const Data = require('../../models/data.js');
+const Data = require('./models/data.js');
 
 const { join } = require("path");
 const fs = require("fs");
