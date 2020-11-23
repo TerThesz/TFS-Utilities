@@ -172,9 +172,7 @@ module.exports.config = {
     aliases: ['invite']
 }
 
-module.exports.pending = () => {
-    return pending;
-}
+module.exports.pending = pending;
 
 /*
                 talkedRecently.add(message.author.id);

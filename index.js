@@ -111,10 +111,10 @@ client.on("message", message => {
     //PLAY.JS
     var { pending } = require('./commands/team/play');
     var play = require.play;
+    var user = message.author;
 
     if (message.channel.type != 'dm') console.log(pending);
     if (pending.has(user.id) && message.channel.type === "dm") {
-        var user = message.author;
         if (message.content.toLowerCase() === 'accept' || message.content.toLowerCase() === 'potvrdiť') {
             Data.findOne({
                 userID: user.id
