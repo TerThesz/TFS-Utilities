@@ -123,6 +123,7 @@ client.on("message", message => {
                 if(!data) {
                     user.send('Niečo sa pokazilo.');
                 } else {
+                    console.log(user);
                     var player = user.guild.members.cache.find(member => member.id === data.pending);
                     if (player) {
                         var embed = new Discord.MessageEmbed()
