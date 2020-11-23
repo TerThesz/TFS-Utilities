@@ -106,6 +106,8 @@ fs.readdir("./commands/", (err, files) => {
 });
 
 client.on("message", message => {
+    console.log(message);
+
     if (message.author.bot) return;
 
     //PLAY.JS
