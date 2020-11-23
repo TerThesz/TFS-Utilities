@@ -139,7 +139,7 @@ client.on("message", message => {
                         .addField('Hodnotenie hry', 'Ak sa ti s používateľom **<@' + user.id + '>** hrá dobre môžeš mu pridať reputáciu pomocou commandu `+rep <meno>` alebo mu ju naopak môžeš odobrať commandom\n `-rep <meno>` (commandy fungujú iba na serveri)');
                         player.send(embed2);
 
-                        play.add(user, player);
+                        play.run.add(user, player);
 
                         pendingdelete(user.id);
                         Data.findOne({
