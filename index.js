@@ -1,7 +1,15 @@
 const Discord = require('discord.js');
 const config = require('./dataSets/bot.json');
+const mongoose = require('mongoose');
 const { blacklistedWords } = require('./dataSets/blacklist.json');
 const client = new Discord.Client({disableEveryone: true},{ partials: ['MESSAGE', 'CHANEEL', 'REACTION']});
+
+mongoose.connect(process.env.mongoose, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
+
+const Data = require('../../models/data.js');
 
 const { join } = require("path");
 const fs = require("fs");
@@ -99,6 +107,82 @@ fs.readdir("./commands/", (err, files) => {
 
 client.on("message", message => {
     if (message.author.bot) return;
+
+    //PLAY.JS
+    var { pending } = require('./commands/team/play');
+    var play = require.play;
+
+    if (message.channel.type != 'dm') console.log(pending);
+    if (pending.has(user.id) && message.channel.type === "dm") {
+        var user = message.author;
+        if (message.content.toLowerCase() === 'accept' || message.content.toLowerCase() === 'potvrdiť') {
+            Data.findOne({
+                userID: user.id
+            }, (err, data) => {
+                if(err) throw err;
+                if(!data) {
+                    user.send('Niečo sa pokazilo.');
+                } else {
+                    var player = user.guild.members.cache.find(member => member.id === data.pending);
+                    if (player) {
+                        var embed = new Discord.MessageEmbed()
+                        .setTitle('Pozvánka prijatá!')
+                        .setDescription('Prijal si pozvánku a za používanie našeho systému si dostal nejaken ten cash.')
+                        .setColor('GREEN')
+                        .addField('Hodnotenie hry', 'Ak sa ti s používateľom **<@' + user.id + '>** hrá dobre môžeš mu pridať reputáciu pomocou commandu `+rep <meno>` alebo mu ju naopak môžeš odobrať commandom\n `-rep <meno>` (commandy fungujú iba na serveri)')
+                        user.send(embed);
+                        var embed2 = new Discord.MessageEmbed()
+                        .setTitle('Pozvánka prijatá!')
+                        .setDescription('Používateľ prijal tvoju pozvánku!')
+                        .setColor('GREEN')
+                        .addField('Hodnotenie hry', 'Ak sa ti s používateľom **<@' + user.id + '>** hrá dobre môžeš mu pridať reputáciu pomocou commandu `+rep <meno>` alebo mu ju naopak môžeš odobrať commandom\n `-rep <meno>` (commandy fungujú iba na serveri)');
+                        player.send(embed2);
+
+                        play.add(user, player);
+
+                        pending.delete(user.id);
+                        Data.findOne({
+                            userID: user.id
+                        }, (err, data) => {
+                            data.pending = 'null';
+                            data.save().catch(err => console.log(err));
+                        });
+                    }
+                }
+            });
+        } else if (message.content.toLowerCase() === 'decline' || message.content.toLowerCase() === 'zamietnuť') {
+            Data.findOne({
+                userID: user.id
+            }, (err, data) => {
+                if(err) throw err;
+                if(!data) {
+                    user.send('Niečo sa pokazilo.');
+                } else {
+                    var player = user.guild.members.cache.find(member => member.id === data.pending);
+                    if (player) {
+                        var embed = new Discord.MessageEmbed()
+                        .setTitle('Pozvánka zamietnutá!')
+                        .setDescription('Zamietol si pozvánku.')
+                        .setColor('RED')
+                        user.send(embed);
+                        var embed2 = new Discord.MessageEmbed()
+                        .setTitle('Pozvánka zamietnutá!')
+                        .setDescription('Používateľ zamietol tvoju pozvánku.')
+                        .setColor('RED')
+                        player.send(embed2);
+
+                        pending.delete(user.id);
+                        Data.findOne({
+                            userID: user.id
+                        }, (err, data) => {
+                            data.pending = 'null';
+                            data.save().catch(err => console.log(err));
+                        });
+                    }
+                }
+            });
+        }
+    }
 
     antiSpam.message(message);
     if(message.author === client || message.channel.type === "dm") return;
