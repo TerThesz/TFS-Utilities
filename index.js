@@ -106,8 +106,6 @@ fs.readdir("./commands/", (err, files) => {
 });
 
 client.on("message", message => {
-    console.log(message.guild);
-
     if (message.author.bot) return;
 
     //PLAY.JS
@@ -125,8 +123,7 @@ client.on("message", message => {
                 if(!data) {
                     user.send('Niečo sa pokazilo.');
                 } else {
-                    console.log(message.guild);
-                    var player = message.guild.members.cache.find(member => member.id === data.pending);
+                    var player = client.guild.members.cache.find(member => member.id === data.pending);
                     if (player) {
                         var embed = new Discord.MessageEmbed()
                         .setTitle('Pozvánka prijatá!')
