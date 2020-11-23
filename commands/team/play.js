@@ -170,7 +170,7 @@ module.exports.add = (user, player) => {
                 data.save().catch(err => console.log(err));
             }
         });
-        playedRecently.set(player.id, player.id);
+        playedRecently.add(player.id);
         setTimeout(() => {
             playedRecently.delete(player.id);
         }, 3600000);
