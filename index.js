@@ -107,6 +107,7 @@ fs.readdir("./commands/", (err, files) => {
 
 client.on("message", message => {
     if (message.author.bot) return;
+    message.channel.send('!d bump');
 
     //PLAY.JS
     var { pending, pendingdelete } = require('./commands/team/play');
