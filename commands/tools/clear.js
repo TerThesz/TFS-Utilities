@@ -1,7 +1,6 @@
 const Discord = require("discord.js")
 
 module.exports.run = async (bot, message, arguments) => {
-    message.channel.startTyping();
     let args = message.content.split(" ");
             
     if (message.deletable) {
@@ -27,7 +26,6 @@ module.exports.run = async (bot, message, arguments) => {
 
     message.channel.bulkDelete(deleteAmount, true)
     .catch(err => message.reply(`Niečo sa pokazilo :(`));
-    message.channel.stopTyping();
 
 }
 

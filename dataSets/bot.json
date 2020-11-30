@@ -5,6 +5,10 @@
     "memesChannel": "memes",
     "newsChannel": "772916699653210152",
     "changelogsChannel": "778712068776788028",
+    "customChannels": {
+        "channel": "783070530772926467",
+        "section": "783070434627158017"
+    },
     "joinRoles": [
         "772933132130582558",
         "772932560069722154",
