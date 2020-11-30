@@ -15,6 +15,7 @@ const { join } = require("path");
 const fs = require("fs");
 
 const antiAd = require('./antiAd');
+const customRooms = require('./customRooms');
 const AntiSpam = require('discord-anti-spam');
 const antiSpam = new AntiSpam({
     warnThreshold: 3,
@@ -48,6 +49,7 @@ client.on("guildMemberRemove", member => {
 });
 
 client.on("ready", () =>{
+    customRooms(client);
     antiAd(client);
 
     const activities = [
