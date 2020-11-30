@@ -1,10 +1,10 @@
 const config = require('./dataSets/bot.json');
 
-module.exports = (bot) => {
+module.exports = (bot, guild) => {
     console.log('1');
 bot.on('voiceStateUpdate', (oldMember, newMember) => {
-    oldMember = bot.guild.members.cache.find(user => user.id === oldMember);
-    newMember = bot.guild.members.cache.find(user => user.id === newMember);
+    oldMember = guild.members.cache.find(user => user.id === oldMember);
+    newMember = guild.members.cache.find(user => user.id === newMember);
 
     console.log('2');
         let newUserChannel = newMember.voice.channel;
@@ -16,7 +16,7 @@ bot.on('voiceStateUpdate', (oldMember, newMember) => {
             console.log('4');
             if (newUserChannel.id === config.customChannels.channel) {
                 console.log('5');
-                const channel = bot.guild.channels.cache.get(newMember.username);
+                const channel = guild.channels.cache.get(newMember.username);
                 if (channel) return newMember.send('Channel s tvojim menom už existuje.');
                 console.log('jj');
             }
