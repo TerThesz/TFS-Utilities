@@ -6,6 +6,7 @@ bot.on('voiceStateUpdate', (oldMember, newMember) => {
     console.log('2');
         let newUserChannel = newMember.voiceChannel
         let oldUserChannel = oldMember.voiceChannel
+        console.log(newUserChannel + '\n' + newMember + '\n' + oldUserChannel + '\n' + oldMember);
         
         console.log('3');
         if(oldUserChannel === undefined && newUserChannel !== undefined) {
