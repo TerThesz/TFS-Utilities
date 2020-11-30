@@ -10,7 +10,7 @@ mongoose.connect(process.env.mongoose, {
 const Data = require('../../models/data.js');
 
 module.exports.run = async (bot, message, arguments) => {
-    let user = message.mentions.users.first() || message.guild.members.find(user => user.username === args[0]).user || message.author;
+    let user = message.mentions.users.first() || message.guild.members.cache.find(user => user.username === args[0]).user || message.author;
     if (user) {
         Data.findOne({
             userID: user.id
