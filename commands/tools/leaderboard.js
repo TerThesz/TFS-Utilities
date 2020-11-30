@@ -22,7 +22,7 @@ module.exports.run = (bot, message, arguments) => {
             i++;
             if (i <= 10) {
                 if (description) description = description + i + '. **' + user.name + '** (' + user.rep + ' rep, ' + user.balance + ' €, ' + user.messages + 'ˢᵖʳᵃᵛ)\n' ;
-                else description = i + '. **' + user.name + '** (' + user.rep + ' rep)\n' 
+                else description = i + '. **' + user.name + '** (' + user.rep + ' rep, ' + user.balance + ' €, ' + user.messages + 'ˢᵖʳᵃᵛ)\n' ;
             }
         });
         embed.setDescription(description);
