@@ -4,8 +4,8 @@ module.exports = (bot) => {
     console.log('1');
 bot.on('voiceStateUpdate', (oldMember, newMember) => {
     console.log('2');
-        let newUserChannel = newMember.voiceChannel
-        let oldUserChannel = oldMember.voiceChannel
+        let newUserChannel = newMember.voice.channel;
+        let oldUserChannel = oldMember.voice.channel;
         console.log(newUserChannel + '\n' + newMember + '\n' + oldUserChannel + '\n' + oldMember);
         
         console.log('3');
