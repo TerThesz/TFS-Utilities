@@ -3,6 +3,9 @@ const config = require('./dataSets/bot.json');
 module.exports = (bot) => {
     console.log('1');
 bot.on('voiceStateUpdate', (oldMember, newMember) => {
+    oldMember = bot.guild.members.cache.find(user => user.id === oldMember);
+    newMember = bot.guild.members.cache.find(user => user.id === newMember);
+
     console.log('2');
         let newUserChannel = newMember.voice.channel;
         let oldUserChannel = oldMember.voice.channel;
