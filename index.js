@@ -49,7 +49,7 @@ client.on("guildMemberRemove", member => {
 });
 
 client.on("ready", () =>{
-    customRooms(client, client.guild);
+    customRooms(client);
     antiAd(client);
 
     const activities = [
