@@ -11,7 +11,7 @@ const Data = require('../../models/data.js');
 
 module.exports.run = async (bot, message, arguments) => {
     let user = message.mentions.members.first() || message.guild.members.cache.find(user => user.username === arguments[0]) || message.author;
-    user = user.user;
+    if (user != message.author) user = user.user;
     if (user) {
         Data.findOne({
             userID: user.id
