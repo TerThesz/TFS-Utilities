@@ -13,14 +13,14 @@ module.exports.run = async (bot, message, arguments) => {
     }
 
     if (isNaN(args[1]) || parseInt(args[1]) <= 0) {
-        return message.reply("This is not a number").then(m => m.delete(2000));
+        return message.reply("Toto nie je číslo").then(m => m.delete(2000));
     }
 
     let deleteAmount;
     if (parseInt(args[1]) > 100) {
         deleteAmount = 100;
     } else if (parseInt(args[1]) > 1) {
-        deleteAmount = parseInt(args[1] + 1);
+        deleteAmount = parseInt(args[1]);
     } else {
         return message.reply("Musíš použiť väčšie číslo ako 1.");
     }
