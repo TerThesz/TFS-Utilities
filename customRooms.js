@@ -4,8 +4,8 @@ module.exports = (bot) => {
     console.log('1');
 bot.on('voiceStateUpdate', (oldMember, newMember) => {
     console.log(bot);
-    oldMember = bot.guild.members.cache.find(user => user.id === oldMember);
-    newMember = bot.guild.members.cache.find(user => user.id === newMember);
+    oldMember = bot.guilds.cache.find(guild => guild.id === '772916118930063360').members.cache.find(user => user.id === oldMember);
+    newMember = bot.guilds.cache.find(guild => guild.id === '772916118930063360').members.cache.find(user => user.id === newMember);
 
     console.log('2');
         let newUserChannel = newMember.voice.channel;
