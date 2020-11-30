@@ -108,7 +108,7 @@ module.exports.run = async (bot, message, arguments) => {
 module.exports.config = {
     name: "play",
     accessableby: "Members",
-    aliases: ['invite']
+    aliases: ['invite', 'inv']
 }
 
 module.exports.pending = pending;
