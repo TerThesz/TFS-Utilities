@@ -8,9 +8,9 @@ bot.on('voiceStateUpdate', (oldMember, newMember) => {
     newMember = bot.guilds.cache.find(guild => guild.id === '772916118930063360').members.cache.find(user => user.id === newMember);
 
     console.log('2');
+        console.log(newUserChannel + '\n' + newMember.user + '\n' + oldUserChannel + '\n' + oldMember.user);
         let newUserChannel = newMember.voice.channel;
         let oldUserChannel = oldMember.voice.channel;
-        console.log(newUserChannel + '\n' + newMember.user + '\n' + oldUserChannel + '\n' + oldMember.user);
         
         console.log('3');
         if(oldUserChannel === undefined && newUserChannel !== undefined) {
