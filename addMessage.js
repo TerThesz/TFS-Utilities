@@ -1,6 +1,6 @@
 const Discord = require("discord.js")
 const mongoose = require('mongoose');
-const { msgRoles, repRoles } = require('./dataSets/bot.json');
+const { msgRoles, _repRoles } = require('./dataSets/bot.json');
 const canGainRep = new Set();
 
 mongoose.connect(process.env.mongoose, {
