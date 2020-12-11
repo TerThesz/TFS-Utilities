@@ -2,6 +2,7 @@ const Discord = require("discord.js")
 const mongoose = require('mongoose');
 const { msgRoles } = require('./dataSets/bot.json');
 const canGainRep = new Set();
+const canGainBal = new Set();
 
 mongoose.connect(process.env.mongoose, {
     useNewUrlParser: true,
@@ -44,7 +45,15 @@ module.exports.run = async (bot, message, arguments) => {
                     canGainRep.delete(user.id);
                 }, 10 * 60 * 1000);
             } 
-            if (rng >= (1000 - 750)) data.balance += money;
+            if (rng >= (1000 - 750)) {
+                if (!canGainBal.has(user.id)) {
+                    canGainBal.add(user.id);
+                    data.balance += money;
+                    setTimeout(() => {
+                        canGainBal.delete(user.id);
+                    }, 15 * 1000);
+                }
+            }
 
             data.messages += 1;
 
