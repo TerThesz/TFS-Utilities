@@ -26,11 +26,11 @@ module.exports.run = (bot, message, args) => {
             if (!canContinue) return message.channel.send('Na točenie videa si potrebuješ zakúpiť a aktivovať **počítač**.'); 
         
             data.active.forEach(item => {
-                if (item.upgrades.includes('v')) {
+                if (shopJson[item].upgrades.includes('s')) {
                     console.log(item.title);
                     upgrades++;
                 }
-                if (item.title === 'editor') {
+                if (item === 'editor') {
                     hasEditor = true;
                 }
             });
