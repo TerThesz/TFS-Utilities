@@ -47,7 +47,6 @@ module.exports.run = async (bot, message, arguments) => {
             if (rng >= 900) data.balance += money;
 
             data.messages += 1;
-            data.save().catch(err => console.log(err));
 
             var sendCongrats = false;
             var role;
@@ -93,9 +92,8 @@ module.exports.run = async (bot, message, arguments) => {
                 else if(msgs >= 5000) role = msgRoles.role5;
                 const _setRole = message.guild.roles.cache.find(_role => _role.id === role);
                 message.member.roles.add(_setRole);
-
-                data.save().catch(err => console.log(err));
             }
+            data.save().catch(err => console.log(err));
         }
     })
 }
