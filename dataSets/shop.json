@@ -38,5 +38,29 @@
         "permRequired": "non",
         "itemRequired": "počítač",
         "action": "+s editor"
+    },
+    {
+        "title": "druhý monitor",
+        "description": "Zlepší kvalitu videí/streamov\n*Potrebný predmet: počítač*",
+        "cost": "5000",
+        "permRequired": "non",
+        "itemRequired": "počítač",
+        "action": "+s monitor"
+    },
+    {
+        "title": "mikrofon",
+        "description": "Zlepší kvalitu videí/streamov\n*Potrebný predmet: počítač*",
+        "cost": "3500",
+        "permRequired": "non",
+        "itemRequired": "počítač",
+        "action": "+s mik"
+    },
+    {
+        "title": "LED svetlá",
+        "description": "Zlepší kvalitu videí/streamov (a sexu)\n*Potrebný predmet: počítač*",
+        "cost": "10000",
+        "permRequired": "non",
+        "itemRequired": "počítač",
+        "action": "+s svetlá"
     }
 ]
