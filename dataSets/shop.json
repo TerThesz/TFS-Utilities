@@ -40,7 +40,7 @@
         "action": "+s editor"
     },
     {
-        "title": "druhý monitor",
+        "title": "monitor",
         "description": "Zlepší kvalitu videí/streamov\n*Potrebný predmet: počítač*",
         "cost": "5000",
         "permRequired": "non",
