@@ -17,7 +17,9 @@ module.exports.run = async (bot, message, arguments) => {
     console.log(user); 
     if (!user) return;
     if (!pending.has(user.id)) {
+        console.log('prd');
         if (user && arguments[1]) {
+            console.log('1');
             var embed = new Discord.MessageEmbed()
                 .setTitle('Pozvánka do hry.')
                 .setDescription('Pozval si používateľa: **<@' + user.id + '>** do hry: **' + arguments[1] + '**.')
@@ -39,6 +41,7 @@ module.exports.run = async (bot, message, arguments) => {
                 .setColor('BLUE');
             message.channel.send(infoEmbed);
 
+            console.log('2');
             Data.findOne({
                 userID: user.id
             }, (err, data) => {
