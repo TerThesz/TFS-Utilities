@@ -15,12 +15,8 @@ module.exports.run = async (bot, message, arguments) => {
     Data.findOne({
         userID: user.id
     }, (err, data) => {
-        if (!data) {
-            message.channel.send('Tento používateľ nemá prepojený steam účet \*smutné pesničky\*');
-        } else {
             message.channel.send('Link na steam účet používateľa ' + user.username + ': <' + data.steamLinked + '>');
-        }
-    });
+        });
 }
 
 module.exports.config = {

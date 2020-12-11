@@ -23,28 +23,9 @@ module.exports.run = async (bot, message, arguments) => {
             userID: user.id
         }, (err, data) => {
             if(err) throw err;
-            if(!data) {
-                const newData = new Data({
-                    active: [],
-                    name: user.username,
-                    userID: user.id,
-                    rep: 0,
-                    messages: 0,
-                    balance: arguments[1],
-                    steamLinked: 'null',
-                    gamesPlayied: 0,
-                    pending: 'null',
-                    inventory: [],
-                });
-                data = newData;
-                newData.save().catch(err => console.log(err));
-                console.log('Created database table for ' + user.username);
-                message.channel.send('Bal set to ' + arguments[1]);
-            } else {
                 data.balance = arguments[1];
                 data.save().catch(err => console.log(err));
                 message.channel.send('Bal set to ' + arguments[1]);
-            }
         })
     } else {message.channel.send('Tohoto človeka nepoznám :(')}
 }

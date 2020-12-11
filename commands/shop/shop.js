@@ -38,21 +38,6 @@ module.exports.run = async (bot, message, args) => {
         }, (err, data) => {
             if (err => console.log(err));
 
-            if (!data) {
-                const newData = new Data({
-                    active: [],
-                    name: message.author.username,
-                    userID: message.author.id,
-                    rep: 0,
-                    messages: 0,
-                    balance: 0,
-                    steamLinked: 'null',
-                    gamesPlayied: 0,
-                    pending: 'null',
-                    inventory: [],
-                });
-                return message.channel.send('Nemáš na to lóve (Pls nechoď robiť drogy ok pls ok)');
-            } else {
                 if (data.balance >= object.cost) {
                     data.balance -= object.cost;
                     const inv = data.inventory;
@@ -64,7 +49,6 @@ module.exports.run = async (bot, message, args) => {
                     .setDescription(`Používateľ **${message.author.username}** si zakúpil predmet: **${object.title}**!!\nPoužiješ ho commandom **!use ${object.title}**`)
                     message.channel.send(exampleEmbed);
                 } else return message.channel.send('Nemáš na to lóve (Pls nechoď robiť drogy ok pls ok)');
-            }
         });
     }
 }

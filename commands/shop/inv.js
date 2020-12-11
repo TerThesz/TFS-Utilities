@@ -22,21 +22,6 @@ module.exports.run = async (bot, message, args) => {
     }, (err, data) => {
         if (err => console.log(err));
 
-        if (!data) {
-            const newData = new Data({
-                active: [],
-                name: user.username,
-                userID: user.id,
-                rep: 0,
-                messages: 0,
-                balance: 0,
-                steamLinked: 'null',
-                gamesPlayied: 0,
-                pending: 'null',
-                inventory: [],
-            });
-            return message.channel.send('Sorrko ale tvoj inventár je prázdny');
-        } else {
             let items = [];
             data.inventory.forEach(item => {
                 items.push(item);
@@ -51,8 +36,7 @@ module.exports.run = async (bot, message, args) => {
             })
             embed.setDescription(description);
             message.channel.send(embed)
-        }
-    });
+        });
 }
 
 module.exports.config = {

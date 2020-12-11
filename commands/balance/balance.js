@@ -17,30 +17,10 @@ module.exports.run = async (bot, message, args) => {
         },(err, data) => {
             if (err => console.log(err));
     
-            if(!data) {
-                const newData = new Data({
-                    active: [],
-                    name: user.username,
-                    userID: user.id,
-                    rep: 0,
-                    messages: 0,
-                    balance: 0,
-                    steamLinked: 'null',
-                    gamesPlayied: 0,
-                    pending: 'null',
-                    inventory: [],
-                });
-                newData.save().catch(err => console.log(err));
-                const exampleEmbed = new Discord.MessageEmbed()
-                .setColor('BLUE')
-                .setDescription(`Používateľ \`${user.username}\` má na účte **0€**.`)
-                message.channel.send(exampleEmbed);
-            } else {
-                const exampleEmbed = new Discord.MessageEmbed()
-                .setColor('BLUE')
-                .setDescription(`Používateľ \`${user.username}\` má na účte **${data.balance}€**.`)
-                message.channel.send(exampleEmbed);
-            }
+            const exampleEmbed = new Discord.MessageEmbed()
+            .setColor('BLUE')
+            .setDescription(`Používateľ \`${user.username}\` má na účte **${data.balance}€**.`)
+            message.channel.send(exampleEmbed);
         });
     }
 }

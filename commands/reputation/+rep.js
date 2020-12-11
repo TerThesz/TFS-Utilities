@@ -23,34 +23,12 @@ module.exports.run = async (bot, message, arguments) => {
                     userID: user.id
                 }, (err, data) => {
                     if(err) throw err;
-                    if(!data) {
-                        const newData = new Data({
-                            name: user.username,
-                            userID: user.id,
-                            rep: 5,
-                            messages: 0,
-                            balance: 0,
-                            steamLinked: 'null',
-                            gamesPlayied: 0,
-                            pending: 'null',
-                            inventory: [],
-                            active: [],
-                        });
-                        data = newData;
-                        newData.save().catch(err => console.log(err));
-                        console.log('Created database table for ' + user.username);
-                        const exampleEmbed = new Discord.MessageEmbed()
-                        .setColor('#73df57')
-                        .setDescription(`Používateľovi \`${user.username}\` sa zväčšila reputácia o **5 bodov**\nMomentálne má **5 bodov** reputácie.`)
-                        message.channel.send(exampleEmbed);
-                    } else {
                         data.rep += 5;
                         data.save().catch(err => console.log(err));
                         const exampleEmbed = new Discord.MessageEmbed()
                         .setColor('#73df57')
                         .setDescription(`Používateľovi \`${user.username}\` sa zväčšila reputácia o **5 bodov**\nMomentálne má **${data.rep} bodov** reputácie.`)
                         message.channel.send(exampleEmbed);
-                    }
                     checkRole(message.guild.members.cache.find(member => member.id === user.id), data.rep, message);
                 })
                 talkedRecently.add(message.author.id);

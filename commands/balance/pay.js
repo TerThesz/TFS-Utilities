@@ -19,44 +19,40 @@ module.exports.run = async (bot, message, args) => {
                 userID: sender.id
             },(err, data) => {
                 if (err => console.log(err));
-        
-                if(!data) {
-                    message.channel.send('Nemáš židne peniaze.')
+
+                if (data.balance >= amout) {
+                    Data.findOne ({
+                        userID: reciever.id
+                    }, (err, data2) => {
+                        if (err => console.log(err));
+
+                        if ( 2) {
+                            const newData = new Data({
+                                active: [],
+                                name: user.username,
+                                userID: user.id,
+                                rep: 0,
+                                messages: 0,
+                                balance: amout,
+                                steamLinked: 'null',
+                                gamesPlayied: 0,
+                                pending: 'null',
+                                inventory: [],
+                            });
+                        } else {
+                            var bal = parseInt(amout);
+                            data2.balance += (bal);
+                            data2.save().catch(err => console.log(err));
+                        }
+                        data.balance -= amout;
+                        data.save().catch(err => console.log(err));
+                        const exampleEmbed = new Discord.MessageEmbed()
+                        .setColor('GREEN')
+                        .setDescription(`Používateľ **${sender.username}** úspešne poslal **${amout}€** používaeľovi **${reciever.username}**.`)
+                        message.channel.send(exampleEmbed);
+                    });
                 } else {
-                    if (data.balance >= amout) {
-                        Data.findOne ({
-                            userID: reciever.id
-                        }, (err, data2) => {
-                            if (err => console.log(err));
 
-                            if (!data2) {
-                                const newData = new Data({
-                                    active: [],
-                                    name: user.username,
-                                    userID: user.id,
-                                    rep: 0,
-                                    messages: 0,
-                                    balance: amout,
-                                    steamLinked: 'null',
-                                    gamesPlayied: 0,
-                                    pending: 'null',
-                                    inventory: [],
-                                });
-                            } else {
-                                var bal = parseInt(amout);
-                                data2.balance += (bal);
-                                data2.save().catch(err => console.log(err));
-                            }
-                            data.balance -= amout;
-                            data.save().catch(err => console.log(err));
-                            const exampleEmbed = new Discord.MessageEmbed()
-                            .setColor('GREEN')
-                            .setDescription(`Používateľ **${sender.username}** úspešne poslal **${amout}€** používaeľovi **${reciever.username}**.`)
-                            message.channel.send(exampleEmbed);
-                        });
-                    } else {
-
-                    }
                 }
             });
         } else {

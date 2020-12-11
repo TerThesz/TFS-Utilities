@@ -46,24 +46,9 @@ module.exports.run = async (bot, message, arguments) => {
                 userID: user.id
             }, (err, data) => {
                 if(err) throw err;
-                if(!data) {
-                    const newData = new Data({
-                        active: [],
-                        name: user.user.username,
-                        userID: user.id,
-                        rep: 0,
-                        messages: 0,
-                        balance: 0,
-                        steamLinked: 'null',
-                        gamesPlayied: 0,
-                        pending: message.author.id,
-                    });
-                    newData.save().catch(err => console.log(err));
-                } else {
                     data.pending = message.author.id;
                     data.save().catch(err => console.log(err));
-                }
-            });
+                });
 
             pending.add(user.id);
             setTimeout(() => {
@@ -73,24 +58,9 @@ module.exports.run = async (bot, message, arguments) => {
                         userID: user.id
                     }, (err, data) => {
                         if(err) throw err;
-                        if(!data) {
-                            const newData = new Data({
-                                active: [],
-                                name: user.user.username,
-                                userID: user.id,
-                                rep: 0,
-                                messages: 0,
-                                balance: 0,
-                                steamLinked: 'null',
-                                gamesPlayied: 0,
-                                pending: 'null',
-                            });
-                            newData.save().catch(err => console.log(err));
-                        } else {
                             data.pending = 'null';
                             data.save().catch(err => console.log(err));
-                        }
-                    });
+                        });
                     var embed = new Discord.MessageEmbed()
                     .setTitle('Pozvánka do hry vypršala.')
                     .setDescription('Pozvánka do hry **' + arguments[1] + '** vypršala.')
@@ -125,24 +95,9 @@ module.exports.add = (user, player) => {
             userID: user.id
         }, (err, data) => {
             if(err) throw err;
-            if(!data) {
-                const newData = new Data({
-                    active: [],
-                    name:user.user.username,
-                    userID: user.id,
-                    rep: 0,
-                    messages: 0,
-                    balance: 100,
-                    steamLinked: 'null',
-                    gamesPlayied: 1,
-                    pending: 'null',
-                });
-                newData.save().catch(err => console.log(err));
-            } else {
                 data.balance += 100;
                 data.gamesPlayied += 1;
                 data.save().catch(err => console.log(err));
-            }
         });
         playedRecently.add(user.id);
         setTimeout(() => {
@@ -154,26 +109,10 @@ module.exports.add = (user, player) => {
             userID: player.id
         }, (err, data) => {
             if(err) throw err;
-            if(!data) {
-                const newData = new Data({
-                    active: [],
-                    name: player.user.username,
-                    userID: player.id,
-                    rep: 0,
-                    messages: 0,
-                    balance: 100,
-                    steamLinked: 'null',
-                    gamesPlayied: 1,
-                    pending: 'null',
-                    inventory: [],
-                });
-                newData.save().catch(err => console.log(err));
-            } else {
                 data.balance += 100;
                 data.gamesPlayied += 1;
                 data.save().catch(err => console.log(err));
-            }
-        });
+            });
         playedRecently.add(player.id);
         setTimeout(() => {
             playedRecently.delete(player.id);

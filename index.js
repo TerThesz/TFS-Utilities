@@ -41,7 +41,29 @@ client.on("guildMemberAdd", member => {
         member.roles.add(role);
     });
     const welcomeChannel = member.guild.channels.cache.find(channel => channel.name === config.leaveJoinChannel)
-    welcomeChannel.send (`**${member.user.username}** sa k nám pripojil!`)
+    welcomeChannel.send (`**${member.user.username}** sa k nám pripojil!`);
+    Data.findOne({
+        userID: member.id
+    }, (err, data) => {
+        if (err) return err;
+
+        if (!data) {
+            const newData = new Data({
+                active: [],
+                name: user.username,
+                userID: user.id,
+                rep: 0,
+                messages: 0,
+                balance: 0,
+                steamLinked: 'null',
+                gamesPlayied: 0,
+                pending: 'null',
+                inventory: [],
+            });
+            newData.save().catch(err => console.log(err));
+            console.log('Created database table for ' + user.username);
+        }
+    })
 });
 
 client.on("guildMemberRemove", member => {
@@ -117,9 +139,6 @@ client.on("message", message => {
                 userID: user.id
             }, (err, data) => {
                 if(err) throw err;
-                if(!data) {
-                    user.send('Niečo sa pokazilo.');
-                } else {
                     var player = client.guilds.cache.find(guild => guild.id === '772916118930063360').members.cache.find(member => member.id === data.pending);
                     if (player) {
                         var embed = new Discord.MessageEmbed()
@@ -145,16 +164,12 @@ client.on("message", message => {
                             data.save().catch(err => console.log(err));
                         });
                     }
-                }
             });
         } else if (message.content.toLowerCase() === 'decline' || message.content.toLowerCase() === 'zamietnuť') {
             Data.findOne({
                 userID: user.id
             }, (err, data) => {
                 if(err) throw err;
-                if(!data) {
-                    user.send('Niečo sa pokazilo.');
-                } else {
                     var player = user.guild.members.cache.find(member => member.id === data.pending);
                     if (player) {
                         var embed = new Discord.MessageEmbed()
@@ -176,7 +191,6 @@ client.on("message", message => {
                             data.save().catch(err => console.log(err));
                         });
                     }
-                }
             });
         }
     }

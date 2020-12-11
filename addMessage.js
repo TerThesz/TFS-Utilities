@@ -19,22 +19,6 @@ module.exports.run = async (bot, message, arguments) => {
         userID: user.id
     }, (err, data) => {
         if(err) throw err;
-        if(!data) {
-            const newData = new Data({
-                active: [],
-                name: user.username,
-                userID: user.id,
-                rep: 5,
-                messages: 0,
-                balance: 0,
-                steamLinked: 'null',
-                gamesPlayied: 0,
-                pending: 'null',
-                inventory: [],
-            });
-            newData.save().catch(err => console.log(err));
-            console.log('Created database table for ' + user.username);
-        } else {
             const rng = Math.floor(Math.random() * Math.floor(1000));
             const money = Math.floor(Math.random() * Math.floor(30));
 
@@ -103,8 +87,7 @@ module.exports.run = async (bot, message, arguments) => {
                 message.member.roles.add(_setRole);
             }
             data.save().catch(err => console.log(err));
-        }
-    })
+        })
 }
 
 module.exports.config = {

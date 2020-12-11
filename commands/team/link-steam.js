@@ -20,29 +20,10 @@ module.exports.run = async (bot, message, arguments) => {
                 Data.findOne({
                     userID: user.id
                 }, (err, data) => {
-                    if (!data) {
-                        const newData = new Data({
-                            active: [],
-                            name: user.username,
-                            userID: user.id,
-                            rep: 0,
-                            messages: 0,
-                            balance: 0,
-                            steamLinked: arguments[0],
-                            gamesPlayied: 0,
-                            pending: 'null',
-                            inventory: [],
-                        });
-                        data = newData;
-                        newData.save().catch(err => console.log(err));
-                        console.log('Created database table for ' + user.username);
-                        message.channel.send('Linked steam account (<' + arguments[0] + '>)');
-                    } else {
                         data.steamLinked = arguments[0];
                         data.save().catch(err => console.log(err));
                         message.channel.send('Linked steam account (<' + arguments[0] + '>)');
-                    }
-                });
+                    });
             }
         }
     }

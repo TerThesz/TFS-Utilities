@@ -17,26 +17,7 @@ module.exports.run = async (bot, message, arguments) => {
         userID: user.id
     }, (err, data) => {
         if(err) throw err;
-        if(!data) {
-            const newData = new Data({
-                active: [],
-                name: user.username,
-                userID: user.id,
-                rep: 0,
-                messages: 0,
-                balance: amout,
-                steamLinked: 'null',
-                gamesPlayied: 0,
-                pending: 'null',
-                inventory: [],
-            });
-            newData.save().catch(err => console.log(err));
-            console.log('Created database table for ' + user.username);
-            const exampleEmbed = new Discord.MessageEmbed()
-            .setColor('BLUE')
-            .setDescription(`Používateľ ${user.username} má 0 správu.`);
-            message.channel.send(exampleEmbed);
-        } else {
+
             const exampleEmbed = new Discord.MessageEmbed();
             if (data.messages === 1) {
                 exampleEmbed
@@ -52,8 +33,7 @@ module.exports.run = async (bot, message, arguments) => {
                 .setDescription(`Používateľ ${user.username} má ${data.messages} správ.`);
             }
             message.channel.send(exampleEmbed);
-        }
-    })
+        })
 }
 module.exports.config = {
     name: "messages",
