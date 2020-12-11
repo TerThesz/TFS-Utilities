@@ -3,7 +3,7 @@ const config = require('./dataSets/bot.json');
 const mongoose = require('mongoose');
 const { blacklistedWords } = require('./dataSets/blacklist.json');
 const client = new Discord.Client({disableEveryone: true},{ partials: ['MESSAGE', 'CHANEEL', 'REACTION']});
-const { pending } = require('./commands/team/play');
+const { pending, play } = require('./commands/team/play');
 
 mongoose.connect(process.env.mongoose, {
     useNewUrlParser: true,
