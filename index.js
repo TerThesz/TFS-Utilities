@@ -109,6 +109,7 @@ fs.readdir("./commands/", (err, files) => {
 client.on("message", message => {
     if (message.author.bot) return;
  
+    const user = message.author;
     if (pending.has(user.id) && message.channel.type === "dm") {
         if (message.content.toLowerCase() === 'accept' || message.content.toLowerCase() === 'potvrdiť') {
             Data.findOne({
