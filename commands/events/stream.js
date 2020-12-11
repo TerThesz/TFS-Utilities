@@ -54,7 +54,7 @@ module.exports.run = (bot, message, args) => {
             if (data.rep >= 5) revenue = Math.floor(Math.random() * ((data.rep * 2) - 5) + 5) * donators / 10;
             else revenue = Math.floor(Math.random() * (10 - 5) + 5) * donators / 10;
 
-            data.balance += revenue;
+            data.balance += Math.floor(revenue);
             data.save().catch(err => console.log(err));
 
             return message.channel.send(new Discord.MessageEmbed()
