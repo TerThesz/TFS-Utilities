@@ -26,14 +26,12 @@ module.exports.run = (bot, message, args) => {
             if (!canContinue) return message.channel.send('Na točenie videa si potrebuješ zakúpiť a aktivovať **počítač**.'); 
         
             data.active.forEach(item => {
-                switch (item) {
-                    case 'kamera':
-                        upgrades++;
-                        break;
-                    case 'editor':
-                        upgrades++;
-                        hasEditor = true;
-                        break;
+                if (item.upgrades.has('v')) {
+                    console.log(item.title);
+                    upgrades++;
+                }
+                if (item.title === 'editor') {
+                    hasEditor = true;
                 }
             });
 
@@ -49,7 +47,8 @@ module.exports.run = (bot, message, args) => {
 
             const revenue = Math.floor(((views / 1000) - shopJson.find(category => category.title === 'editor').cost));
 
-            data.balance += revenue;
+            if (hasEditor) data.balance += (revenue - 100);
+            else data.balance += revenue;
             data.save().catch(err => console.log(err));
 
             return message.channel.send(new Discord.MessageEmbed()
