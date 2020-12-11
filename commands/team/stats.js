@@ -12,13 +12,10 @@ const Data = require('../../models/data.js');
 module.exports.run = async (bot, message, arguments) => {
     let user = message.mentions.members.first() || message.author;
     if (user != message.author) user = user.user;
-    console.log(user);
     if (user) {
-        console.log(1);
         Data.findOne({
             userID: user.id
         }, (err, data) => {
-            console.log(2);
             if(err) throw err;
                 var embed = new Discord.MessageEmbed()
                 .setTitle('Status hráča ' + user.username)
@@ -29,6 +26,7 @@ module.exports.run = async (bot, message, arguments) => {
                     {name: 'Herné informácie ', value: 'Steam link: **<' + data.steamLinked + '>**\nOdohraté hry na serveri: **' + data.gamesPlayied + '**'}
                 )
                 .setColor('BLUE') 
+                message.channel.send(embed);
             })
     }
 }
