@@ -44,7 +44,7 @@ module.exports.run = async (bot, message, arguments) => {
                     canGainRep.delete(user.id);
                 }, 10 * 60 * 1000);
             }
-            if (rng >= 900) data.balance += money;
+            if (rng >= 500) data.balance += money;
 
             data.messages += 1;
 
