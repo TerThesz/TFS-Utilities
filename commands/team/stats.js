@@ -25,7 +25,7 @@ module.exports.run = async (bot, message, arguments) => {
                     {name: 'Levely ', value: 'Reputácia: **' + data.rep + ' bodov**\nSprávy: **' + data.messages + '**ˢᵖʳᵃᵛ'},
                     {name: 'Herné informácie ', value: 'Steam link: **<' + data.steamLinked + '>**\nOdohraté hry na serveri: **' + data.gamesPlayied + '**'}
                 )
-                .setColor('BLUE')
+                .setColor('BLUE') 
             })
     }
 }
