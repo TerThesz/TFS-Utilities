@@ -61,7 +61,7 @@ module.exports.run = async (bot, message, args) => {
                     data.save().catch(err => console.log(err));
                     const exampleEmbed = new Discord.MessageEmbed()
                     .setColor('GREEN')
-                    .setDescription(`Používateľ **${message.author.username}** si zakúpil predmet: **${object.title}**!!\nPoužiješ ho commandom !use ${object.title}`)
+                    .setDescription(`Používateľ **${message.author.username}** si zakúpil predmet: **${object.title}**!!\nPoužiješ ho commandom **!use ${object.title}**`)
                     message.channel.send(exampleEmbed);
                 } else return message.channel.send('Nemáš na to lóve (Pls nechoď robiť drogy ok pls ok)');
             }
