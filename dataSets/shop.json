@@ -2,7 +2,7 @@
     {
         "title": "vip",
         "description": "Zakúpenie Vip na doživotie",
-        "cost": "5000",
+        "cost": "35000",
         "permRequired": "non",
         "itemRequired": "non",
         "action": "+p vip"
