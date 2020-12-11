@@ -27,7 +27,7 @@ module.exports.run = (bot, message, args) => {
         
             data.active.forEach(item => {
                 console.log(item);
-                if (shopJson.get(item).upgrades.includes('v')) {
+                if (shopJson.find(i => i.title === item).upgrades.includes('v')) {
                     console.log(item.title);
                     upgrades++;
                 }
