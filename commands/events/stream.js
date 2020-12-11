@@ -24,7 +24,7 @@ module.exports.run = (bot, message, args) => {
             if (!canContinue) return message.channel.send('Na streamovanie si potrebuješ zakúpiť a aktivovať **počítač**.'); 
         
             data.active.forEach(item => {
-                if (shopJson[item].upgrades.includes('s')) {
+                if (shopJson.get(item).upgrades.includes('s')) {
                     console.log(item.title);
                     upgrades++;
                 }
