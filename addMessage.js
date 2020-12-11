@@ -43,7 +43,7 @@ module.exports.run = async (bot, message, arguments) => {
                 setTimeout(() => {
                     canGainRep.delete(user.id);
                 }, 10 * 60 * 1000);
-            }
+            } 
             if (rng >= (1000 - 750)) data.balance += money;
 
             data.messages += 1;

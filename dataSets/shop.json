@@ -33,7 +33,7 @@
     },
     {
         "title": "editor",
-        "description": "Za videá budeš dostávať viac peňazí.\n*Spôsob pladby: 100€/mesiac*\n*Potrebný predmet: počítač*",
+        "description": "Za videá budeš dostávať viac peňazí.\n*Spôsob pladby: 100€/video*\n*Potrebný predmet: počítač*",
         "cost": "100",
         "permRequired": "non",
         "itemRequired": "počítač",
