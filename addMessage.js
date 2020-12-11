@@ -1,6 +1,6 @@
 const Discord = require("discord.js")
 const mongoose = require('mongoose');
-const { msgRoles, _repRoles } = require('./dataSets/bot.json');
+const { msgRoles } = require('./dataSets/bot.json');
 const canGainRep = new Set();
 
 mongoose.connect(process.env.mongoose, {
@@ -85,13 +85,12 @@ module.exports.run = async (bot, message, arguments) => {
                 data.rep += 5;
 
                 var role;
-                var rep = data.rep += 5;
-                if(rep >= 0 && rep <= 5) role = _repRoles.role1;
-                else if(rep >= 10 && rep <= 15) role = _repRoles.role2;
-                else if(rep >= 20 && rep <= 45) role = _repRoles.role3;
-                else if(rep >= 50 && rep <= 75) role = _repRoles.role4;
-                else if(rep >= 80 && rep <= 100) role = _repRoles.role5;
-                else if(rep > 100) role =  _repRoles.role6;
+                var msgs = data.messages += 5;
+                if(msgs >= 100 && msgs < 500) role = msgRoles.role1;
+                else if(msgs >= 500 && msgs < 1000) role = msgRoles.role2;
+                else if(msgs >= 1000 && msgs < 2000) role = msgRoles.role3;
+                else if(msgs >= 2000 && msgs < 5000) role = msgRoles.role4;
+                else if(msgs >= 5000) role = msgRoles.role5;
                 const _setRole = message.guild.roles.cache.find(_role => _role.id === role);
                 message.member.roles.add(_setRole);
 

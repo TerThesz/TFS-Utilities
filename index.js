@@ -107,11 +107,7 @@ fs.readdir("./commands/", (err, files) => {
 
 client.on("message", message => {
     if (message.author.bot) return;
-
-    //PLAY.JS
-    var { pending, pendingdelete } = require('./commands/team/play');
-    var play = require('./commands/team/play');
-    var user = message.author;
+ 
 
     if (pending.has(user.id) && message.channel.type === "dm") {
         if (message.content.toLowerCase() === 'accept' || message.content.toLowerCase() === 'potvrdiť') {
