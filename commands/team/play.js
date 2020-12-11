@@ -14,6 +14,7 @@ const Data = require('../../models/data.js');
 
 module.exports.run = async (bot, message, arguments) => {
     var user = message.mentions.members.first();
+    console.log(user); 
     if (!user) return;
     if (!pending.has(user.id)) {
         if (user && arguments[1]) {
