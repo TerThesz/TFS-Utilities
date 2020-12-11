@@ -11,6 +11,7 @@ mongoose.connect(process.env.mongoose, {
 const Data = require('../../models/data.js');
 
 module.exports.run = (bot, message, args) => {
+    console.log(message.author.id);
     if (!cooldown.has(message.author.id)) {
         Data.findOne({
             userID: message.author.id
