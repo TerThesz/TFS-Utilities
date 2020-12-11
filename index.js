@@ -3,6 +3,7 @@ const config = require('./dataSets/bot.json');
 const mongoose = require('mongoose');
 const { blacklistedWords } = require('./dataSets/blacklist.json');
 const client = new Discord.Client({disableEveryone: true},{ partials: ['MESSAGE', 'CHANEEL', 'REACTION']});
+const { pending } = require('./commands/team/play');
 
 mongoose.connect(process.env.mongoose, {
     useNewUrlParser: true,
@@ -108,7 +109,6 @@ fs.readdir("./commands/", (err, files) => {
 client.on("message", message => {
     if (message.author.bot) return;
  
-
     if (pending.has(user.id) && message.channel.type === "dm") {
         if (message.content.toLowerCase() === 'accept' || message.content.toLowerCase() === 'potvrdiť') {
             Data.findOne({
