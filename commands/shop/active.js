@@ -56,5 +56,5 @@ module.exports.run = async (bot, message, args) => {
 module.exports.config = {
     name: "active",
     accessableby: "Members",
-    aliases: []
+    aliases: ['upgrades']
 }
