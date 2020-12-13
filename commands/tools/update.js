@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, arguments) => {
         message.guild.channels.cache.find(channel => channel.id === botConfig.changelogsChannel).send('\`ch' + string + '@' + require('../../dataSets/other.json').version + '\`\n\n' + data);
         });
             
-        const fileName = './datasets/other.json'
+        const fileName = './dataSets/other.json'
     
         config.version = arguments[1];
             

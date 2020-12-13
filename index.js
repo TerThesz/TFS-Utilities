@@ -6,7 +6,7 @@ const client = new Discord.Client({disableEveryone: true},{ partials: ['MESSAGE'
 const { pending, pendingdelete } = require('./commands/team/play');
 const play = require('./commands/team/play');
 
-mongoose.connect(process.env.mongoose, {
+mongoose.connect(require('./dataSets/bot.json').mongoose, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
@@ -276,4 +276,4 @@ client.on('messageReactionRemove', async (reaction, user) => {
     }
 });*/
 
-client.login(process.env.token);
+client.login(require('./dataSets/bot.json').token);

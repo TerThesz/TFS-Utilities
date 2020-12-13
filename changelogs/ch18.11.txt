@@ -13,7 +13,7 @@
   + help [tools]
   + update [tools]
 
-**datasets:**
+**dataSets:**
   + shop.json
 
 **categories:**

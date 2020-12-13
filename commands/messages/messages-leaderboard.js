@@ -2,7 +2,7 @@ const Discord = require("discord.js")
 const mongoose = require('mongoose');
 const dotEnv = require('dotenv').config();
 
-mongoose.connect(process.env.mongoose, {
+mongoose.connect(require('../../dataSets/bot.json').mongoose, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });

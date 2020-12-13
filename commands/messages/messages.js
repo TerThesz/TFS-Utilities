@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const { msgRoles } = require('../../dataSets/bot.json');
 const dotEnv = require('dotenv').config();
 
-mongoose.connect(process.env.mongoose, {
+mongoose.connect(require('../../dataSets/bot.json').mongoose, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });

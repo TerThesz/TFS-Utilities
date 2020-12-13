@@ -4,7 +4,7 @@
   + use [shop]
   + play (fix) [team]
 
-**datasets:**
+**dataSets:**
   + pravidlá.json
 
 **eventy:**

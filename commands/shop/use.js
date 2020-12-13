@@ -2,7 +2,7 @@ const shopJson = require('../../dataSets/shop.json');
 const mongoose = require('mongoose');
 const Discord = require("discord.js")
 
-mongoose.connect(process.env.mongoose, {
+mongoose.connect(require('../../dataSets/bot.json').mongoose, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });

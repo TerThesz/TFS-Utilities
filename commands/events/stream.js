@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const shopJson = require('../../dataSets/shop.json');
 const cooldown = new Set();
 
-mongoose.connect(process.env.mongoose, {
+mongoose.connect(require('../../dataSets/bot.json').mongoose, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });

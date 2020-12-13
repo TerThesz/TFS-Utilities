@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const shopJson = require('../../dataSets/shop.json');
 const cooldown = new Set();
 
-mongoose.connect(process.env.mongoose, {
+mongoose.connect(require('../../dataSets/bot.json').mongoose, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
@@ -26,7 +26,6 @@ module.exports.run = (bot, message, args) => {
             if (!canContinue) return message.channel.send('Na točenie videa si potrebuješ zakúpiť a aktivovať **počítač**.'); 
         
             data.active.forEach(item => {
-                console.log(item);
                 if (shopJson.find(i => i.title === item).upgrades.includes('v')) {
                     upgrades++;
                 }

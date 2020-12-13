@@ -4,7 +4,7 @@ const { msgRoles } = require('./dataSets/bot.json');
 const canGainRep = new Set();
 const canGainBal = new Set();
 
-mongoose.connect(process.env.mongoose, {
+mongoose.connect(require('./dataSets/bot.json').mongoose, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });

@@ -5,7 +5,7 @@ const playedRecently = new Set();
 const client = new Discord.Client();
 const dotEnv = require('dotenv').config();
 
-mongoose.connect(process.env.mongoose, {
+mongoose.connect(require('../../dataSets/bot.json').mongoose, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
