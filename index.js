@@ -82,7 +82,6 @@ client.on("ready", () =>{
         `${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)} users on TFS!`
     ];
 
-    console.log('3');
     let i = 0;
     setInterval(() => client.user.setActivity(`${activities[i++ % activities.length]}`, { type: 'WATCHING' }), 15000);
     console.log(`Logged in as ${client.user.tag}!`);
@@ -91,7 +90,6 @@ client.on("ready", () =>{
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 
-console.log('1');
 fs.readdir("./commands/", (err, files) => {
     if(err) console.log(err);
 
@@ -173,7 +171,7 @@ client.on("message", message => {
                 userID: user.id
             }, (err, data) => {
                 if(err) throw err;
-                    var player = user.guild.members.cache.find(member => member.id === data.pending);
+                    var player = client.guilds.cache.find(guild => guild.id === '772916118930063360').members.cache.find(member => member.id === data.pending);
                     if (player) {
                         var embed = new Discord.MessageEmbed()
                         .setTitle('Pozvánka zamietnutá!')
