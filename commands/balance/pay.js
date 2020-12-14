@@ -29,8 +29,8 @@ module.exports.run = async (bot, message, args) => {
                         if ( 2) {
                             const newData = new Data({
                                 active: [],
-                                name: user.username,
-                                userID: user.id,
+                                name: reciever.username,
+                                userID: reciever.id,
                                 rep: 0,
                                 messages: 0,
                                 balance: amout,
