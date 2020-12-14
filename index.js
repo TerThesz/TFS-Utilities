@@ -50,7 +50,7 @@ client.on("guildMemberAdd", member => {
         if (!data) {
             const newData = new Data({
                 active: [],
-                name: user.username,
+                name: member.username,
                 userID: user.id,
                 rep: 0,
                 messages: 0,
