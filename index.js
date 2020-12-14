@@ -51,7 +51,7 @@ client.on("guildMemberAdd", member => {
             const newData = new Data({
                 active: [],
                 name: member.username,
-                userID: user.id,
+                userID: member.id,
                 rep: 0,
                 messages: 0,
                 balance: 0,
@@ -61,7 +61,7 @@ client.on("guildMemberAdd", member => {
                 inventory: [],
             });
             newData.save().catch(err => console.log(err));
-            console.log('Created database table for ' + user.username);
+            console.log('Created database table for ' + member.username);
         }
     })
 });
@@ -70,6 +70,8 @@ client.on("guildMemberRemove", member => {
     const leaveChannel = member.guild.channels.cache.find(channel => channel.name === config.leaveJoinChannel)
     leaveChannel.send (`**${member.user.username}** od nás odišiel :(`)
 });
+
+client.on('debug', console.log);
 
 client.on("ready", () =>{
     antiAd(client);
@@ -80,6 +82,7 @@ client.on("ready", () =>{
         `${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)} users on TFS!`
     ];
 
+    console.log('3');
     let i = 0;
     setInterval(() => client.user.setActivity(`${activities[i++ % activities.length]}`, { type: 'WATCHING' }), 15000);
     console.log(`Logged in as ${client.user.tag}!`);
@@ -88,11 +91,11 @@ client.on("ready", () =>{
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 
+console.log('1');
 fs.readdir("./commands/", (err, files) => {
     if(err) console.log(err);
 
-    let jsfile = files.filter(f => f.split(".").pop() === "js") 
-0
+    let jsfile = files.filter(f => f.split(".").pop() === "js");
     jsfile.forEach((f, i) => {
         let pull = require(`./commands/${f}`);
         console.log(f + ' loaded!');
