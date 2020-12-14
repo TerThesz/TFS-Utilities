@@ -26,24 +26,9 @@ module.exports.run = async (bot, message, args) => {
                     }, (err, data2) => {
                         if (err => console.log(err));
 
-                        if ( 2) {
-                            const newData = new Data({
-                                active: [],
-                                name: reciever.username,
-                                userID: reciever.id,
-                                rep: 0,
-                                messages: 0,
-                                balance: amout,
-                                steamLinked: 'null',
-                                gamesPlayied: 0,
-                                pending: 'null',
-                                inventory: [],
-                            });
-                        } else {
-                            var bal = parseInt(amout);
-                            data2.balance += (bal);
-                            data2.save().catch(err => console.log(err));
-                        }
+                        var bal = parseInt(amout);
+                        data2.balance += (bal);
+                        data2.save().catch(err => console.log(err));
                         data.balance -= amout;
                         data.save().catch(err => console.log(err));
                         const exampleEmbed = new Discord.MessageEmbed()
