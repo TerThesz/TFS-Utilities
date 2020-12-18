@@ -59,8 +59,6 @@ client.on("guildMemberRemove", member => {
     leaveChannel.send (`**${member.user.username}** od nás odišiel :(`)
 });
 
-client.on('debug', console.log);
-
 client.on("ready", () =>{
     antiAd(client);
 
