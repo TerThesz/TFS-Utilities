@@ -31,7 +31,7 @@ module.exports.run = async (bot, message, arguments) => {
                         message.channel.send('Linked steam account (<' + arguments[0] + '>)');
                     });
             }
-        }
+        } else return message.channel.send('Šak one. to ňeni steam či čo');
     }
 }
 

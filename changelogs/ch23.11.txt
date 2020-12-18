@@ -3,6 +3,8 @@
   + msg-top [messages]
   + use [shop]
   + play (fix) [team]
+  - ban [banSystem]
+  - kick [banSystem]
 
 **dataSets:**
   + pravidlá.json
@@ -10,3 +12,7 @@
 **eventy:**
   + stream
   + video
+
+**databáza:**
+  - !data
+  + createTable.js
