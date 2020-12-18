@@ -16,3 +16,6 @@
 **databáza:**
   - !data
   + createTable.js
+
+**hosting:**
+  + nový hosting
