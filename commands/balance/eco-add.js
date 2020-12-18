@@ -24,6 +24,11 @@ module.exports.run = async (bot, message, arguments) => {
         }, (err, data) => {
             if(err) throw err;
 
+            if (!data) {
+                var createTable = require('../../createTable');
+                createTable.create(user.username, user.id);
+            }
+
             var bal = parseInt(arguments[1]);
             data.balance += bal;
             data.save().catch(err => console.log(err));

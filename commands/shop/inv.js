@@ -22,6 +22,11 @@ module.exports.run = async (bot, message, args) => {
     }, (err, data) => {
         if (err => console.log(err));
 
+        if (!data) {
+            var createTable = require('../../createTable');
+            createTable.create(user.username, user.id);
+        }
+
             let items = [];
             data.inventory.forEach(item => {
                 items.push(item);

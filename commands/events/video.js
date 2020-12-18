@@ -17,6 +17,11 @@ module.exports.run = (bot, message, args) => {
             userID: message.author.id
         }, (err, data) => {
             if (err) console.log(err);
+
+            if (!data) {
+                var createTable = require('../../createTable');
+                createTable.create(message.author.username, message.author.id);
+            }
     
             var canContinue = false;
             var upgrades = 1;

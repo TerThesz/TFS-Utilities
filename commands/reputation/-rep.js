@@ -23,6 +23,12 @@ module.exports.run = (bot, message, arguments) => {
                     userID: user.id
                 }, (err, data) => {
                     if(err) throw err;
+
+                    if (!data) {
+                        var createTable = require('../../createTable');
+                        createTable.create(user.username, user.id);
+                    }
+
                         data.rep -= 5;
                         data.save().catch(err => console.log(err));
                         const exampleEmbed = new Discord.MessageEmbed()

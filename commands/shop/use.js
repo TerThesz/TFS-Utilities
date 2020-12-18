@@ -17,6 +17,11 @@ module.exports.run = async (bot, message, args) => {
     }, (err,data) => {
         if (err) return err;
 
+        if (!data) {
+            var createTable = require('../../createTable');
+            createTable.create(message.author.username, message.author.id);
+        }
+
         var canContinue = false;
         data.inventory.forEach(item => { if (item.toLocaleLowerCase() === category.title.toLocaleLowerCase()) canContinue = true; });
         if (!canContinue) return message.channel.send('Tento predmet nemáš v inventári.');

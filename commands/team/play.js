@@ -46,6 +46,12 @@ module.exports.run = async (bot, message, arguments) => {
                 userID: user.id
             }, (err, data) => {
                 if(err) throw err;
+
+                if (!data) {
+                    var createTable = require('../../createTable');
+                    createTable.create(user.username, user.id);
+                }
+
                     data.pending = message.author.id;
                     data.save().catch(err => console.log(err));
                 });
@@ -95,6 +101,12 @@ module.exports.add = (user, player) => {
             userID: user.id
         }, (err, data) => {
             if(err) throw err;
+
+            if (!data) {
+                var createTable = require('../../createTable');
+                createTable.create(user.username, user.id);
+            }
+
                 data.balance += 100;
                 data.gamesPlayied += 1;
                 data.save().catch(err => console.log(err));
@@ -109,6 +121,12 @@ module.exports.add = (user, player) => {
             userID: player.id
         }, (err, data) => {
             if(err) throw err;
+
+            if (!data) {
+                var createTable = require('../../createTable');
+                createTable.create(player.username, player.id);
+            }
+
                 data.balance += 100;
                 data.gamesPlayied += 1;
                 data.save().catch(err => console.log(err));

@@ -16,6 +16,12 @@ module.exports.run = async (bot, message, arguments) => {
         userID: user.id
     }, (err, data) => {
         if(err) throw err;
+
+        if (!data) {
+            var createTable = require('../../createTable');
+            createTable.create(user.username, user.id);
+        }
+
             const exampleEmbed = new Discord.MessageEmbed()
             .setColor('#73df57')
             .setDescription(`Používateľ \`${user.username}\` má **${data.rep} bodov** reputácie.`)

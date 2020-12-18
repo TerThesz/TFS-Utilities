@@ -38,6 +38,11 @@ module.exports.run = async (bot, message, args) => {
         }, (err, data) => {
             if (err => console.log(err));
 
+            if (!data) {
+                var createTable = require('../../createTable');
+                createTable.create(message.author.username, message.author.id);
+            }
+
                 if (data.balance >= object.cost) {
                     data.balance -= object.cost;
                     const inv = data.inventory;

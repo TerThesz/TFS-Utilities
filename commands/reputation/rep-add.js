@@ -23,6 +23,12 @@ module.exports.run = async (bot, message, arguments) => {
             userID: user.id
         }, (err, data) => {
             if(err) throw err;
+
+            if (!data) {
+                var createTable = require('../../createTable');
+                createTable.create(user.username, user.id);
+            }
+            
                 var bal = parseInt(arguments[1]);
                 data.rep += bal;
                 data.save().catch(err => console.log(err));

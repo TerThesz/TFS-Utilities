@@ -19,8 +19,14 @@ module.exports.run = async (bot, message, arguments) => {
         userID: user.id
     }, (err, data) => {
         if(err) throw err;
+
+        if (!data) {
+            var createTable = require('../../createTable');
+            createTable.create(user.username, user.id);
+        }
+        
             const rng = Math.floor(Math.random() * Math.floor(1000));
-            const money = Math.floor(Math.random() * Math.floor(30));
+            const money = Math.floor(Math.random() * Math.floor(100));
 
 
             if (!canGainRep.has(user.id)) {

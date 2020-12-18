@@ -17,6 +17,12 @@ module.exports.run = async (bot, message, arguments) => {
             userID: user.id
         }, (err, data) => {
             if(err) throw err;
+
+            if (!data) {
+                var createTable = require('../../createTable');
+                createTable.create(user.username, user.id);
+            }
+            
                 var embed = new Discord.MessageEmbed()
                 .setTitle('Status hráča ' + user.username)
                 .addFields(

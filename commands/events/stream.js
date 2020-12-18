@@ -16,6 +16,11 @@ module.exports.run = (bot, message, args) => {
             userID: message.author.id
         }, (err, data) => {
             if (err) console.log(err);
+
+            if (!data) {
+                var createTable = require('../../createTable');
+                createTable.create(message.author.username, message.author.id);
+            }
     
             var canContinue = false;
             var upgrades = 1;
@@ -62,9 +67,9 @@ module.exports.run = (bot, message, args) => {
         cooldown.add(message.author.id);
         setTimeout(() => {
             cooldown.delete(message.author.id);
-        },(24 * 60 * 60 * 1000))
+        },(4 * 60 * 60 * 1000))
     } else {
-        return message.channel.send('Tento command môžeš použiť raz za 24 hodín.');
+        return message.channel.send('Tento command môžeš použiť raz za 4 hodiny.');
     }
 }
 

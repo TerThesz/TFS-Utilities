@@ -20,6 +20,12 @@ module.exports.run = async (bot, message, arguments) => {
                 Data.findOne({
                     userID: user.id
                 }, (err, data) => {
+
+                    if (!data) {
+                        var createTable = require('../../createTable');
+                        createTable.create(user.username, user.id);
+                    }
+
                         data.steamLinked = arguments[0];
                         data.save().catch(err => console.log(err));
                         message.channel.send('Linked steam account (<' + arguments[0] + '>)');

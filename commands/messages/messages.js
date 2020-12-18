@@ -18,6 +18,11 @@ module.exports.run = async (bot, message, arguments) => {
     }, (err, data) => {
         if(err) throw err;
 
+        if (!data) {
+            var createTable = require('../../createTable');
+            createTable.create(user.username, user.id);
+        }
+
             const exampleEmbed = new Discord.MessageEmbed();
             if (data.messages === 1) {
                 exampleEmbed

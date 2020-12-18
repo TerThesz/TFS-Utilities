@@ -18,6 +18,11 @@ module.exports.run = async (bot, message, args) => {
     }, (err, data) => {
         if (err) return err;
 
+        if (!data) {
+            var createTable = require('../../createTable');
+            createTable.create(message.author.username, message.author.id);
+        }
+
         var hasItem = false;
         data.inventory.forEach(item => {
             if (item === category.title) hasItem = true;

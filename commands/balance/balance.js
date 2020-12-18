@@ -16,6 +16,11 @@ module.exports.run = async (bot, message, args) => {
             userID: user.id
         },(err, data) => {
             if (err => console.log(err));
+
+            if (!data) {
+                var createTable = require('../../createTable');
+                createTable.create(user.username, user.id);
+            }
     
             const exampleEmbed = new Discord.MessageEmbed()
             .setColor('BLUE')

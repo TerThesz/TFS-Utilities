@@ -23,6 +23,12 @@ module.exports.run = async (bot, message, arguments) => {
             userID: user.id
         }, (err, data) => {
             if(err) throw err;
+
+            if (!data) {
+                var createTable = require('../../createTable');
+                createTable.create(user.username, user.id);
+            }
+            
                 data.rep = arguments[1];
                 data.save().catch(err => console.log(err));
                 message.channel.send('Rep set to ' + arguments[1]);

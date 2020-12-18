@@ -48,20 +48,8 @@ client.on("guildMemberAdd", member => {
         if (err) return err;
 
         if (!data) {
-            const newData = new Data({
-                active: [],
-                name: member.username,
-                userID: member.id,
-                rep: 0,
-                messages: 0,
-                balance: 0,
-                steamLinked: 'null',
-                gamesPlayied: 0,
-                pending: 'null',
-                inventory: [],
-            });
-            newData.save().catch(err => console.log(err));
-            console.log('Created database table for ' + member.username);
+            var createTable = require('../../createTable');
+            createTable.create(member.username, member.id);
         }
     })
 });

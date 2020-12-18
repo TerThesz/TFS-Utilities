@@ -23,9 +23,15 @@ module.exports.run = async (bot, message, arguments) => {
             userID: user.id
         }, (err, data) => {
             if(err) throw err;
-                data.balance = arguments[1];
-                data.save().catch(err => console.log(err));
-                message.channel.send('Bal set to ' + arguments[1]);
+
+            if (!data) {
+                var createTable = require('../../createTable');
+                createTable.create(user.username, user.id);
+            }
+
+            data.balance = arguments[1];
+            data.save().catch(err => console.log(err));
+            message.channel.send('Bal set to ' + arguments[1]);
         })
     } else {message.channel.send('Tohoto človeka nepoznám :(')}
 }

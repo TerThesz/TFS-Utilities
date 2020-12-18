@@ -15,6 +15,12 @@ module.exports.run = async (bot, message, arguments) => {
     Data.findOne({
         userID: user.id
     }, (err, data) => {
+
+        if (!data) {
+            var createTable = require('../../createTable');
+            createTable.create(user.username, user.id);
+        }
+        
             message.channel.send('Link na steam účet používateľa ' + user.username + ': <' + data.steamLinked + '>');
         });
 }
