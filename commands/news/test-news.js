@@ -8,17 +8,12 @@ module.exports.run = async (bot, message, arguments) => {
         .setDescription(replaceAll(arguments[1], '-', ' '))
         .setColor('ORANGE')
 
-    switch (arguments.length) {
-        case 4:
-            embed.addField(replaceAll(arguments[2], '-', ' '), replaceAll(arguments[3], '-', ' '), arguments[4])
-            break;
-        case 6:
-            embed.addField(replaceAll(arguments[5], '-', ' '), replaceAll(arguments[6], '-', ' '), arguments[7])
-            break;
-        case 8:
-            embed.addField(replaceAll(arguments[8], '-', ' '), replaceAll(arguments[9], '-', ' '), arguments[10])
-            break;
-    }
+    if (arguments.length >= 5)
+        embed.addField(replaceAll(arguments[2], '-', ' '), replaceAll(arguments[3], '-', ' '), arguments[4])
+    if (arguments.length >= 8)
+        embed.addField(replaceAll(arguments[5], '-', ' '), replaceAll(arguments[6], '-', ' '), arguments[7])
+    if (arguments.length >= 11)
+        embed.addField(replaceAll(arguments[8], '-', ' '), replaceAll(arguments[9], '-', ' '), arguments[10])
 
     message.channel.send(embed);
 

@@ -35,6 +35,8 @@ const antiSpam = new AntiSpam({
     ignoredUsers: [],
 });
 
+client.on('voiceStateUpdate', (oldMember, newMember) => require('./commands/tempChannel/voice').voice(oldMember, newMember));
+
 client.on("guildMemberAdd", member => {
     config.joinRoles.forEach(role => {;
         console.log(role);
