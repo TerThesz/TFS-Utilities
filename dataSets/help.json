@@ -63,7 +63,9 @@
         "description": "Temp channels",
         "data": [
             { "cmd": "Zamknutie", "description": "`!voice lock`" },
-            { "cmd": "Odomknutie", "description": "`!voice unlock`" }
+            { "cmd": "Odomknutie", "description": "`!voice unlock`" },
+            { "cmd": "Pridanie Používatela", "description": "`!voice allow <meno>`" },
+            { "cmd": "Vyhodenie Používatela", "description": "`!voice kick <meno>`" }
         ]
     },
     {
