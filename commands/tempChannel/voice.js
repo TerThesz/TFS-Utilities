@@ -50,13 +50,33 @@ module.exports.run = async (bot, message, args) => {
                         CONNECT: true,
                         SPEAK: true
                     });
-
-                    message.guild.channels.cache.find(chan => chan.id === temporary[i].newID)
-                    .replacePermissionOverwrites({
-                        "overwrites": channel.permissionOverwrites.filter(o => o.id !== author.id)
-                    });
                     
                     return message.channel.send('Channel bol úspešne **odomknutý**.')
+                }
+                i++;
+            }
+            if (!isInChannel) return message.channel.send('Musíš byť v **mnou vytvorenom** channeli.');
+            break;
+        case 'allow':
+            var allowUser = message.mentions.users.first();
+            for (var i = 0; i < temporary.length;) {
+                if (temporary[i].newID === author.voice.channelID) {
+                    if (!allowUser) return message.channel.send('Musíš **označiť** nejakého človeka');
+                    if (!temporary.filter(temp => temp.newID === author.voice.channelID)) return message.channel.send('Musíš byť v **mnou vytvorenom** channeli.')
+                    if (temporary[i].authorID != author.id) return message.channel.send('Musíš byť **majiteľ** channelu.')
+                    if (temporary[i].locked === false) return message.channel.send('Tento používatel už má **povolený** prístup.')
+
+                    isInChannel = true;
+                    temporary[i].locked = true;
+
+                    message.guild.channels.cache.find(chan => chan.id === temporary[i].newID)
+                    .updateOverwrite(allowUser.id, { 
+                        CREATE_INSTANT_INVITE: true,
+                        CONNECT: true,
+                        SPEAK: true
+                    });
+                    
+                    return message.channel.send('Používatel **' + allowUser.username + '** má povolený prístup do channelu.')
                 }
                 i++;
             }
