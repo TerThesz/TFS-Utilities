@@ -59,6 +59,14 @@
         ]
     },
     {
+        "category": "Temp",
+        "description": "Temp channels",
+        "data": [
+            { "cmd": "Zamknutie", "description": "`!voice lock`" },
+            { "cmd": "Odomknutie", "description": "`!voice unlock`" }
+        ]
+    },
+    {
         "category": "Ostatné",
         "description": "Nezaradené commandy",
         "data": [
