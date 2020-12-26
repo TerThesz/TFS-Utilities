@@ -53,7 +53,7 @@ module.exports.run = async (bot, message, args) => {
 
                     message.guild.channels.cache.find(chan => chan.id === temporary[i].newID)
                     .replacePermissionOverwrites({
-                        "overwrites": channel.permissionOverwrites.filter(o => o.id === author.id)
+                        "overwrites": channel.permissionOverwrites.filter(o => o.id !== author.id)
                     });
                     
                     return message.channel.send('Channel bol úspešne **odomknutý**.')
