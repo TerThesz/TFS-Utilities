@@ -42,7 +42,7 @@ module.exports.run = async (bot, message, args) => {
                     if (temporary[i].locked === false) return message.channel.send('Tento channel už je **odomknutý**.')
 
                     isInChannel = true;
-                    temporary[i].locked = true;
+                    temporary[i].locked = false;
 
                     message.guild.channels.cache.find(chan => chan.id === temporary[i].newID)
                     .updateOverwrite(message.guild.roles.everyone.id, { 
@@ -64,10 +64,9 @@ module.exports.run = async (bot, message, args) => {
                     if (!allowUser) return message.channel.send('Musíš **označiť** nejakého človeka');
                     if (!temporary.filter(temp => temp.newID === author.voice.channelID)) return message.channel.send('Musíš byť v **mnou vytvorenom** channeli.')
                     if (temporary[i].authorID != author.id) return message.channel.send('Musíš byť **majiteľ** channelu.')
-                    if (temporary[i].locked === false) return message.channel.send('Tento používatel už má **povolený** prístup.')
+                    if (temporary[i].allowed.find(x => x === allowUser.id)) return message.channel.send('Tento používatel už má **povolený** prístup.')
 
                     isInChannel = true;
-                    temporary[i].locked = true;
 
                     message.guild.channels.cache.find(chan => chan.id === temporary[i].newID)
                     .updateOverwrite(allowUser.id, { 
@@ -75,8 +74,35 @@ module.exports.run = async (bot, message, args) => {
                         CONNECT: true,
                         SPEAK: true
                     });
+                    temporary[i].allowed.push(allowUser.id);
                     
                     return message.channel.send('Používatel **' + allowUser.username + '** má povolený prístup do channelu.')
+                }
+                i++;
+            }
+            if (!isInChannel) return message.channel.send('Musíš byť v **mnou vytvorenom** channeli.');
+            break;
+        case 'kick':
+            var allowUser = message.mentions.users.first();
+            for (var i = 0; i < temporary.length;) {
+                if (temporary[i].newID === author.voice.channelID) {
+                    if (!allowUser) return message.channel.send('Musíš **označiť** nejakého človeka');
+                    if (!temporary.filter(temp => temp.newID === author.voice.channelID)) return message.channel.send('Musíš byť v **mnou vytvorenom** channeli.')
+                    if (temporary[i].authorID != author.id) return message.channel.send('Musíš byť **majiteľ** channelu.')
+                    if (!message.guild.channels.cache.find(chan => chan.id === temporary[i].newID).members.find(x => x.id === allowUser.id)) return message.channel.send('Tento používateľ **nie je** v tvojom channeli.')
+
+                    isInChannel = true;
+
+                    message.guild.channels.cache.find(chan => chan.id === temporary[i].newID)
+                    .updateOverwrite(allowUser.id, { 
+                        CREATE_INSTANT_INVITE: false,
+                        CONNECT: false,
+                        SPEAK: false
+                    });
+                    temporary[i].allowed.splice(temporary[i].allowed.indexOf(allowUser.id), 1);
+                    message.guild.members.cache.find(user => user.id === allowUser.id).voice.setChannel(null);
+                    
+                    return message.channel.send('Používatel **' + allowUser.username + '** bol vyhodený.')
                 }
                 i++;
             }
