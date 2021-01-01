@@ -74,7 +74,8 @@
         "data": [
             { "cmd": "Správy", "description": "`!messages [meno]`\n*skratky: msgs*" },
 			{ "cmd": "Verzia", "description": "`!version`\n *skratky: v*" },
-			{ "cmd": "Pravidlá", "description": "`;p<číslo>`" }
+            { "cmd": "Pravidlá", "description": "`;p<číslo>`" },
+            { "cmd": "Report", "description": "`!report <meno> <dôvod>`" }
         ]
     },
     {

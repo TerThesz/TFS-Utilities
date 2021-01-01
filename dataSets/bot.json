@@ -1,58 +1,66 @@
 {
-    "token": "NzcyOTQyMzg4MDQ5MzQ2NTYy.X6CAsQ.RV5rA11NbJIzc3RlFlCjHCriWGQ",
-    "mongoose": "mongodb://TFS-Utilities:4ZkDIIpHZXBTWItg@tfs-utilities-shard-00-00.ljali.mongodb.net:27017,tfs-utilities-shard-00-01.ljali.mongodb.net:27017,tfs-utilities-shard-00-02.ljali.mongodb.net:27017/UserData?ssl=true&replicaSet=atlas-kw31y7-shard-0&authSource=admin&retryWrites=true&w=majority",
-    "prefix": "!",
-    "allPrefixes": ["!", "-", "?", ";"],
-    "leaveJoinChannel": "letisko",
-    "memesChannel": "memes",
-    "newsChannel": "772916699653210152",
-    "changelogsChannel": "778712068776788028",
-    "tempChannel": "791318386000658452",
-    "tempCategory": "791752484120035348",
-    "vipTempChannel": "791317939570737153",
-    "vipTempCategory": "791752533852553227",
-    "customChannels": {
-        "channel": "783070530772926467",
-        "section": "783070434627158017"
-    },
-    "joinRoles": [
-        "772933132130582558",
-        "772932560069722154",
-        "772927281105469452",
-        "772923608515084298",
-        "772939341805912065",
-        "773716049354293250"
-    ],
-    "repRoles": {
-        "role1": "772927281105469452",
-        "role2": "772930524158754826",
-        "role3": "772930705621123073",
-        "role4": "772931050900946964",
-        "role5": "772931219519832095",
-        "role6": "772931251316588595"
-    },
-    "msgRoles": {
-        "role1": "773716202408771614",
-        "role2": "773716209170382868",
-        "role3": "773716285019783240",
-        "role4": "773716311431053392",
-        "role5": "773716333958660107"
-    },
-    "nicknames": [
-        "zajko pajko",
-        "panáčik",
-        "nezbedník",
-        "frajer",
-        "segedín"
-    ],
-    "podakovanie": [
-        "ďakujem",
-        "dakujem",
-        "dik",
-        "diki",
-        "dikes",
-        "thx",
-        "thanks",
-        "thank you"
-    ]
+  "token": "NzcyOTQyMzg4MDQ5MzQ2NTYy.X6CAsQ.RV5rA11NbJIzc3RlFlCjHCriWGQ",
+  "mongoose": "mongodb://TFS-Utilities:4ZkDIIpHZXBTWItg@tfs-utilities-shard-00-00.ljali.mongodb.net:27017,tfs-utilities-shard-00-01.ljali.mongodb.net:27017,tfs-utilities-shard-00-02.ljali.mongodb.net:27017/UserData?ssl=true&replicaSet=atlas-kw31y7-shard-0&authSource=admin&retryWrites=true&w=majority",
+  "prefix": "!",
+  "allPrefixes": [
+    "!",
+    "-",
+    "?",
+    ";"
+  ],
+  "leaveJoinChannel": "letisko",
+  "memesChannel": "memes",
+  "newsChannel": "772916699653210152",
+  "changelogsChannel": "778712068776788028",
+  "tempChannel": "791318386000658452",
+  "tempCategory": "791752484120035348",
+  "vipTempChannel": "791317939570737153",
+  "vipTempCategory": "791752533852553227",
+  "reportChannel": "772919658407657482",
+  "reportID": 11,
+  "customChannels": {
+    "channel": "783070530772926467",
+    "section": "783070434627158017"
+  },
+  "joinRoles": [
+    "772933132130582558",
+    "772932560069722154",
+    "772927281105469452",
+    "772923608515084298",
+    "772939341805912065",
+    "773716049354293250"
+  ],
+  "repRoles": {
+    "role1": "772927281105469452",
+    "role2": "772930524158754826",
+    "role3": "772930705621123073",
+    "role4": "772931050900946964",
+    "role5": "772931219519832095",
+    "role6": "772931251316588595"
+  },
+  "msgRoles": {
+    "role1": "773716202408771614",
+    "role2": "773716209170382868",
+    "role3": "773716285019783240",
+    "role4": "773716311431053392",
+    "role5": "773716333958660107"
+  },
+  "nicknames": [
+    "zajko pajko",
+    "panáčik",
+    "nezbedník",
+    "frajer",
+    "segedín"
+  ],
+  "podakovanie": [
+    "ďakujem",
+    "dakujem",
+    "dik",
+    "diki",
+    "dikes",
+    "thx",
+    "thanks",
+    "thank you"
+  ],
+  "key": "reportID"
 }
