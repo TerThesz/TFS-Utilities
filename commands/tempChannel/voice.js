@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args) => {
             for (var i = 0; i < temporary.length;) {
                 if (temporary[i].newID === author.voice.channelID) {
                     if (!temporary.filter(temp => temp.newID === author.voice.channelID)) return message.channel.send('Musíš byť v **mnou vytvorenom** channeli.')
-                    if (temporary[i].authorID != author.id && message.guild.members.cache.find(user => user.id === author.id).hasPermission('ADMINISTRATOR')) return message.channel.send('Musíš byť **majiteľ** channelu.')
+                    if (temporary[i].authorID != author.id && !message.guild.members.cache.find(user => user.id === author.id).hasPermission('ADMINISTRATOR')) return message.channel.send('Musíš byť **majiteľ** channelu.')
                     if (temporary[i].locked === true) return message.channel.send('Tento channel už je **uzamknutý**.')
 
                     isInChannel = true;
