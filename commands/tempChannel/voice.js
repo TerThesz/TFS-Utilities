@@ -149,7 +149,7 @@ module.exports.voice = (oldMember, newMember) => {
         // Finding...
         let ch = temporary[i].guild.channels.cache.find(x => x.id == temporary[i].newID)
 
-        if (ch.members.size <= 0) {
+        if (!ch.members.cache.find(member => member.id === temporary[i].authorID)) {
             ch.delete(1000)
             // Channel has been deleted!
             return temporary.splice(i, 1)

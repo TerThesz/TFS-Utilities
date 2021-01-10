@@ -18,6 +18,7 @@
   "vipTempCategory": "791752533852553227",
   "reportChannel": "772919658407657482",
   "reportID": 11,
+  "banID": 6,
   "customChannels": {
     "channel": "783070530772926467",
     "section": "783070434627158017"
@@ -62,5 +63,5 @@
     "thanks",
     "thank you"
   ],
-  "key": "reportID"
+  "key": "banID"
 }
