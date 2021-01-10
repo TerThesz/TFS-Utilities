@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args) => {
             for (var i = 0; i < temporary.length;) {
                 if (temporary[i].newID === author.voice.channelID) {
                     if (!temporary.filter(temp => temp.newID === author.voice.channelID)) return message.channel.send('Musíš byť v **mnou vytvorenom** channeli.')
-                    if (temporary[i].authorID != author.id) return message.channel.send('Musíš byť **majiteľ** channelu.')
+                    if (temporary[i].authorID != author.id || message.guild.members.cache.find(user => user.id === author.id).hasPermission('ADMINISTRATOR')) return message.channel.send('Musíš byť **majiteľ** channelu.')
                     if (temporary[i].locked === true) return message.channel.send('Tento channel už je **uzamknutý**.')
 
                     isInChannel = true;
@@ -23,7 +23,7 @@ module.exports.run = async (bot, message, args) => {
                             deny: [ 'CREATE_INSTANT_INVITE', 'CONNECT', 'SPEAK' ],
                         },
                         {
-                            id: author.id,
+                            id: temporary[i].authorID,
                             allow: [ 'CREATE_INSTANT_INVITE', 'CONNECT', 'SPEAK' ],
                         },
                     ]);
@@ -38,7 +38,7 @@ module.exports.run = async (bot, message, args) => {
             for (var i = 0; i < temporary.length;) {
                 if (temporary[i].newID === author.voice.channelID) {
                     if (!temporary.filter(temp => temp.newID === author.voice.channelID)) return message.channel.send('Musíš byť v **mnou vytvorenom** channeli.')
-                    if (temporary[i].authorID != author.id) return message.channel.send('Musíš byť **majiteľ** channelu.')
+                    if (temporary[i].authorID != author.id || message.guild.members.cache.find(user => user.id === author.id).hasPermission('ADMINISTRATOR')) return message.channel.send('Musíš byť **majiteľ** channelu.')
                     if (temporary[i].locked === false) return message.channel.send('Tento channel už je **odomknutý**.')
 
                     isInChannel = true;
@@ -63,7 +63,7 @@ module.exports.run = async (bot, message, args) => {
                 if (temporary[i].newID === author.voice.channelID) {
                     if (!allowUser) return message.channel.send('Musíš **označiť** nejakého človeka');
                     if (!temporary.filter(temp => temp.newID === author.voice.channelID)) return message.channel.send('Musíš byť v **mnou vytvorenom** channeli.')
-                    if (temporary[i].authorID != author.id) return message.channel.send('Musíš byť **majiteľ** channelu.')
+                    if (temporary[i].authorID != author.id || message.guild.members.cache.find(user => user.id === author.id).hasPermission('ADMINISTRATOR')) return message.channel.send('Musíš byť **majiteľ** channelu.')
                     if (temporary[i].allowed.find(x => x === allowUser.id)) return message.channel.send('Tento používatel už má **povolený** prístup.')
 
                     isInChannel = true;
@@ -88,7 +88,7 @@ module.exports.run = async (bot, message, args) => {
                 if (temporary[i].newID === author.voice.channelID) {
                     if (!allowUser) return message.channel.send('Musíš **označiť** nejakého človeka');
                     if (!temporary.filter(temp => temp.newID === author.voice.channelID)) return message.channel.send('Musíš byť v **mnou vytvorenom** channeli.')
-                    if (temporary[i].authorID != author.id) return message.channel.send('Musíš byť **majiteľ** channelu.')
+                    if (temporary[i].authorID != author.id || message.guild.members.cache.find(user => user.id === author.id).hasPermission('ADMINISTRATOR')) return message.channel.send('Musíš byť **majiteľ** channelu.')
                     if (!message.guild.channels.cache.find(chan => chan.id === temporary[i].newID).members.find(x => x.id === allowUser.id)) return message.channel.send('Tento používateľ **nie je** v tvojom channeli.')
 
                     isInChannel = true;
@@ -149,7 +149,7 @@ module.exports.voice = (oldMember, newMember) => {
         // Finding...
         let ch = temporary[i].guild.channels.cache.find(x => x.id == temporary[i].newID)
 
-        if (!ch.members.cache.find(member => member.id === temporary[i].authorID)) {
+        if (!ch.members.find(member => member.id === temporary[i].authorID)) {
             ch.delete(1000)
             // Channel has been deleted!
             return temporary.splice(i, 1)
