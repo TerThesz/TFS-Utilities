@@ -4,6 +4,9 @@ var temporary = [];
 module.exports.run = async (bot, message, args) => {
     var author = message.guild.members.cache.find(user => user.id === message.author.id);
 
+    console.log(message.guild.members.cache.find(user => user.id === author.id).hasPermission('ADMINISTRATOR'))
+    console.log(message.guild.members.cache.find(user => user.id === author.id))
+
     var isInChannel = false;
     switch (args[0]) {
         case 'lock':
