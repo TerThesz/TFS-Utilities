@@ -37,6 +37,10 @@ const antiSpam = new AntiSpam({
 
 client.on('voiceStateUpdate', (oldMember, newMember) => require('./commands/tempChannel/voice').voice(oldMember, newMember));
 
+client.on('guildCreate', guild => {
+    
+});
+
 client.on("guildMemberAdd", member => {
     config.joinRoles.forEach(role => {
         console.log(role);
@@ -208,7 +212,7 @@ client.on("message", message => {
         addMessage.run(client, message, args);
     }
 
-    if(message.content.startsWith(prefix) && cmd != '!+rep' && cmd != '!-rep' && cmd != 'rep' && cmd != 'rep-lb') {
+    if(message.content.startsWith(prefix) && cmd != '!+rep' && cmd != '!-rep' && cmd != 'rep' && cmd != 'rep-lb' && message.content != '!d bump') {
         console.log(message.author.username + ' >> ' + message.content);
         let commandfile = client.commands.get(cmd.slice(prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(prefix.length)))
         if(commandfile) commandfile.run(client,message,args)
@@ -220,6 +224,10 @@ client.on("message", message => {
         console.log(message.author.username + ' >> ' + message.content);
         let commandfile = client.commands.get('pravidla') || client.commands.get(client.aliases.get('pravidla'))
         if(commandfile) commandfile.run(client,message,args, cmd.replace(';p', ''));
+    } else if (message.content === '!d bump') {
+        console.log(message.author.username + ' >> ' + message.content);
+        let commandfile = client.commands.get('!d bump') || client.commands.get(client.aliases.get('!d bump'))
+        if(commandfile) commandfile.run(client, message, args);
     } else {
         config.podakovanie.forEach(string => {
             if(cmd.toLowerCase().startsWith(string) || cmd.toLowerCase().includes(string)) {
